@@ -18,10 +18,20 @@ cd framer-framed
 
 Zorg dat je Node.js (versie 18 of hoger) hebt geïnstalleerd.
 
-npm install(Installeer alle packages)
+(Installeer alle packages)
 
-npm run dev(Start de ontwikkelserver)
+```bash
+npm install
+```
+
+Start de ontwikkelserver
+
+```bash
+npm run dev
+```
+
 De applicatie draait nu op:
+
 http://localhost:3000
 
 🛠️ Gebruikte technologieën
