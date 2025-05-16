@@ -2,16 +2,33 @@
 
 {% block content %}
 
-<h1 class="h1">{{ title }}</h1>
+<h1>Framer Framed Archief</h1>
 
-<ul class="grid">
-  {% for item in items %}
-    <li>
-      <a href="/plant/{{ item.id }}">
-        {% render 'server/components/card/card.liquid', item: item %}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+{% for event in allEvents %}
+  <article>
+    <h2>{{ event.node.title_en }}</h2>
+    <p><strong>Type:</strong> {{ event.node.type_nl }}</p>
+    <p><strong>Startdatum:</strong> {{ event.node.date_start }}</p>
+    <p><strong>Einddatum:</strong> {{ event.node.date_end }}</p>
+    <p><strong>Beschrijving:</strong> <div>{{ event.node.cleaned_content | raw }}</div> </p>
+    {% if event.node.extracted_images.size > 0 %}
+      <div class="images">
+        {% for src in event.node.extracted_images %}
+          <img src="{{ src }}" alt="Afbeelding bij event">
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% if event.rels %}
+      <h3>Deelnemers:</h3>
+      <ul>
+        {% for rel in event.rels %}
+          <li>{{ rel.name }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </article>
+  <hr />
+{% endfor %}
 
 {% endblock %}

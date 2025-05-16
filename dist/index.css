@@ -19,8 +19,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -48,17 +46,6 @@ table {
 }
 body {
   font-family: system-ui, sans-serif;
-  font-weight: 400;
-}
-.h1 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.h2 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  font-weight: 600;
 }
 /*.layout and view styling */
 header {
@@ -86,7 +73,6 @@ body {
   color: black;
   max-width: 1440px;
   margin: 0 auto;
-  background-image: url('/images/background.jpg');
 }
 main {
   padding: 1rem;
