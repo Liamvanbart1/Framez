@@ -1,6 +1,7 @@
 import { App } from '@tinyhttp/app';
 import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
+import { parse } from 'node-html-parser';
 import sirv from 'sirv';
 
 const data = {
@@ -64,25 +65,6 @@ app.get('/', async (req, res) => {
   let year = 2022;
   const currentYear = new Date().getFullYear();
 
-  function extractImages(htmlString) {
-    const imgRegex = /<img[^>]+src="([^">]+)"[^>]*>/gi;
-    const imgMatches = [];
-    let match;
-
-    while ((match = imgRegex.exec(htmlString)) !== null) {
-      imgMatches.push({
-        tag: match[0],
-        src: match[1],
-      });
-    }
-
-    const contentWithoutImages = htmlString.replace(imgRegex, '');
-    return {
-      content: contentWithoutImages.trim(),
-      images: imgMatches.map(i => i.src),
-    };
-  }
-
   while (year <= currentYear) {
     const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/200`;
     try {
@@ -94,9 +76,18 @@ app.get('/', async (req, res) => {
 
         for (const event of json.events) {
           const htmlContent = event.node.content_en || '';
-          const { content, images } = extractImages(htmlContent);
-          event.node.cleaned_content = content;
-          event.node.extracted_images = images;
+          const root = parse(htmlContent);
+
+          // img tags verzamelsen
+          const imgElements = root.querySelectorAll('img');
+          const imgSources = imgElements.map(img => img.getAttribute('src'));
+
+          // img verwijder uit content
+          imgElements.forEach(img => img.remove());
+
+          // overgebleven content opslaan
+          event.node.cleaned_content = root.toString().trim();
+          event.node.extracted_images = imgSources;
         }
 
         allEvents.push(...json.events);
