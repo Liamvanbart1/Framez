@@ -7,10 +7,10 @@
 {% for event in allEvents %}
   <article>
     <h2>{{ event.node.title_en }}</h2>
-    <p><strong>Type:</strong> {{ event.node.type_nl }}</p>
-    <p><strong>Startdatum:</strong> {{ event.node.date_start }}</p>
-    <p><strong>Einddatum:</strong> {{ event.node.date_end }}</p>
-    <p><strong>Beschrijving:</strong> <div>{{ event.node.cleaned_content | raw }}</div> </p>
+    <h3>Type:</h3><p>{{ event.node.type_nl }}</p>
+    <h3>Startdatum:</h3><p>{{ event.node.date_start }}</p>
+    <h3>Einddatum:</h3><p>{{ event.node.date_end }}</p>
+    <h3>Beschrijving:</h3><div>{{ event.node.cleaned_content | raw }}</div>
     {% if event.node.extracted_images.size > 0 %}
       <div class="images">
         {% for src in event.node.extracted_images %}
