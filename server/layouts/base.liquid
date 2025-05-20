@@ -15,27 +15,26 @@
   <header>
   <nav>
     <ul>
-      <li>
-        <details>
-          <summary>Educatie</summary>
-          <ul>
-            <li><a href="">Visie en werkwijze</a></li>
-            <li><a href="">Buitenschoolse activiteiten</a></li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Community & Learning</summary>
-          <ul>
-            <li><a href="">Open Atelier</a></li>
-            <li><a href="">ELANCE</a></li>
-            <li><a href="">We Sell Reality</a></li>
-            <li><a href="">LIMBO</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a href="/over-ons">Ons team en organisatie</a></li>
+      {% for item in menu %}
+        {% if item.children.size > 0 %}
+          <li>
+            <details>
+              <summary>{{ item.title.rendered | strip_html }}</summary>
+              <ul>
+                {% for child in item.children %}
+                  <li>
+                    <a href="{{ child.link }}">{{ child.title.rendered | strip_html }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </details>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ item.link }}">{{ item.title.rendered | strip_html }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
     </ul>
   </nav>
   </header>

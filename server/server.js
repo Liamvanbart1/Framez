@@ -14,10 +14,40 @@ app
   .use('/', sirv('dist'))
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
-app.get('/', async (req, res) => {
-  return res.send(renderTemplate('server/views/index.liquid'));
+app.use(async (req, res, next) => {
+  try {
+    const response = await fetch('https://framerframed.nl/en/wp-json/wp/v2/pages?per_page=100');
+    const pages = await response.json();
+
+    //pagina's verdelen in childs en parents
+    const topPages = pages.filter(p => p.parent === 0);
+    const childPages = pages.filter(p => p.parent !== 0);
+    
+    //child toevoegen aan juiste parents
+    const menu = topPages.map(parent => ({
+      ...parent,
+      children: childPages.filter(child => child.parent === parent.id),
+    }));
+
+    // Opslaan in res.locals
+    res.locals.menu = menu;
+
+  } catch (err) {
+    console.error('Fout bij ophalen van menu:', err);
+    res.locals.menu = [];
+    next();
+  }
 });
 
-const renderTemplate = (template, data) => {
-  return engine.renderFileSync(template, data);
+app.get('/', async (req, res) => {
+  const html = await renderTemplate('server/views/index.liquid', {title: 'Home'}, res);
+  res.send(html);
+});
+
+const renderTemplate = async (template, data = {}, res = null) => {
+  //menu toevoegen aan de data
+  if (res && res.locals.menu) {
+    data.menu = res.locals.menu;
+  }
+  return await engine.renderFileSync(template, data);
 };
