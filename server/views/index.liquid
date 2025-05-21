@@ -3,15 +3,13 @@
 {% block content %}
 
 <h1 class="h1">{{ title }}</h1>
-
+<form action="/popout-year" method="post">
 <ul class="grid">
-  {% for item in items %}
-    <li>
-      <a href="/plant/{{ item.id }}">
-        {% render 'server/components/card/card.liquid', item: item %}
-      </a>
-    </li>
-  {% endfor %}
+  {% for item in years %}
+    {% comment %} button, als je er op klikt word er in de backend een fetch uitgevoerd voor de nieuwe informatie en die toegevoegd in een section{% endcomment %}
+     <button name="year-{{item.year}}">{{item.year}}</button>
+     <p>{{eventTitle[0].node.title_en}}</p>
+  {% endfor %} 
 </ul>
-
+</form>
 {% endblock %}
