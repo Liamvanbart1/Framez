@@ -1,0 +1,16 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+{% comment %} wat als er geen engelse titel beschikbaar is? {% endcomment %}
+ {% comment %} wat als je meer paginas van evenementen wilt? {% endcomment %}
+ <h1 class="h1"> Events in {{year}}</h1>
+ <ul>
+    <li><a href="/event/:{{event[0].node.ff_id}}">{{ event[0].node.title_nl }}</a></li>
+    <li><a href="/event/:{{event[1].node.ff_id}}">{{ event[1].node.title_nl }}</a></li>
+    <li><a href="/event/:{{event[2].node.ff_id}}">{{ event[2].node.title_nl }}</a></li>
+    <li><a href="/event/:{{event[3].node.ff_id}}">{{ event[3].node.title_nl }}</a></li>
+    <li><a href="/event/:{{event[4].node.ff_id}}">{{ event[4].node.title_nl }}</a></li>
+    <li><a href="/event/:{{event[5].node.ff_id}}">{{ event[5].node.title_nl }}</a></li>
+ </ul>
+
+{% endblock %}

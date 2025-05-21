@@ -1,13 +1,6 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-{% comment %} wat als er geen engelse titel beschikbaar is? {% endcomment %}
- <h1>{{title}}</h1>
-<p>{{ event[0].node.title_en }}</p>
-<p>{{ event[1].node.title_en }}</p>
-<p>{{ event[2].node.title_en }}</p>
-<p>{{ event[3].node.title_en }}</p>
-<p>{{ event[4].node.title_en }}</p>
-<p>{{ event[5].node.title_en }}</p>
-<a href="/event/:{{event[0].node.ff_id}}">{{ event[0].node.title_en }}</a>
+ <h1 class="h1">{{title}}</h1>
+
 {% endblock %}

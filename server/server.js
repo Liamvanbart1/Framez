@@ -47,22 +47,6 @@ app.get('/', async (req, res) => {
   return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', years: jsonYear.nodes }));
 });
 
-
-
-// let year = 2005;
-const currentYear = new Date().getFullYear();
-// const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
-
-
-// while (year <= currentYear) {
-//   const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
-//   let response = await fetch(url);
-//   let json = await response.json();
-//   // console.log(json.events[0]);
-//   // console.log(json.events[0].node.title_en);
-//   year++
-// }
-
 // als er op de knop gedrukt word van een jaar
 app.get('/year/:year', async (req, res) => {
   // het jaar word meegegeven
@@ -79,36 +63,16 @@ app.get('/year/:year', async (req, res) => {
 
 
   // laad de detailpagina voor de expos
-  return res.send(renderTemplate('server/views/detail.liquid', { title: 'Home', event: json.events }));
-
-
-  // word teruggestuurd naar home
-  // res.writeHead(303, { Location: '/' });
-  // res.end();
+  return res.send(renderTemplate('server/views/events.liquid', { title: 'Events', event: json.events, year: year}));
 });
 
 app.get('/event/:event', async (req, res) => {
-  console.log("waaaah")
+  console.log("detailpagina event")
   console.log(req.params.event);
 
+  // render de detailpagina
+    return res.send(renderTemplate('server/views/detail.liquid', { title: 'detail'}));
 });
-
-
-
-
-
-
-// app.get('/plant/:id/', async (req, res) => {
-//   const id = req.params.id;
-//   const item = data[id];
-//   if (!item) {
-//     return res.status(404).send('Not found');
-//   }
-//   return res.send(renderTemplate('server/views/detail.liquid', {
-//     title: `Detail page for ${id}`,
-//     item: item
-//   }));
-// });
 
 const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, data);
