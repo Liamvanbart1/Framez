@@ -39,38 +39,65 @@ app
 
 // stuur de info naar de index pagina
 app.get('/', async (req, res) => {
+  // haal de api op om mee te sturen
+  const yearUrl = `https://archive.framerframed.nl/api/get-years`;
+  const responseYear = await fetch(yearUrl);
+  const jsonYear = await responseYear.json();
+
   return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', years: jsonYear.nodes }));
 });
 
-// list of years... kan handiger
-const yearUrl = `https://archive.framerframed.nl/api/get-years`;
-const responseYear = await fetch(yearUrl);
-const jsonYear = await responseYear.json();
 
-let year = 2005;
+
+// let year = 2005;
 const currentYear = new Date().getFullYear();
 // const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
 
 
-while (year <= currentYear) {
+// while (year <= currentYear) {
+//   const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
+//   let response = await fetch(url);
+//   let json = await response.json();
+//   // console.log(json.events[0]);
+//   // console.log(json.events[0].node.title_en);
+//   year++
+// }
+
+// als er op de knop gedrukt word van een jaar
+app.get('/year/:year', async (req, res) => {
+  // het jaar word meegegeven
+  console.log(req.params.year);
+  const year = req.params.year;
+
+  // roep de api op
   const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
-  let response = await fetch(url);
-  let json = await response.json();
-  // console.log(json.events[0]);
-  // console.log(json.events[0].node.title_en);
-  year++
-}
+  const response = await fetch(url);
+  const json = await response.json();
+
+  console.log(json.events[0].node)
 
 
-app.post('/popout-year', async (req, res) => {
-  const message = req.body;
-  // const user = req.body.user;
 
-  if (message) {
-    console.log("waaaah");
-  }
+  // laad de detailpagina voor de expos
+  return res.send(renderTemplate('server/views/detail.liquid', { title: 'Home', event: json.events }));
+
+
+  // word teruggestuurd naar home
+  // res.writeHead(303, { Location: '/' });
+  // res.end();
 });
-    // console.log('[MESSAGE!!!]', message);
+
+app.get('/event/:event', async (req, res) => {
+  console.log("waaaah")
+  console.log(req.params.event);
+
+});
+
+
+
+
+
+
 // app.get('/plant/:id/', async (req, res) => {
 //   const id = req.params.id;
 //   const item = data[id];
