@@ -1,10 +1,12 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-<div class="detail-container">
-    <div class="red"></div>
-    <div class="black"></div>
-    <div class="red"></div>
-    
-</div>
+{% for item in items %}
+    <li>
+      <a href="/plant/{{ item.id }}">
+        {% render 'server/components/card/card.liquid', item: item %}
+      </a>
+    </li>
+  {% endfor %}
+
 {% endblock %}

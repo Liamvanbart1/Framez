@@ -4,25 +4,29 @@ import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
 const data = {
-  'beemdkroon': {
-    id: 'beemdkroon',
-    name: 'Beemdkroon',
-    image: {
-      src: 'https://i.pinimg.com/736x/09/0a/9c/090a9c238e1c290bb580a4ebe265134d.jpg',
-      alt: 'Beemdkroon',
-      width: 695,
-      height: 1080,
-    }
+  'Expo-1': {
+    id: 'Expo-1',
+    name: 'Expo-1',
+    rels: [
+      {
+        id: '2',
+        name: 'Artist-2'
+      }
+    ]
   },
-  'wilde-peen': {
-    id: 'wilde-peen',
-    name: 'Wilde Peen',
-    image: {
-      src: 'https://mens-en-gezondheid.infonu.nl/artikel-fotos/tom008/4251914036.jpg',
-      alt: 'Wilde Peen',
-      width: 418,
-      height: 600,
-    }
+  'Expo-2': {
+    id: 'Expo-2',
+    name: 'Expo-2',
+    rels: [
+      {
+        id: '1',
+        name: 'Artist-1'
+      },
+      {
+        id: '2',
+        name: 'Artist-2'
+      }
+    ]
   }
 }
 
@@ -44,12 +48,16 @@ app.get('/', async (req, res) => {
 app.get('/plant/:id/', async (req, res) => {
   const id = req.params.id;
   const item = data[id];
+  const rels = data[id]?.rels || [];
+
   if (!item) {
     return res.status(404).send('Not found');
   }
   return res.send(renderTemplate('server/views/detail.liquid', {
     title: `Detail page for ${id}`,
-    item: item
+    item: item,
+    rels: item,
+    items: rels
   }));
 });
 
