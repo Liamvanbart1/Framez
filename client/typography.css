@@ -1,5 +1,27 @@
+@font-face {
+  font-family: favorit;
+  src: url(../public/assets/FONT/Favorit_Regular.otf);
+}
+@font-face {
+  font-family: favorit;
+  src: url(../public/assets/FONT/Favorit_Light.otf);
+  weight:light;
+}
+@font-face {
+  font-family: favorit;
+  src: url(../public/assets/FONT/Favorit_Bold.otf);
+  weight:bold;
+}
+
+/* @font-face{
+  font-family: favorit ;
+  src: url(../public/assets/FONT/Favorit\ Light\ Italic.ttf);
+  weight:light;
+  font-style: italic;
+} */
+
 body {
-  font-family: system-ui, sans-serif;
+  font-family: favorit;
   font-weight: 400;
 }
 

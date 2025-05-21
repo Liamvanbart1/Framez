@@ -46,8 +46,28 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+@font-face {
+  font-family: favorit;
+  src: url(/Favorit_Regular.otf);
+}
+@font-face {
+  font-family: favorit;
+  src: url(/Favorit_Light.otf);
+  weight:light;
+}
+@font-face {
+  font-family: favorit;
+  src: url(/Favorit_Bold.otf);
+  weight:bold;
+}
+/* @font-face{
+  font-family: favorit ;
+  src: url(../public/assets/FONT/Favorit\ Light\ Italic.ttf);
+  weight:light;
+  font-style: italic;
+} */
 body {
-  font-family: system-ui, sans-serif;
+  font-family: favorit;
   font-weight: 400;
 }
 .h1 {
@@ -86,7 +106,16 @@ body {
   color: black;
   max-width: 1440px;
   margin: 0 auto;
-  background-image: url('/images/background.jpg');
+
+  --color-text: #231f20;
+  --color-background: #FFFFFF;
+
+  --color-accent1: #51C0E9;
+  --color-accent2: #F7C3E5;
+  --color-accent3: #BEC4E8;
+  --color-accent4: #EEDE52;
+  --color-accent5: #C7C1AC;
+
 }
 main {
   padding: 1rem;
