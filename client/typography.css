@@ -3,36 +3,24 @@
   src: url(../public/assets/FONT/Favorit_Regular.otf);
 }
 @font-face {
-  font-family: favorit;
+  font-family: favorit-light;
   src: url(../public/assets/FONT/Favorit_Light.otf);
-  weight:light;
 }
 @font-face {
-  font-family: favorit;
+  font-family: favorit-bold;
   src: url(../public/assets/FONT/Favorit_Bold.otf);
-  weight:bold;
 }
 
-/* @font-face{
-  font-family: favorit ;
+@font-face{
+  font-family: favorit-italic;
   src: url(../public/assets/FONT/Favorit\ Light\ Italic.ttf);
-  weight:light;
-  font-style: italic;
-} */
+}
 
 body {
   font-family: favorit;
-  font-weight: 400;
 }
 
-.h1 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 600;
+p{
+  font-family: favorit-light;
 }
 
-.h2 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
