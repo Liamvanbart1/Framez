@@ -86,7 +86,6 @@ body {
   color: black;
   max-width: 1440px;
   margin: 0 auto;
-  background-image: url('/images/background.jpg');
 }
 main {
   padding: 1rem;
