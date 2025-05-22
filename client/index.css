@@ -8,6 +8,7 @@
 
 /* component styling */
 @import '../server/components/card/card.css';
+@import '../server/components/relation/relation.css';
 
 body {
   color: black;
