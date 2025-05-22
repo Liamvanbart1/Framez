@@ -56,15 +56,15 @@ table {
   font-family: favorit-bold;
   src: url(/Favorit_Bold.otf);
 }
-@font-face{
+@font-face {
   font-family: favorit-italic;
-  src: url("../public/assets/FONT/Favorit\ Light\ Italic.ttf");
+  src: url("../public/fonts/Favorit\ Light\ Italic.ttf");
 }
 body {
-  font-family: favorit;
+  font-family: favorit, Helvetica, sans-serif;
 }
-p{
-  font-family: favorit-light;
+p {
+  font-family: favorit-light, Arial, sans-serif;
 }
 /*.layout and view styling */
 header {
