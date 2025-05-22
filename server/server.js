@@ -37,18 +37,32 @@ app.get('/year/:year', async (req, res) => {
 
   console.log(json.events[0].node)
 
-
-
   // laad de detailpagina voor de expos
   return res.send(renderTemplate('server/views/events.liquid', { title: 'Events', event: json.events, year: year}));
 });
 
 app.get('/event/:event', async (req, res) => {
-  console.log("detailpagina event")
-  console.log(req.params.event);
+  const uuid = req.params.event;
 
-    return res.send(renderTemplate('server/views/detail.liquid', { title: 'detail'}));
+  try {
+    // Haal de node-informatie op via UUID
+    const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
+    const response = await fetch(url);
+    const json = await response.json();
+
+    // Render met opgehaalde node
+    return res.send(renderTemplate('server/views/detail.liquid', {
+      title: json.node.title_nl || json.node.title_en || 'Event detail',
+      event: json.node,
+      assets: json.assets || [],
+      relations: json.rels || []
+    }));
+  } catch (error) {
+    console.error("Fout bij ophalen event:", error);
+    return res.status(500).send('Fout bij ophalen eventgegevens.');
+  }
 });
+
 
 
 

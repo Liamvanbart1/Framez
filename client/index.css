@@ -8,7 +8,7 @@
 
 /* component styling */
 @import '../server/components/card/card.css';
-@import '../server/components/card/detailObject.css';
+@import '../server/components/detailObject/detailObject.css';
 
 :root{
 /* standaardkleuren */
