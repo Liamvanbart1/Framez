@@ -16,41 +16,40 @@ app
 
 app.use(async (req, res, next) => {
   try {
+    // Pagina-ID's die je wilt uitsluiten uit het menu
+    const excludedPageIds = [
+      49503, 46253, 45363, 42363, 42391, 42441, 42429, 42387, 42339,
+      39909, 35525, 34841, 26211, 25435, 25413, 25323, 24671, 24665,
+      25247, 23687, 23247, 22171, 21397, 20873, 20769, 20743, 20247,
+      19967, 18555, 18553, 18551, 18549, 17573, 16866, 17081, 16742,
+      16735, 15249, 11491, 10877, 10865, 10859, 10851, 10735, 8563,
+      8013, 5495, 5483, 5419, 3955, 2668, 1482, 378, 258
+    ];
+
     const response = await fetch('https://framerframed.nl/en/wp-json/wp/v2/pages?per_page=100');
-    const pages = await response.json();
+    const allPages = await response.json();
 
-    // Alleen deze parent-ID's zijn toegestaan
-    const allowedParentIds = [17087, 28309, 243];
+    // Filter 
+    const visiblePages = allPages.filter(page => !excludedPageIds.includes(page.id));
 
-    // Selecteer alleen gewenste parents
-    const selectedParents = pages.filter(page => allowedParentIds.includes(page.id));
+    // schildren en parent pages definieren
+    const mainPages = visiblePages.filter(page => page.parent === 0);
+    const subPages = visiblePages.filter(page => page.parent !== 0);
 
-    // Selecteer alleen children die één van deze parents hebben
-    const selectedChildren = pages.filter(page => allowedParentIds.includes(page.parent));
-
-    // Combineer de geselecteerde parents met hun gekoppelde children
-    const menu = selectedParents.map(parent => ({
+    // children aan parent toevoegen
+    const menu = mainPages.map(parent => ({
       ...parent,
-      children: selectedChildren.filter(child => child.parent === parent.id),
+      children: subPages.filter(child => child.parent === parent.id),
     }));
 
-    // Verzamel uitgesloten ID’s (optioneel, voor logging/debugging)
-    const usedIds = [...selectedParents.map(p => p.id), ...selectedChildren.map(c => c.id)];
-    const excludedIds = pages
-      .map(p => p.id)
-      .filter(id => !usedIds.includes(id));
-
-    console.log('Uitgesloten pagina-ID’s:', excludedIds);
-
-    // Sla menu op in res.locals zodat alle routes het kunnen gebruiken
+    // Zet menu beschikbaar voor alle views
     res.locals.menu = menu;
-
-    next(); // Ga door naar de volgende middleware of route
   } catch (err) {
     console.error('Fout bij ophalen van menu:', err);
     res.locals.menu = [];
-    next();
   }
+
+  next();
 });
 
 app.get('/', async (req, res) => {
