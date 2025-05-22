@@ -31,7 +31,7 @@ app.get('/year/:year', async (req, res) => {
   const year = req.params.year;
 
   // roep de api op
-  const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
+  const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/143`;
   const response = await fetch(url);
   const json = await response.json();
 
