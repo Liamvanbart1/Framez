@@ -11,6 +11,34 @@ const data = {
       {
         id: '2',
         name: 'Artist-2'
+      },
+      {
+        id: '3',
+        name: 'Artist-3'
+      },
+      {
+        id: '4',
+        name: 'Artist-4'
+      },
+      {
+        id: '5',
+        name: 'Artist-5'
+      },
+      {
+        id: '6',
+        name: 'Artist-6'
+      },
+      {
+        id: '7',
+        name: 'Artist-7'
+      },
+      {
+        id: '9',
+        name: 'Artist-9'
+      },
+      {
+        id: '10',
+        name: 'Artist-10'
       }
     ]
   },
@@ -25,6 +53,38 @@ const data = {
       {
         id: '2',
         name: 'Artist-2'
+      },
+      {
+        id: '3',
+        name: 'Artist-3'
+      },
+      {
+        id: '4',
+        name: 'Artist-4'
+      },
+      {
+        id: '5',
+        name: 'Artist-5'
+      },
+      {
+        id: '6',
+        name: 'Artist-6'
+      },
+      {
+        id: '7',
+        name: 'Artist-7'
+      },
+      {
+        id: '8',
+        name: 'Artist-8'
+      },
+      {
+        id: '9',
+        name: 'Artist-9'
+      },
+      {
+        id: '10',
+        name: 'Artist-10'
       }
     ]
   }

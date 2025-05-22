@@ -72,6 +72,18 @@ footer {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+.detail-container{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.detail-grid {
+  display: grid;
+  gap: 1rem;
+}
+.detail-container__child {
+    width: 50%;
+}
 /* component styling */
 .card {
   width: 100%;
