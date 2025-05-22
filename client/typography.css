@@ -1,26 +1,25 @@
 @font-face {
   font-family: favorit;
-  src: url(../public/assets/FONT/Favorit_Regular.otf);
+  src: url(../public/fonts/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(../public/assets/FONT/Favorit_Light.otf);
+  src: url(../public/fonts/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(../public/assets/FONT/Favorit_Bold.otf);
+  src: url(../public/fonts/Favorit_Bold.otf);
 }
 
-@font-face{
+@font-face {
   font-family: favorit-italic;
-  src: url(../public/assets/FONT/Favorit\ Light\ Italic.ttf);
+  src: url(../public/fonts/Favorit\ Light\ Italic.ttf);
 }
 
 body {
-  font-family: favorit;
+  font-family: favorit, Helvetica, sans-serif;
 }
 
-p{
-  font-family: favorit-light;
+p {
+  font-family: favorit-light, Arial, sans-serif;
 }
-
