@@ -3,29 +3,6 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-// const data = {
-//   'beemdkroon': {
-//     id: 'beemdkroon',
-//     name: 'Beemdkroon',
-//     image: {
-//       src: 'https://i.pinimg.com/736x/09/0a/9c/090a9c238e1c290bb580a4ebe265134d.jpg',
-//       alt: 'Beemdkroon',
-//       width: 695,
-//       height: 1080,
-//     }
-//   },
-//   'wilde-peen': {
-//     id: 'wilde-peen',
-//     name: 'Wilde Peen',
-//     image: {
-//       src: 'https://mens-en-gezondheid.infonu.nl/artikel-fotos/tom008/4251914036.jpg',
-//       alt: 'Wilde Peen',
-//       width: 418,
-//       height: 600,
-//     }
-//   }
-// }
-
 const engine = new Liquid({
   extname: '.liquid',
 });
@@ -54,25 +31,40 @@ app.get('/year/:year', async (req, res) => {
   const year = req.params.year;
 
   // roep de api op
-  const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/6`;
+  const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/143`;
   const response = await fetch(url);
   const json = await response.json();
 
   console.log(json.events[0].node)
-
-
 
   // laad de detailpagina voor de expos
   return res.send(renderTemplate('server/views/events.liquid', { title: 'Events', event: json.events, year: year}));
 });
 
 app.get('/event/:event', async (req, res) => {
-  console.log("detailpagina event")
-  console.log(req.params.event);
+  const uuid = req.params.event;
 
-  // render de detailpagina
-    return res.send(renderTemplate('server/views/detail.liquid', { title: 'detail'}));
+  try {
+    // Haal de node-informatie op via UUID
+    const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
+    const response = await fetch(url);
+    const json = await response.json();
+
+    // Render met opgehaalde node
+    return res.send(renderTemplate('server/views/detail.liquid', {
+      title: json.node.title_nl || json.node.title_en || 'Event detail',
+      event: json.node,
+      assets: json.assets || [],
+      relations: json.rels || []
+    }));
+  } catch (error) {
+    console.error("Fout bij ophalen event:", error);
+    return res.status(500).send('Fout bij ophalen eventgegevens.');
+  }
 });
+
+
+
 
 const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, data);
