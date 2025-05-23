@@ -3,16 +3,23 @@
             <time datetime="17-05-2024" class="year">17-05-2024</time>
         </div>
         <div class="object-container">
-            <h1 class="event">Workshop: Archiving Personal Queer Stories</h1>
+            {% if event.title_nl %}
+            <h1 class="event">{{ event.title_nl }}</h1>
+            {% elsif event.title_en %}
+            <h1 class="event">{{ event.title_en }}</h1>
+            {% else %}
+            <h1 class="event">Event detail</h1>
+            {% endif %}
             <ul>
+                {% for rel in relations %}
+                {% if rel.node.name %}
                 <li>
-                    <p class="person">Manuela Zammit</p>
+                    <p class="person">{{ rel.node.name }}</p>
                 </li>
-                <li>
-                    <p class="person">Manuela Zammit</p>
-                </li>
+                {% endif %}
+                {% endfor %}
             </ul>
-            <div class="object-content">
+            {% comment %} <div class="object-content">
                 <img src="https://content.api.news/v3/images/bin/3c1d80ffbcaf508f8d2dd65e99d37e12" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi alias quisquam repudiandae nostrum,
                     cum
@@ -29,6 +36,10 @@
                     consequuntur accusantium in saepe ab nostrum sed? Doloribus repudiandae dolore illo dolor sint
                     itaque rem quas nemo.
                 </p>
-            </div>
-        </div>
+            </div> {% endcomment %}
+            {% if event.content_nl %}
+            <div class="object-content">{{ event.content_nl }}</div>
+            {% else %}
+            <div class="object-content">{{ event.content_en }}</div>
+            {% endif %}
     </section>
