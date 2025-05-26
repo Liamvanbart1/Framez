@@ -1,11 +1,13 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
+<div class="detail-container">
+  {% render 'server/components/detailObject/detailObject.liquid', event: event, relations: relations %}
+  {% render 'server/components/relation/relation.liquid' %}
+</div>
 
-{% render 'server/components/detailObject/detailObject.liquid', event: event, relations: relations %}
 
-
-<p><strong>Start:</strong> {{ event.date_start }}</p>
-<p><strong>Einde:</strong> {{ event.date_end }}</p>
+{% comment %} <p><strong>Start:</strong> {{ event.date_start }}</p>
+<p><strong>Einde:</strong> {{ event.date_end }}</p> {% endcomment %}
 
 {% endblock %}
