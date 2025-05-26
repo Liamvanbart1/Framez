@@ -147,21 +147,20 @@ footer {
         display: flex;
 
         gap: .5rem;
-        /* margin: .5rem; */
     }
 
-    /* .year {
-        grid-area: year;
-    } */
      /* dit is het begin van de afgeronde hoekjes- werkt nog niet */
     .hapje {
+        place-self: end;
         grid-area: year;
-        background-color: red;
-        padding: blue 1rem solid;
-        width: 100%;
-        height: 100%;
+        background-color: white;
+        outline: white .5rem solid;
+        width: max-content;
 
-        ::after,
+        display: flex;
+        justify-content: flex-end;
+
+        /* ::after,
         ::before {
             position: absolute;
             content: "";
@@ -174,7 +173,7 @@ footer {
             box-shadow: 0.313rem 0.313rem 0px 0.313rem var(--clr-white);
             transform: rotate(-90deg);
             background: green;
-        }
+        } */
     }
 
     .publication {
