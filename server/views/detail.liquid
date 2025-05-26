@@ -1,30 +1,6 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-{% if event.title_nl %}
-  <h1>{{ event.title_nl }}</h1>
-{% elsif event.title_en %}
-  <h1>{{ event.title_en }}</h1>
-{% else %}
-  <h1>Event detail</h1>
-{% endif %}
-
-{% if event.content_nl %}
-  <div>{{ event.content_nl }}</div>
-{% else %}
-  <div>{{ event.content_en }}</div>
-{% endif %}
-
-<p><strong>Start:</strong> {{ event.date_start }}</p>
-<p><strong>Einde:</strong> {{ event.date_end }}</p>
-
-<h2>Gerelateerde personen / relaties:</h2>
-<ul>
-  {% for rel in relations %}
-    {% if rel.node.name %}
-      <li>{{ rel.node.name }}</li>
-    {% endif %}
-  {% endfor %}
-</ul>
-
+ <h1 class="h1">{{title}}</h1>
+{% render 'server/components/relation/relation.liquid' %}
 {% endblock %}
