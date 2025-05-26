@@ -19,8 +19,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -46,19 +44,27 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+@font-face {
+  font-family: favorit;
+  src: url(../public/fonts/Favorit_Regular.otf);
+}
+@font-face {
+  font-family: favorit-light;
+  src: url(../public/fonts/Favorit_Light.otf);
+}
+@font-face {
+  font-family: favorit-bold;
+  src: url(../public/fonts/Favorit_Bold.otf);
+}
+@font-face {
+  font-family: favorit-italic;
+  src: url("../public/fonts/Favorit\ Light\ Italic.ttf");
+}
 body {
-  font-family: system-ui, sans-serif;
-  font-weight: 400;
+  font-family: favorit, Helvetica, sans-serif;
 }
-.h1 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
-.h2 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  font-weight: 600;
+p {
+  font-family: favorit-light, Arial, sans-serif;
 }
 /*.layout and view styling */
 header {
@@ -93,6 +99,18 @@ footer {
   width: 100%;
   height: auto;
   margin-top: 1rem;
+}
+:root{
+/* standaardkleuren */
+  --color-text: #231f20;
+  --color-background: #FFFFFF;
+
+  /* kleuren van de huisstijl, gebruik er 1 per keer */
+  --color-accent1: #51C0E9;
+  --color-accent2: #F7C3E5;
+  --color-accent3: #BEC4E8;
+  --color-accent4: #EEDE52;
+  --color-accent5: #C7C1AC;
 }
 body {
   color: black;

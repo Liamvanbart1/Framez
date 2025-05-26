@@ -3,93 +3,6 @@ import { logger } from '@tinyhttp/logger';
 import { Liquid } from 'liquidjs';
 import sirv from 'sirv';
 
-const data = {
-  'Expo-1': {
-    id: 'Expo-1',
-    name: 'Expo-1',
-    rels: [
-      {
-        id: '2',
-        name: 'Artist-2'
-      },
-      {
-        id: '3',
-        name: 'Artist-3'
-      },
-      {
-        id: '4',
-        name: 'Artist-4'
-      },
-      {
-        id: '5',
-        name: 'Artist-5'
-      },
-      {
-        id: '6',
-        name: 'Artist-6'
-      },
-      {
-        id: '7',
-        name: 'Artist-7'
-      },
-      {
-        id: '9',
-        name: 'Artist-9'
-      },
-      {
-        id: '10',
-        name: 'Artist-10'
-      }
-    ]
-  },
-  'Expo-2': {
-    id: 'Expo-2',
-    name: 'Expo-2',
-    rels: [
-      {
-        id: '1',
-        name: 'Artist-1'
-      },
-      {
-        id: '2',
-        name: 'Artist-2'
-      },
-      {
-        id: '3',
-        name: 'Artist-3'
-      },
-      {
-        id: '4',
-        name: 'Artist-4'
-      },
-      {
-        id: '5',
-        name: 'Artist-5'
-      },
-      {
-        id: '6',
-        name: 'Artist-6'
-      },
-      {
-        id: '7',
-        name: 'Artist-7'
-      },
-      {
-        id: '8',
-        name: 'Artist-8'
-      },
-      {
-        id: '9',
-        name: 'Artist-9'
-      },
-      {
-        id: '10',
-        name: 'Artist-10'
-      }
-    ]
-  }
-}
-
 const engine = new Liquid({
   extname: '.liquid',
 });
@@ -101,26 +14,59 @@ app
   .use('/', sirv('dist'))
   .listen(3000, () => console.log('Server available on http://localhost:3000'));
 
+// stuur de info naar de index pagina
 app.get('/', async (req, res) => {
-  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', items: Object.values(data) }));
+  // haal de api op om mee te sturen
+  const yearUrl = `https://archive.framerframed.nl/api/get-years`;
+  const responseYear = await fetch(yearUrl);
+  const jsonYear = await responseYear.json();
+
+  return res.send(renderTemplate('server/views/index.liquid', { title: 'Home', years: jsonYear.nodes }));
 });
 
-app.get('/plant/:id/', async (req, res) => {
-  const id = req.params.id;
-  const item = data[id];
-  const rels = data[id]?.rels || [];
+// als er op de knop gedrukt word van een jaar
+app.get('/year/:year', async (req, res) => {
+  // het jaar word meegegeven
+  console.log(req.params.year);
+  const year = req.params.year;
 
-  if (!item) {
-    return res.status(404).send('Not found');
+  // roep de api op
+  const url = `https://archive.framerframed.nl/api/get-by-year/${year}/0/143`;
+  const response = await fetch(url);
+  const json = await response.json();
+
+  console.log(json.events[0].node)
+
+  // laad de detailpagina voor de expos
+  return res.send(renderTemplate('server/views/events.liquid', { title: 'Events', event: json.events, year: year}));
+});
+
+app.get('/event/:event', async (req, res) => {
+  const uuid = req.params.event;
+
+  try {
+    // Haal de node-informatie op via UUID
+    const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
+    const response = await fetch(url);
+    const json = await response.json();
+
+    // Render met opgehaalde node
+    return res.send(renderTemplate('server/views/detail.liquid', {
+      title: json.node.title_nl || json.node.title_en || 'Event detail',
+      event: json.node,
+      assets: json.assets || [],
+      relations: json.rels || []
+    }));
+  } catch (error) {
+    console.error("Fout bij ophalen event:", error);
+    return res.status(500).send('Fout bij ophalen eventgegevens.');
   }
-  return res.send(renderTemplate('server/views/detail.liquid', {
-    title: `Detail page for ${id}`,
-    item: item,
-    rels: item,
-    items: rels
-  }));
 });
+
+
+
 
 const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, data);
 };
+
