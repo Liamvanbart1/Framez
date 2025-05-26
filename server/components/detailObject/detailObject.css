@@ -5,7 +5,7 @@
 .event,
 .serie,
 .year {
-    padding: 0.2rem 0.5rem;
+    padding: 0.5rem;
     text-align: center;
     text-transform: capitalize;
     width: fit-content;
@@ -43,7 +43,7 @@
 
 .object {
     display: flex;
-    padding: 1rem 5rem 1rem 1rem;
+    padding: 0rem 5rem 1rem 1rem;
 
     img{
         width: 100%;
