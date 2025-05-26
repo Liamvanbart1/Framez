@@ -1,7 +1,4 @@
 <section class="object">
-        <div class="object-background">
-            <time datetime="17-05-2024" class="year">17-05-2024</time>
-        </div>
         <div class="object-container">
             {% if event.title_nl %}
             <h1 class="event">{{ event.title_nl }}</h1>
@@ -42,4 +39,5 @@
             {% else %}
             <div class="object-content">{{ event.content_en }}</div>
             {% endif %}
+            <time datetime="17-05-2024" class="year">17-05-2024</time>
     </section>
