@@ -79,16 +79,8 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 .detail-container{
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-}
-.detail-grid {
-  display: grid;
-  gap: 1rem;
-}
-.detail-container__child {
-    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 /* component styling */
 .card {
@@ -100,9 +92,13 @@ footer {
   height: auto;
   margin-top: 1rem;
 }
-p,
-h1,
-time {
+.publication,
+.person,
+.collective,
+.organisation,
+.event,
+.serie,
+.year {
     padding: 0.2rem 0.5rem;
     text-align: center;
     text-transform: capitalize;
@@ -211,7 +207,6 @@ time {
     display: grid;
     gap: .5rem;
 
-    margin: 10vw;
     padding: .5rem;
     border-radius: 8px;
 
@@ -340,7 +335,6 @@ body {
   color: black;
   max-width: 1440px;
   margin: 0 auto;
-
 }
 main {
   padding: 1rem;
