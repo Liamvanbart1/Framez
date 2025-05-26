@@ -220,7 +220,7 @@ footer {
 .relation {
     background-color: #1E1E1E;
     color: #CBC6B9;
-
+list-style-type:none ;
     display: grid;
     gap: .5rem;
 
@@ -274,12 +274,14 @@ footer {
 
     .event::before {
         content: "";
-        position: absolute;
+        position: relative;
+        width: 20rem;
+        height: 20rem;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-
+        background-color: hotpink;
     }
 
 
