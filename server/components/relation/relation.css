@@ -56,12 +56,14 @@
 
     .event::before {
         content: "";
-        position: absolute;
+        position: relative;
+        width: 20rem;
+        height: 20rem;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-
+        background-color: hotpink;
     }
 
 
