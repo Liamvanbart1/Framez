@@ -174,7 +174,6 @@ footer {
         list-style: none;
         display: flex;
         flex-direction: row;
-        width: 50%;
         flex-wrap: wrap;
 
         gap: .2rem;
