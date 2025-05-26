@@ -95,8 +95,6 @@ footer {
     display: grid;
     gap: .5rem;
 
-    text-decoration: none;
-
     margin: 10vw;
     padding: .5rem;
     border-radius: 8px;
@@ -129,11 +127,13 @@ footer {
         left: -3rem;
     }
 
-    h2 {
+    h2,
+    .event {
         grid-area: title;
     }
 
     h2,
+    .event,
     .rel {
         color: black;
         width: fit-content;
@@ -141,7 +141,20 @@ footer {
         border-radius: 8px;
         padding: 8px;
         padding-inline: 12px;
+        text-decoration: none;
     }
+
+    .event::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+    }
+
+
 
     .relation-relation {
         grid-area: rels;
@@ -183,7 +196,7 @@ footer {
             position: absolute;
             content: "";
             display: inline-block;
-            top:-1.5rem;
+            top: -1.5rem;
             right: 0rem;
             /* left: -1.5rem; */
             width: 1rem;
