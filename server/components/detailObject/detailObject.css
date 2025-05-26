@@ -1,6 +1,10 @@
-p,
-h1,
-time {
+.publication,
+.person,
+.collective,
+.organisation,
+.event,
+.serie,
+.year {
     padding: 0.2rem 0.5rem;
     text-align: center;
     text-transform: capitalize;
