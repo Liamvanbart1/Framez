@@ -125,9 +125,6 @@ footer {
 .object {
     display: flex;
     padding: 1rem 5rem 1rem 1rem;
-
-    /* this max-width is just for testing */
-    max-width: 50vw;
 }
 /* .object-background {
     position: absolute;
@@ -157,9 +154,7 @@ footer {
     
 
     h1 {
-
         justify-self: flex-end;
-
         font-size: 1.2rem;
         font-weight: lighter;
     }
