@@ -66,7 +66,22 @@ body {
 p {
   font-family: favorit-light, Arial, sans-serif;
 }
+body{
+/* standaardkleuren */
+  --color-text: #231f20;
+  --color-background: #050100;
+
+/* kleuren van de huisstijl, gebruik er 1 per keer */
+  --color-accent1: #51C0E9;
+  --color-accent2: #F7C3E5;
+  --color-accent3: #BEC4E8;
+  --color-accent4: #EEDE52;
+  --color-accent5: #C7C1AC;
+}
 /*.layout and view styling */
+body {
+  background: #050100;
+}
 header {
   padding: 1rem;
 }
@@ -81,6 +96,11 @@ footer {
 .detail-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    ul{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 /* component styling */
 .card {
@@ -279,8 +299,8 @@ footer {
         bottom: -.5rem;
         place-self: end;
         grid-area: year;
-        background-color: white;
-        outline: white .5rem solid;
+        background-color: var(--color-background);
+        outline: var(--color-background) .5rem solid;
         border-radius: .5rem 0 0 0;
         width: max-content;
 
@@ -296,7 +316,7 @@ footer {
             width: 1rem;
             height: 1rem;
             border-bottom-right-radius: 2rem;
-            box-shadow: 0.313rem 0.313rem 0px 0.18rem white;
+            box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
             background: transparent;
         }
 
@@ -310,7 +330,7 @@ footer {
             width: 1rem;
             height: 1rem;
             border-bottom-right-radius: 2rem;
-            box-shadow: 0.313rem 0.313rem 0px 0.18rem white;
+            box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
             background: transparent;
         }
 
@@ -348,18 +368,6 @@ footer {
 }
 
 ;
-:root{
-/* standaardkleuren */
-  --color-text: #231f20;
-  --color-background: #FFFFFF;
-
-  /* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51C0E9;
-  --color-accent2: #F7C3E5;
-  --color-accent3: #BEC4E8;
-  --color-accent4: #EEDE52;
-  --color-accent5: #C7C1AC;
-}
 body {
   color: black;
   max-width: 1440px;

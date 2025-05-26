@@ -3,7 +3,12 @@
 {% block content %}
 <div class="detail-container">
   {% render 'server/components/detailObject/detailObject.liquid', event: event, relations: relations %}
-  {% render 'server/components/relation/relation.liquid' %}
+  <ul>
+  {% for rel in relations %}
+      {% render 'server/components/relation/relation.liquid', rel: rel %}
+  {% endfor %}
+  </ul>
+
 </div>
 
 
