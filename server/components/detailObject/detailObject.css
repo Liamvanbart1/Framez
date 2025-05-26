@@ -44,6 +44,11 @@
 .object {
     display: flex;
     padding: 1rem 5rem 1rem 1rem;
+
+    img{
+        width: 100%;
+        height: auto;
+    }
 }
 
 /* .object-background {
