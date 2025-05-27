@@ -1,6 +1,7 @@
 .relation {
     background-color: #1E1E1E;
     color: #CBC6B9;
+    position: relative;
 
     display: grid;
     gap: .5rem;
@@ -15,23 +16,19 @@
 
     p {
         grid-area: alinea;
-        /* margin: .5rem; */
     }
 
     #img {
         background-color: rgb(124, 131, 181);
         border-radius: 8px;
-        /* min-width: 128px;
-        min-height: 128px;
-        height: 100%; */
-        /* width: 100%; */
+
         aspect-ratio: 1;
 
         grid-area: image;
 
 
         border: 0;
-        /* margin: .5rem; */
+
         position: relative;
         left: -3rem;
     }
@@ -55,14 +52,11 @@
 
     .event::before {
         content: "";
-        position: relative;
-        width: 20rem;
-        height: 20rem;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: hotpink;
     }
 
 
@@ -75,7 +69,7 @@
         gap: .5rem;
     }
 
-    /* dit is het begin van de afgeronde hoekjes- werkt nog niet */
+    /* Dit is hoe je de afgeronde hoekjes maakt */
     .hapje {
         position: relative;
         right: -.5rem;
@@ -109,7 +103,7 @@
             display: inline-block;
             top: -1.5rem;
             right: 0rem;
-            /* left: -1.5rem; */
+
             width: 1rem;
             height: 1rem;
             border-bottom-right-radius: 2rem;
