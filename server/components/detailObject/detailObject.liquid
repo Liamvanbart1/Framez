@@ -11,7 +11,8 @@
                 {% for rel in relations %}
                 {% if rel.node.name %}
                 <li>
-                    <p class="person">{{ rel.node.name }}</p>
+                    {% comment %} <p class="person tag">{{ rel.node.name }}</p> {% endcomment %}
+                    {% render 'server/components/Rel-tag/relTag.liquid', rel: rel.node.name %}
                 </li>
                 {% endif %}
                 {% endfor %}

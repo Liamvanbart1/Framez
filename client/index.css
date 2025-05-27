@@ -11,6 +11,7 @@
 @import '../server/components/card/card.css';
 @import '../server/components/detailObject/detailObject.css';
 @import '../server/components/relation/relation.css';
+@import '../server/components/Rel-tag/relTag.css';
 
 :root{
 /* standaardkleuren */

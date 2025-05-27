@@ -29,7 +29,6 @@
 .object {
 
     .publication,
-    .person,
     .collective,
     .organisation,
     .event,
@@ -43,18 +42,19 @@
     }
 
     .object-container {
-        background-color: rebeccapurple;
+        padding: .5rem;
+        background-color: #1e1e1e;
         border-radius: 5px;
 
         display: grid;
         gap: 1rem;
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: 1fr 1fr auto auto;
+        grid-template-columns: 1fr 1fr 3fr;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas:
-            "empty title"
-            "rels rels"
-            "img text"
-            "date date";
+            "empty empty title"
+            "rels rels rels"
+            "img text text"
+            "date date date";
 
         .event {
             grid-area: title;
@@ -76,10 +76,11 @@
 
         .object-content {
             grid-area: text;
+            color: white;
         }
 
         img{
-            width: fit-content;
+            width: 100%;
             height: auto;
         }
     }
