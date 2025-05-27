@@ -88,6 +88,45 @@ footer {
   height: auto;
   margin-top: 1rem;
 }
+.event{
+    background-color: var(--color-text);
+    color:var(--color-background);
+
+    border-radius: 8px;
+    padding:.5rem;
+
+    display:grid;
+    grid-template:[title] "title img" auto [image] / 1fr auto;
+
+    margin-block:.5rem;
+    /* margin-bottom: 3rem; */
+    height: fit-content;
+
+    a{
+        text-decoration: none;
+        /* font-family: favorit-bold; */
+        font-size: 1.5em;
+        color:var(--color-background);
+    }
+
+    .img{
+        width: 100%;
+        min-width: 7rem;
+        aspect-ratio: 1;
+        background-color: lightskyblue;
+        border-radius: 8px;
+
+        grid-area: img;
+        position: relative;
+        top: -2rem;
+    }
+
+    h2{
+        /* color: aquamarine; */
+        grid-area: title;
+        margin-right: .5rem;
+    }
+}
 :root{
 /* standaardkleuren */
   --color-text: #231f20;

@@ -6,8 +6,12 @@
  <h1 class="h1"> Events in {{year}}</h1>
  <ul>
   {% for e in event %}
-    <li><a href="/event/{{ e.node.uuid }}">{{ e.node.title_nl }}</a></li>
+    {% comment %} engels en nederlands render, nederlands heeft voorrang {% endcomment %}
+    {% if e.node.title_nl != ""%}
+      {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_nl%}
+    {% elsif e.node.en != ""%}
+      {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_en%}
+    {%endif %}
   {% endfor %}
  </ul>
-
 {% endblock %}
