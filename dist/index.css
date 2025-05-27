@@ -246,14 +246,33 @@ footer {
         bottom: 0;
     }
 
-
-
     .relation-relation {
         grid-area: rels;
         width: 100%;
+        height: 2em;
+        overflow: hidden;
         display: flex;
 
         gap: .5rem;
+        background-color: hotpink;
+        flex-wrap: wrap;
+
+        &::before {
+            content: "+";
+            border-radius: 8px;
+            text-align: center;
+            width: 2em;
+            height: 2em;
+            aspect-ratio: 1;
+            color: black;
+
+            background-color: rgb(199, 199, 199);
+            /* display:relative; */
+        }
+    }
+
+    .extend {
+        overflow: visible;
     }
 
     /* Dit is hoe je de afgeronde hoekjes maakt */
