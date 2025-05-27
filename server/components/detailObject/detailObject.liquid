@@ -1,9 +1,9 @@
 <section class="object">
         <div class="object-container">
             {% if event.title_nl %}
-            <h1 class="event">{{ event.title_nl }}</h1>
+            <h1 class="event tag">{{ event.title_nl }}</h1>
             {% elsif event.title_en %}
-            <h1 class="event">{{ event.title_en }}</h1>
+            <h1 class="event tag">{{ event.title_en }}</h1>
             {% else %}
             <h1 class="event">Event detail</h1>
             {% endif %}
@@ -40,5 +40,5 @@
             {% else %}
             <div class="object-content">{{ event.content_en }}</div>
             {% endif %}
-            <time datetime="17-05-2024" class="year">17-05-2024</time>
+            <time datetime="17-05-2024" class="year tag">17-05-2024</time>
     </section>

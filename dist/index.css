@@ -114,20 +114,6 @@ footer {
     background-color: #8AB2D1;
 }
 .object {
-
-    .publication,
-    .collective,
-    .organisation,
-    .event,
-    .serie,
-    .year {
-        padding: 0.5rem;
-        text-align: center;
-        text-transform: capitalize;
-        width: fit-content;
-        border-radius: 5px;
-    }
-
     .object-container {
         padding: .5rem;
         background-color: #1e1e1e;
@@ -167,6 +153,11 @@ footer {
         }
 
         img{
+            width: 100%;
+            height: auto;
+        }
+        
+        iframe {
             width: 100%;
             height: auto;
         }

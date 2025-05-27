@@ -27,20 +27,6 @@
 }
 
 .object {
-
-    .publication,
-    .collective,
-    .organisation,
-    .event,
-    .serie,
-    .year {
-        padding: 0.5rem;
-        text-align: center;
-        text-transform: capitalize;
-        width: fit-content;
-        border-radius: 5px;
-    }
-
     .object-container {
         padding: .5rem;
         background-color: #1e1e1e;
@@ -80,6 +66,11 @@
         }
 
         img{
+            width: 100%;
+            height: auto;
+        }
+        
+        iframe {
             width: 100%;
             height: auto;
         }
