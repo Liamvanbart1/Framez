@@ -79,19 +79,18 @@ app.get("/event/:event", async (req, res) => {
   }
 });
 
-app.get("/search", async (req, res) => {
-  const baseUrl = process.env.NIEUWE_BASE_URL;
-  const query = req.query.q;
-  console.log(baseUrl);
+// app.get("/search", async (req, res) => {
+//   const baseUrl = process.env.NIEUWE_BASE_URL;
+//   const query = req.query.q;
 
-  try {
-    const apiUrl = `${baseUrl}/search?s=${encodeURIComponent(query)}`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+//   try {
+//     const apiUrl = new URL(`/search?s=${encodeURIComponent(query)}`, baseUrl);
+//     const response = await fetch(apiUrl);
+//     const data = await response.json();
 
-    res.render("search", { results: data, query });
-  } catch (err) {
-    console.error("Search failed:", err);
-    res.status(500).send("Search error");
-  }
-});
+//     res.json({ results: data });
+//   } catch (err) {
+//     console.error("Search failed:", err);
+//     res.status(500).json({ error: "Search error" });
+//   }
+// });

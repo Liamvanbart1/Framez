@@ -5,3 +5,20 @@ header {
 footer {
   padding: 1rem;
 }
+
+#search-overlay {
+  position: fixed;
+  top: 60px; /* below your header */
+  left: 0;
+  right: 0;
+  background: white;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#search-overlay.hidden {
+  display: none;
+}
