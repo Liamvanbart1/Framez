@@ -1,17 +1,3 @@
-.publication,
-.person,
-.collective,
-.organisation,
-.event,
-.serie,
-.year {
-    padding: 0.2rem 0.5rem;
-    text-align: center;
-    text-transform: capitalize;
-    width: fit-content;
-    border-radius: 5px;
-}
-
 .publication {
     background-color: #C6A1CE;
 }
@@ -40,78 +26,54 @@
     background-color: #8AB2D1;
 }
 
-
 .object {
-    display: flex;
-    padding: 1rem 5rem 1rem 1rem;
-}
+    .object-container {
+        padding: .5rem;
+        background-color: #1e1e1e;
+        border-radius: 8px;
 
-/* .object-background {
-    position: absolute;
-    background-color: #1A1A1A;
-    width: 70%;
-    height: 95%;
-    border-radius: 5px;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr 3fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "title title title title"
+            "rels rels rels rels"
+            "img img text text"
+            "date date date date";
 
-    
-} */
+        >.event {
+            grid-area: title;
+            justify-self: end;
+        }
 
-.object-container {
-    background-color: #1A1A1A;
-    border-radius: 5px;
+        .year {
+            grid-area: date;
+        }
 
-    padding: 0rem 0rem 2rem 0rem;
-    width: 100%;
-
-    position: relative;
-    align-self: flex-end;
-
-    time {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
-
-    
-
-    h1 {
-        justify-self: flex-end;
-        font-size: 1.2rem;
-        font-weight: lighter;
-    }
-
-    ul {
-        position: relative;
-        top: 1rem;
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        width: 50%;
-        flex-wrap: wrap;
-
-        gap: .2rem;
-        height: fit-content;
-
-        justify-content: center;
-
-        li {
+        ul {
+            grid-area: rels;
+            list-style: none;
             display: flex;
-            gap: .2rem;
+            flex-direction: row;
             flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: left;
+        }
+
+        .object-content {
+            grid-area: text;
+            color: #CBC6B9;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+        
+        iframe {
+            width: 100%;
+            height: auto;
         }
     }
-}
-
-.object-content {
-    margin: 1rem 0 0 0;
-
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-
-    flex-wrap: wrap;
-
-    color: white;
-
-    padding: 1rem;
 }
