@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(../public/fonts/Favorit_Regular.otf);
+  src: url(/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(../public/fonts/Favorit_Light.otf);
+  src: url(/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(../public/fonts/Favorit_Bold.otf);
+  src: url(/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
