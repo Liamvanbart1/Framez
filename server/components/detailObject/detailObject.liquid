@@ -12,7 +12,7 @@
                 {% if rel.node.name %}
                 <li>
                     {% comment %} <p class="person tag">{{ rel.node.name }}</p> {% endcomment %}
-                    {% render 'server/components/Rel-tag/relTag.liquid', rel: rel.node.name %}
+                    {% render 'server/components/Rel-tag/relTag.liquid', rel: rel.node.name, class_name: rel.type %}
                 </li>
                 {% endif %}
                 {% endfor %}
