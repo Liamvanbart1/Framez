@@ -1,18 +1,50 @@
 <li>
-<section class="relation">
-    {% comment %} <h2 class="event">Exhibition: Homies</h2> {% endcomment %}
-    <a href="#" class="event">Exhibition: Homies</a>
-    <p>On 21 February 2024, Framer Framed hosts the launch of the new issue of Kunstlicht magazine, 
-    Between The Standing and The Inclined: Structures Supporting Change.</p>
-{% comment %} <img src="" alt=""> {% endcomment %}
-    <div id="img"></div>
+  <section class="relation">
+    {% if rel.node.guid and rel.node.name %}
+      <a href="{{ rel.node.guid }}" class="event" target="_blank">
+        {{ rel.node.name }}
+      </a>
+    {% else %}
+      <p class="event">{{ rel.node.name }}</p>
+    {% endif %}
+
+    {% assign type = rel.node.type | downcase %}
+
+    {% if rel.node.bio_nl %}
+      <p>{{ rel.node.bio_nl | strip_html | truncate: 300 }}</p>
+    {% endif %}
+    {% if rel.node.bio_en %}
+      <p>{{ rel.node.bio_en | strip_html | truncate: 300 }}</p>
+    {% endif %}
+    {% if rel.node.about_nl %}
+      <p>{{ rel.node.about_nl | strip_html | truncate: 300 }}</p>
+    {% endif %}
+    {% if rel.node.about_en %}
+      <p>{{ rel.node.about_en | strip_html | truncate: 300 }}</p>
+    {% endif %}
+    {% if rel.node.content_nl %}
+      <p>{{ rel.node.content_nl | strip_html | truncate: 300 }}</p>
+    {% endif %}
+    {% if rel.node.content_en %}
+      <p>{{ rel.node.content_en | strip_html | truncate: 300 }}</p>
+    {% endif %}
+
     <ul class="relation-relation">
-        <li><p class="person rel">Manuela Zammit</p></li>
-        <li><p class="organisation rel">tesst</p></li>
+        {% if rel.rels and rel.rels.size > 0 %}
+          {% for subrel in rel.rels %}
+            <li>
+              <p class="{{ subrel.type | downcase }} rel">{{ subrel.node.name }}</p>
+            </li>
+          {% endfor %}
+        {% endif %}
     </ul>
-    <div class="hapje">
-        <time class="year rel" datetime="17-05-2024">17-05-2024</time>
-    </div>
-</section>
+
+    {% if rel.node.year %}
+      <div class="hapje">
+        <time class="year rel" datetime="{{ rel.node.year }}-01-01">
+          {{ rel.node.year }}
+        </time>
+      </div>
+    {% endif %}
+  </section>
 </li>
-{% comment %} section vervangen met a {% endcomment %}
