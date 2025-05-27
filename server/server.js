@@ -45,18 +45,49 @@ app.get('/event/:event', async (req, res) => {
   const uuid = req.params.event;
 
   try {
-    // Haal de node-informatie op via UUID
+    // 1. Haal event data op
     const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
     const response = await fetch(url);
     const json = await response.json();
 
-    // Render met opgehaalde node
+    const event = json.node;
+    const assets = json.assets || [];
+    const relations = json.rels || [];
+
+    // 2. Voor elke relatie haal je ook de relaties van die relatie op
+    const relationsWithSubs = await Promise.all(
+      relations.map(async (rel) => {
+        if (!rel.node?.uuid) return rel; // Geen uuid, gewoon terug
+
+        try {
+          const subUrl = `https://archive.framerframed.nl/api/node-by-id/${rel.node.uuid}`;
+          const subResponse = await fetch(subUrl);
+          const subJson = await subResponse.json();
+
+          // Voeg de sub-relaties toe aan de huidige relatie
+          return {
+            ...rel,
+            rels: subJson.rels || []
+          };
+        } catch (error) {
+          console.error(`Fout bij ophalen sub-relaties van ${rel.node.uuid}:`, error);
+          // fallback: return rel zonder subrels
+          return {
+            ...rel,
+            rels: []
+          };
+        }
+      })
+    );
+
+    // 3. Render de detailpagina met alles
     return res.send(renderTemplate('server/views/detail.liquid', {
-      title: json.node.title_nl || json.node.title_en || 'Event detail',
-      event: json.node,
-      assets: json.assets || [],
-      relations: json.rels || []
+      title: event.title_nl || event.title_en || 'Event detail',
+      event,
+      assets,
+      relations: relationsWithSubs // relaties met subrelaties
     }));
+
   } catch (error) {
     console.error("Fout bij ophalen event:", error);
     return res.status(500).send('Fout bij ophalen eventgegevens.');

@@ -1,0 +1,26 @@
+<section class="object">
+        <div class="object-container">
+            {% if event.title_nl %}
+            <h1 class="event tag">{{ event.title_nl }}</h1>
+            {% elsif event.title_en %}
+            <h1 class="event tag">{{ event.title_en }}</h1>
+            {% else %}
+            <h1 class="event">Event detail</h1>
+        {% endif %}
+            <ul>
+                {% for rel in relations %}
+                {% if rel.node.name %}
+                <li>
+                    {% comment %} <p class="person tag">{{ rel.node.name }}</p> {% endcomment %}
+                    {% render 'server/components/Rel-tag/relTag.liquid', rel: rel.node.name, class_name: rel.type %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        {% if event.content_nl %}
+            <div class="object-content">{{ event.content_nl }}</div>
+        {% else %}
+            <div class="object-content">{{ event.content_en }}</div>
+            {% endif %}
+            <time datetime="17-05-2024" class="year tag">17-05-2024</time>
+    </section>
