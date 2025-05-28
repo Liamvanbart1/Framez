@@ -11,7 +11,12 @@
                 {% for rel in relations %}
                 {% if rel.node.name %}
                 <li>
-                    {% render 'server/components/rel-tag/rel-tag.liquid', rel: rel.node.name, class_name: rel.type %}
+                    {% if rel.node.title_en != null and rel.node.title_en != ""  or if rel.node.title_nl != null and rel.node.title_nl != ""%}
+                        {% assign text = rel.node.title_en | default: rel.node.title_nl %}
+                    {% else %}
+                        {% assign text = rel.node.name %}
+                    {% endif %}
+                    {% render 'server/components/Rel-tag/relTag.liquid', rel: text, class_name: rel.type %}
                 </li>
                 {% endif %}
                 {% endfor %}
