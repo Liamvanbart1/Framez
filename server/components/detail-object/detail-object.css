@@ -34,21 +34,23 @@
 
         display: grid;
         gap: 1rem;
-        grid-template-columns: 1fr 1fr 1fr 3fr;
+        grid-template-columns:2fr 3fr;
         grid-template-rows: auto auto auto auto;
         grid-template-areas:
-            "title title title title"
-            "rels rels rels rels"
-            "img img text text"
-            "date date date date";
+            "title title"
+            "rels rels"
+            "img text"
+            "date date";
+
 
         >.event {
             grid-area: title;
             justify-self: end;
         }
 
-        .year {
+        .time-content {
             grid-area: date;
+            padding: 0.5rem;
         }
 
         ul {
@@ -66,11 +68,12 @@
             color: #CBC6B9;
         }
 
-        img{
+        img {
+            grid-area: img;
             width: 100%;
             height: auto;
         }
-        
+
         iframe {
             width: 100%;
             height: auto;

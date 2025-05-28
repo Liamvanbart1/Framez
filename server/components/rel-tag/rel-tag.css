@@ -5,3 +5,8 @@
     width: fit-content;
     border-radius: 5px;
 }
+
+a:has(.tag){
+    text-decoration: none;
+    color: black
+}
