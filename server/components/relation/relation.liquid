@@ -1,5 +1,8 @@
 <li>
-  <section class="relation">
+  {% if rel.node.guid and rel.node.name %}
+    <section class="relation" id="{{ rel.node.name }}"></section>
+  {% endif %}
+  <section class="relation" id="">
     {% if rel.node.guid and rel.node.name %}
       <a href="{{ rel.node.guid }}" class="event" target="_blank">
         {{ rel.node.name }}
