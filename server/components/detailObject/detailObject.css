@@ -34,13 +34,13 @@
 
         display: grid;
         gap: 1rem;
-        grid-template-columns: 1fr 1fr 1fr 3fr;
+        grid-template-columns:2fr 3fr;
         grid-template-rows: auto auto auto auto;
         grid-template-areas:
-            "title title title title"
-            "rels rels rels rels"
-            "img img text text"
-            "date date date date";
+            "title title"
+            "rels rels"
+            "img text"
+            "date date";
 
 
         >.event {
@@ -69,6 +69,7 @@
         }
 
         img {
+            grid-area: img;
             width: 100%;
             height: auto;
         }
