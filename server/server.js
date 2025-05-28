@@ -142,13 +142,10 @@ app.get("/search", async (req, res) => {
   const query = req.query.q;
 
   try {
-    const apiUrl = new URL(
-      `/api/ff/search?s=${encodeURIComponent(query)}`,
-      baseUrl
-    );
-    // New URL niet foutgevoelig, het zorgt ervoor dat een string automatisch geparst word naar een URL
+    const apiUrl = new URL("/api/ff/search", baseUrl);
+    apiUrl.searchParams.append("s", query); // Veilig en automatisch geëncodeerd
 
-    // Wat ging er fout omdat ik de BaseURL
+    // new URL is minder foutgevoelig en zorgt ervoor dat de string correct wordt geparsed naar een geldige URL
 
     const response = await fetch(apiUrl);
     console.log(response, "response");

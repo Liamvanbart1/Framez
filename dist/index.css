@@ -119,15 +119,6 @@ footer {
   gap: 1rem;
 }
 /* component styling */
-.card {
-  width: 100%;
-  max-width: 300px;
-}
-.card__image {
-  width: 100%;
-  height: auto;
-  margin-top: 1rem;
-}
 .publication {
     background-color: #C6A1CE;
 }

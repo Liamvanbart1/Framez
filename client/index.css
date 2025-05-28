@@ -9,11 +9,9 @@
 @import "../server/views/detail.css";
 
 /* component styling */
-@import "../server/components/card/card.css";
 @import "../server/components/detail-object/detail-object.css";
 @import "../server/components/relation/relation.css";
 @import "../server/components/rel-tag/rel-tag.css";
-@import "../server/components/header/header.css";
 
 body {
   color: black;
