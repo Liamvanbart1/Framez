@@ -50,14 +50,25 @@
         text-decoration: none;
     }
 
-    .event::before {
+    /* zorgen dat de hele kaart klikbaar is */
+    /* .event::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-    }
+    } */
+
+    /* details{
+        grid-area: rels;
+
+        &:open summary ul{
+            background-color: aquamarine;
+            height: 100%;
+            overflow: auto;
+        }
+    } */
 
     .relation-relation {
         grid-area: rels;
@@ -70,22 +81,37 @@
         background-color: hotpink;
         flex-wrap: wrap;
 
-        &::before {
-            content: "+";
+        &:has(input:checked) {
+            height: 100%;
+            /* background-color: aquamarine; */
+        }
+
+        label {
+            background-color: rgb(199, 199, 199);
             border-radius: 8px;
-            text-align: center;
-            width: 2em;
-            height: 2em;
-            aspect-ratio: 1;
+            padding: .5rem;
             color: black;
 
-            background-color: rgb(199, 199, 199);
-            /* display:relative; */
-        }
-    }
+            input {
+                display: none;
+            }
 
-    .extend {
-        overflow: visible;
+            &:has(input:checked){
+                background-color: gray;
+            }
+        }
+
+        .skiplink{
+            /* position:relative; */
+            /* display:inline-block; */
+            /* margin-left: auto; */
+            align-self: center;
+            /* justify-self: flex-end; */
+
+            /* right: 0; */
+            /* bottom: 1rem; */
+            /* top: -3rem; */
+        }
     }
 
     /* Dit is hoe je de afgeronde hoekjes maakt */
