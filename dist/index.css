@@ -95,7 +95,7 @@ footer {
 }
 .detail-container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr;
     gap: 4rem;
 }
 .detail-container>ul {
