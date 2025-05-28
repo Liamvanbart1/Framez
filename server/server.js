@@ -79,18 +79,29 @@ app.get("/event/:event", async (req, res) => {
   }
 });
 
-// app.get("/search", async (req, res) => {
-//   const baseUrl = process.env.NIEUWE_BASE_URL;
-//   const query = req.query.q;
+const renderTemplate = (template, data) => {
+  return engine.renderFileSync(template, data);
+};
 
-//   try {
-//     const apiUrl = new URL(`/search?s=${encodeURIComponent(query)}`, baseUrl);
-//     const response = await fetch(apiUrl);
-//     const data = await response.json();
+app.get("/search", async (req, res) => {
+  const baseUrl = process.env.NIEUWE_BASE_URL;
+  const query = req.query.q;
 
-//     res.json({ results: data });
-//   } catch (err) {
-//     console.error("Search failed:", err);
-//     res.status(500).json({ error: "Search error" });
-//   }
-// });
+  try {
+    const apiUrl = new URL(
+      `/api/ff/search?s=${encodeURIComponent(query)}`,
+      baseUrl
+    );
+    // New URL niet foutgevoelig, het zorgt ervoor dat een string automatisch geparst word naar een URL
+
+    const response = await fetch(apiUrl);
+    console.log(response, "response");
+    const data = await response.json();
+    console.log(data, "data");
+
+    res.json({ results: data });
+  } catch (err) {
+    console.error("Search failed:", err);
+    res.status(500).json({ error: "Search error" });
+  }
+});
