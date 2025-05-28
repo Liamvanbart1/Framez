@@ -94,6 +94,8 @@ app.get("/search", async (req, res) => {
     );
     // New URL niet foutgevoelig, het zorgt ervoor dat een string automatisch geparst word naar een URL
 
+    // Wat ging er fout omdat ik de BaseURL
+
     const response = await fetch(apiUrl);
     console.log(response, "response");
     const data = await response.json();
