@@ -19,9 +19,9 @@
         {% if assets.size > 0 %}
             <img src="{{ assets[0].origin }}" alt="" />
         {% endif %}
-        {% if event.content_nl %}
+        {% if event.content_nl != "" %}
             <div class="object-content">{{ event.content_nl }}</div>
-        {% else %}
+        {% elsif event.content_en %}
             <div class="object-content">{{ event.content_en }}</div>
         {% endif %}
         <time datetime="17-05-2024" class="year tag">17-05-2024</time>

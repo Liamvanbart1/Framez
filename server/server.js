@@ -52,26 +52,33 @@ app.get('/event/:event', async (req, res) => {
 
     const event = json.node;
     const assets = json.assets || [];
-    const relations = json.rels || [];
 
-    // 2. Voor elke relatie haal je ook de relaties van die relatie op
+    // Hulpfunctie om relatie-type te bepalen (negeer assets)
+    const isNotAsset = (rel) => {
+      const type = rel.type || rel.type_en || rel.type_nl || '';
+      return type.toLowerCase() !== 'asset';
+    };
+
+    const relations = (json.rels || []).filter(isNotAsset);
+
+    // 2. Voor elke relatie haal je ook de relaties van die relatie op, exclusief assets
     const relationsWithSubs = await Promise.all(
       relations.map(async (rel) => {
-        if (!rel.node?.uuid) return rel; // Geen uuid, gewoon terug
+        if (!rel.node?.uuid) return rel;
 
         try {
           const subUrl = `https://archive.framerframed.nl/api/node-by-id/${rel.node.uuid}`;
           const subResponse = await fetch(subUrl);
           const subJson = await subResponse.json();
 
-          // Voeg de sub-relaties toe aan de huidige relatie
+          const filteredSubRels = (subJson.rels || []).filter(isNotAsset);
+
           return {
             ...rel,
-            rels: subJson.rels || []
+            rels: filteredSubRels
           };
         } catch (error) {
           console.error(`Fout bij ophalen sub-relaties van ${rel.node.uuid}:`, error);
-          // fallback: return rel zonder subrels
           return {
             ...rel,
             rels: []
@@ -80,12 +87,12 @@ app.get('/event/:event', async (req, res) => {
       })
     );
 
-    // 3. Render de detailpagina met alles
+    // 3. Render de detailpagina met gefilterde relaties en subrelaties
     return res.send(renderTemplate('server/views/detail.liquid', {
       title: event.title_nl || event.title_en || 'Event detail',
       event,
       assets,
-      relations: relationsWithSubs // relaties met subrelaties
+      relations: relationsWithSubs
     }));
 
   } catch (error) {
