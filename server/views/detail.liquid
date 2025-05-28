@@ -2,12 +2,13 @@
 
 {% block content %}
 <div class="detail-container">
-  {% render 'server/components/detailObject/detailObject.liquid', event: event, relations: relations %}
-  {% render 'server/components/relation/relation.liquid' %}
+  {% render 'server/components/detailObject/detailObject.liquid', event: event, relations: relations, assets: assets %}
+  <ul>
+  {% for rel in relations %}
+      {% render 'server/components/relation/relation.liquid', rel: rel %}
+  {% endfor %}
+  </ul>
+
 </div>
-
-
-{% comment %} <p><strong>Start:</strong> {{ event.date_start }}</p>
-<p><strong>Einde:</strong> {{ event.date_end }}</p> {% endcomment %}
 
 {% endblock %}
