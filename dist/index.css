@@ -258,48 +258,42 @@ footer {
     } */
 
     .relation-relation {
-        grid-area: rels;
         width: 100%;
-        height: 2em;
-        overflow: hidden;
-        display: flex;
+        height: 100%;
 
         gap: .5rem;
-        background-color: hotpink;
+        /* background-color: hotpink; */
+        display: flex;
         flex-wrap: wrap;
+        /* position: relative;
+        top: 2rem; */
+        /* &[open]{
+            background-color: gray;
+        } */
+    }
 
-        &:has(input:checked) {
-            height: 100%;
-            /* background-color: aquamarine; */
-        }
+    .skiplink {
+        grid-area: rels;
 
-        label {
+        color: black;
+        width: fit-content;
+
+        summary {
             background-color: rgb(199, 199, 199);
             border-radius: 8px;
             padding: .5rem;
-            color: black;
+            margin-bottom: .5rem;
+            width: fit-content;
 
-            input {
-                display: none;
-            }
-
-            &:has(input:checked){
-                background-color: gray;
-            }
-        }
-
-        .skiplink{
-            /* position:relative; */
-            /* display:inline-block; */
-            /* margin-left: auto; */
-            align-self: center;
-            /* justify-self: flex-end; */
-
-            /* right: 0; */
-            /* bottom: 1rem; */
-            /* top: -3rem; */
+            list-style-type:  none;
         }
     }
+
+    details[open] summary {
+        background-color: gray;
+    }
+
+
 
     /* Dit is hoe je de afgeronde hoekjes maakt */
     .hapje {

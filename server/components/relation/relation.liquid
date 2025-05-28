@@ -42,18 +42,19 @@
     </ul> 
     {% endcomment %}
 
- <ul class="relation-relation">
-   {% if rel.rels and rel.rels.size > 0 %}
-    {% comment %} alleen zichtbaar als er meer dan x relaties zijn? {% endcomment %}
-    <li class="skiplink"><label>MEEEER <input type="checkbox" class="rel"/></label></li>
-    {% for subrel in rel.rels %}
-      {% comment %} iets voor de lege relaties eruit halen {% endcomment %}
-      <li>
-        <p class="{{ subrel.type | downcase }} rel">{{ subrel.node.name }}</p>
-      </li>
+    {% if rel.rels and rel.rels.size > 0 %}
+    <details class="skiplink rel">
+      <summary>Laat {{rel.rels.size}} relaties zien</summary>
+      <ul class="relation-relation">
+        {% for subrel in rel.rels %}
+        {% comment %} iets voor de lege relaties eruit halen {% endcomment %}
+        <li>
+          <p class="{{ subrel.type | downcase }} rel">{{ subrel.node.name }}</p>
+        </li>
     {% endfor %}
-  {% endif %}
 </ul> 
+</details>
+{% endif %}
 
     {% if rel.node.year %}
       <div class="hapje">
