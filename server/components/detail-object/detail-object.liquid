@@ -11,7 +11,7 @@
                 {% for rel in relations %}
                 {% if rel.node.name %}
                 <li>
-                    {% render 'server/components/Rel-tag/relTag.liquid', rel: rel.node.name, class_name: rel.type %}
+                    {% render 'server/components/rel-tag/rel-tag.liquid', rel: rel.node.name, class_name: rel.type %}
                 </li>
                 {% endif %}
                 {% endfor %}

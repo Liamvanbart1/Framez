@@ -19,6 +19,8 @@
 
       {% when "event" %}
       {% when "launch" %}
+      {% when "exhibition" %}
+      {% when "review" %}
         {% assign text = rel.node.content_en | default: rel.node.content_nl %}
     {% endcase %}
 
