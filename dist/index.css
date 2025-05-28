@@ -114,12 +114,6 @@ footer {
     background-color: #8AB2D1;
 }
 .object {
-    .time{
-        -webkit-box-shadow: 20px -20px 0px 20px rgba(255, 255, 255, 1);
--moz-box-shadow: 20px -20px 0px 20px rgba(255, 255, 255, 1);
-box-shadow: 20px -20px 0px 20px rgba(255, 255, 255, 1);
-    }
-
     .object-container {
         padding: .5rem;
         background-color: #1e1e1e;
@@ -135,13 +129,15 @@ box-shadow: 20px -20px 0px 20px rgba(255, 255, 255, 1);
             "img img text text"
             "date date date date";
 
+
         >.event {
             grid-area: title;
             justify-self: end;
         }
 
-        .year {
+        .time-content {
             grid-area: date;
+            padding: 0.5rem;
         }
 
         ul {
@@ -159,11 +155,11 @@ box-shadow: 20px -20px 0px 20px rgba(255, 255, 255, 1);
             color: #CBC6B9;
         }
 
-        img{
+        img {
             width: 100%;
             height: auto;
         }
-        
+
         iframe {
             width: 100%;
             height: auto;

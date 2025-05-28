@@ -42,13 +42,15 @@
             "img img text text"
             "date date date date";
 
+
         >.event {
             grid-area: title;
             justify-self: end;
         }
 
-        .year {
+        .time-content {
             grid-area: date;
+            padding: 0.5rem;
         }
 
         ul {
@@ -66,11 +68,11 @@
             color: #CBC6B9;
         }
 
-        img{
+        img {
             width: 100%;
             height: auto;
         }
-        
+
         iframe {
             width: 100%;
             height: auto;
