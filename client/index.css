@@ -1,26 +1,18 @@
 /* global styles */
 @import 'reset.css';
 @import "typography.css";
+@import "colors.css";
 
 /*.layout and view styling */
 @import '../server/layouts/base.css';
 @import '../server/views/index.css';
+@import '../server/views/detail.css';
 
 /* component styling */
 @import '../server/components/card/card.css';
-
-:root{
-/* standaardkleuren */
-  --color-text: #231f20;
-  --color-background: #FFFFFF;
-
-  /* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51C0E9;
-  --color-accent2: #F7C3E5;
-  --color-accent3: #BEC4E8;
-  --color-accent4: #EEDE52;
-  --color-accent5: #C7C1AC;
-}
+@import '../server/components/detail-object/detail-object.css';
+@import '../server/components/relation/relation.css';
+@import '../server/components/rel-tag/rel-tag.css';
 
 body {
   color: black;
