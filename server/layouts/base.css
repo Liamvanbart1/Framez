@@ -3,7 +3,8 @@ body {
 }
 
 header {
-  padding: 1rem;
+  /* padding: 1rem; */
+  background-color: red;
 }
 
 footer {
