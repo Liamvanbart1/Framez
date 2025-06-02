@@ -1,0 +1,11 @@
+.detail-container{
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 4rem;
+}
+
+.detail-container>ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
