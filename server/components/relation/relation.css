@@ -168,7 +168,7 @@
         background-color: #EFEDBD;
     }
 
-    .event {
+    .event, .object {
         background-color: #FFC09A;
     }
 
@@ -179,4 +179,5 @@
     .year {
         background-color: #8AB2D1;
     }
+
 }

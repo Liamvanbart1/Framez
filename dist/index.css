@@ -358,7 +358,7 @@ footer {
         background-color: #EFEDBD;
     }
 
-    .event {
+    .event, .object {
         background-color: #FFC09A;
     }
 
@@ -369,6 +369,7 @@ footer {
     .year {
         background-color: #8AB2D1;
     }
+
 }
 .tag {
     padding: 0.5rem;
