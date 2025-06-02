@@ -384,7 +384,6 @@ a:has(.tag){
 }
 body {
   color: black;
-  max-width: 1440px;
   margin: 0 auto;
 }
 main {
