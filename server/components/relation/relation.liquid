@@ -19,6 +19,8 @@
 
       {% when "event" %}
       {% when "launch" %}
+      {% when "exhibition" %}
+      {% when "review" %}
         {% assign text = rel.node.content_en | default: rel.node.content_nl %}
     {% endcase %}
 
@@ -26,24 +28,27 @@
       <p>{{ text | strip_html | truncate: 300 }}</p>
     {% endif %}
 
-<ul class="relation-relation">
-  {% if rel.rels and rel.rels.size > 0 %}
-    {% for subrel in rel.rels %}
-      {% assign relNode = subrel.node | default: subrel.object %}
-      {% assign title = relNode.title_en | default: relNode.title_nl %}
-      {% if title == nil or title == "" %}
-        {% assign displayText = relNode.name %}
-      {% else %}
-        {% assign displayText = title %}
-      {% endif %}
-      {% if displayText %}
-        <li>
-          <p class="{{ subrel.type | downcase }} rel">{{ displayText }}</p>
-        </li>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-</ul>
+    {% if rel.rels and rel.rels.size > 0 %}
+      <details class="skiplink rel">
+        <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        <ul class="relation-relation">
+          {% for subrel in rel.rels %}
+            {% assign relNode = subrel.node | default: subrel.object %}
+            {% assign title = relNode.title_en | default: relNode.title_nl %}
+            {% if title == nil or title == "" %}
+              {% assign displayText = relNode.name %}
+            {% else %}
+              {% assign displayText = title %}
+            {% endif %}
+            {% if displayText %}
+              <li>
+                <p class="{{ subrel.type | downcase }} rel">{{ displayText }}</p>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </details>
+    {% endif %}
 
     {% if rel.node.year %}
       <div class="hapje">

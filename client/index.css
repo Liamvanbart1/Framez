@@ -10,13 +10,12 @@
 
 /* component styling */
 @import '../server/components/card/card.css';
-@import '../server/components/detailObject/detailObject.css';
+@import '../server/components/detail-object/detail-object.css';
 @import '../server/components/relation/relation.css';
-@import '../server/components/Rel-tag/relTag.css';
+@import '../server/components/rel-tag/rel-tag.css';
 
 body {
   color: black;
-  max-width: 1440px;
   margin: 0 auto;
 }
 
