@@ -16,21 +16,19 @@
     {% endif %}
 
     {% assign type = rel.node.type | default: rel.node.type_en | default: rel.node.type_nl | downcase %}
+    {% assign text = "" %}
 
-    {% case type %}
-      {% when "person" %}
-        {% assign text = rel.node.bio_en | default: rel.node.bio_nl %}
+    {% if type == "person" %}
+      {% assign text = rel.node.bio_en | default: rel.node.bio_nl %}
+    {% elsif type == "organisation" or type == "collective" %}
+      {% assign text = rel.node.about_en | default: rel.node.about_nl %}
+    {% else %}
+      {% assign text = rel.node.content_en | default: rel.node.content_nl %}
+    {% endif %}
 
-      {% when "organisation" %}
-      {% when "collective" %}
-        {% assign text = rel.node.about_en | default: rel.node.about_nl %}
-
-      {% when "event" %}
-      {% when "launch" %}
-      {% when "article" %}
-      {% when "review" %}
-        {% assign text = rel.node.content_en | default: rel.node.content_nl %}
-    {% endcase %}
+    {%- unless text -%}
+      {%- assign text = rel.node.content_en | default: rel.node.content_nl -%}
+    {%- endunless -%}
 
     {% if text %}
       <p>{{ text | strip_html | truncate: 300 }}</p>
