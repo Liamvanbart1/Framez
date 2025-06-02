@@ -1,6 +1,6 @@
 .detail-container{
     display: grid;
-    grid-template-columns: 1.6fr auto;
+    grid-template-columns: 1.6fr 1fr;
     gap: 4rem;
 }
 
