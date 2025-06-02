@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(../public/fonts/Favorit_Regular.otf);
+  src: url(/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(../public/fonts/Favorit_Light.otf);
+  src: url(/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(../public/fonts/Favorit_Bold.otf);
+  src: url(/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
@@ -83,110 +83,120 @@ body {
   background: var(--color-background);
 }
 header {
-  padding: 1rem;
+  /* padding: 1rem; */
+  background-color: red;
 }
 footer {
   padding: 1rem;
+}
+#search-overlay {
+  position: fixed;
+  top: 60px; /* below your header */
+  left: 0;
+  right: 0;
+  background: white;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+#search-overlay.hidden {
+  display: none;
 }
 .grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-.detail-container{
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 4rem;
+.detail-container {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 4rem;
 }
-.detail-container>ul {
+.detail-container > ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 96vh;
+  overflow-y: scroll;
 }
 /* component styling */
-.card {
-  width: 100%;
-  max-width: 300px;
-}
-.card__image {
-  width: 100%;
-  height: auto;
-  margin-top: 1rem;
-}
 .publication {
-    background-color: #C6A1CE;
+  background-color: #c6a1ce;
 }
 .person {
-    background-color: #AAF7B3;
+  background-color: #aaf7b3;
 }
 .collective {
-    background-color: #8AC1A0;
+  background-color: #8ac1a0;
 }
 .organisation {
-    background-color: #EFEDBD;
+  background-color: #efedbd;
 }
 .event {
-    background-color: #FFC09A;
+  background-color: #ffc09a;
 }
 .serie {
-    background-color: #D67FA7;
+  background-color: #d67fa7;
 }
 .year {
-    background-color: #8AB2D1;
+  background-color: #8ab2d1;
 }
 .object {
-    .object-container {
-        padding: .5rem;
-        background-color: #1e1e1e;
-        border-radius: 8px;
+  .object-container {
+    padding: 0.5rem;
+    background-color: #1e1e1e;
+    border-radius: 8px;
 
-        display: grid;
-        gap: 1rem;
-        grid-template-columns:2fr 3fr;
-        grid-template-rows: auto auto auto auto;
-        grid-template-areas:
-            "title title"
-            "rels rels"
-            "img text"
-            "date date";
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "title title"
+      "rels rels"
+      "img text"
+      "date date";
 
-
-        >.event {
-            grid-area: title;
-            justify-self: end;
-        }
-
-        .time-content {
-            grid-area: date;
-            padding: 0.5rem;
-        }
-
-        ul {
-            grid-area: rels;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: left;
-        }
-
-        .object-content {
-            grid-area: text;
-            color: #CBC6B9;
-        }
-
-        img {
-            grid-area: img;
-            width: 100%;
-            height: auto;
-        }
-
-        iframe {
-            width: 100%;
-            height: auto;
-        }
+    > .event {
+      grid-area: title;
+      justify-self: end;
     }
+
+    .time-content {
+      grid-area: date;
+      padding: 0.5rem;
+    }
+
+    ul {
+      grid-area: rels;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: left;
+    }
+
+    .object-content {
+      grid-area: text;
+      color: #cbc6b9;
+      height: 75vh;
+      overflow-y: scroll;
+    }
+
+    img {
+      grid-area: img;
+      width: 100%;
+      height: auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 .relation {
     background-color: #1E1E1E;
@@ -384,7 +394,6 @@ a:has(.tag){
 }
 body {
   color: black;
-  max-width: 1440px;
   margin: 0 auto;
 }
 main {
