@@ -1,0 +1,14 @@
+<h1>Zoek in Framer Framed Archief</h1>
+<form action="/search" method="get">
+    <input type="text" name="q" value="{{ query }}" placeholder="Zoekterm" />
+    <button type="submit">Zoek</button>
+</form>
+
+{% if results %}
+<h2>Resultaten voor "{{ query }}"</h2>
+<ul>
+    {% for item in results %}
+    <li>{{ item.title }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
