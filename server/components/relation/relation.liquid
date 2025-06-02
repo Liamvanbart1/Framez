@@ -28,6 +28,19 @@
       <p>{{ text | strip_html | truncate: 300 }}</p>
     {% endif %}
 
+    {% if rel.rels and rel.rels.size > 0 %}
+    <details class="skiplink rel">
+      <summary>Laat {{rel.rels.size}} relaties zien</summary>
+    <ul class="relation-relation">
+      {% for subrel in rel.rels %}
+        {% comment %} iets voor de lege relaties eruit halen {% endcomment %}
+        <li>
+          <p class="{{ subrel.type | downcase }} rel">{{ subrel.node.name }}</p>
+        </li>
+    {% endfor %}
+  </ul> 
+</details>
+{% endif %}
 <ul class="relation-relation">
   {% if rel.rels and rel.rels.size > 0 %}
     {% for subrel in rel.rels %}
