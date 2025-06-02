@@ -168,6 +168,7 @@ footer {
             fill:  white;
             width: 100%;
             height: auto;
+            align-self: end;
         }
 
         ul {
