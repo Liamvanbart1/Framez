@@ -1,9 +1,10 @@
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block head %}
-    <title>{{ title }}</title>
+  <title>{{ title }}</title>
   {% endblock %}
   <link rel="stylesheet" href="/index.css">
   <script src="/index.js" defer></script>
@@ -13,13 +14,17 @@
 
 <body>
   <header>
-    Deze header staat op elke pagina
+    <form id="search-form" onsubmit="return false;">
+      <input type="text" id="search-input" placeholder="Search..." />
+    </form>
+
+    <div id="search-overlay" class="hidden">
+      <div id="search-results"></div>
+    </div>
   </header>
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    Deze footer staat op elke pagina
-  </footer>
 </body>
+
 </html>
