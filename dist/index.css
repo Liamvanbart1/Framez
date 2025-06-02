@@ -81,6 +81,8 @@ body{
 /*.layout and view styling */
 body {
   background: var(--color-background);
+  height: 100vh;
+  overflow: hidden;
 }
 header {
   /* padding: 1rem; */
