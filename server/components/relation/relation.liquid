@@ -29,36 +29,26 @@
     {% endif %}
 
     {% if rel.rels and rel.rels.size > 0 %}
-    <details class="skiplink rel">
-      <summary>Laat {{rel.rels.size}} relaties zien</summary>
-    <ul class="relation-relation">
-      {% for subrel in rel.rels %}
-        {% comment %} iets voor de lege relaties eruit halen {% endcomment %}
-        <li>
-          <p class="{{ subrel.type | downcase }} rel">{{ subrel.node.name }}</p>
-        </li>
-    {% endfor %}
-  </ul> 
-</details>
-{% endif %}
-<ul class="relation-relation">
-  {% if rel.rels and rel.rels.size > 0 %}
-    {% for subrel in rel.rels %}
-      {% assign relNode = subrel.node | default: subrel.object %}
-      {% assign title = relNode.title_en | default: relNode.title_nl %}
-      {% if title == nil or title == "" %}
-        {% assign displayText = relNode.name %}
-      {% else %}
-        {% assign displayText = title %}
-      {% endif %}
-      {% if displayText %}
-        <li>
-          <p class="{{ subrel.type | downcase }} rel">{{ displayText }}</p>
-        </li>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-</ul>
+      <details class="skiplink rel">
+        <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        <ul class="relation-relation">
+          {% for subrel in rel.rels %}
+            {% assign relNode = subrel.node | default: subrel.object %}
+            {% assign title = relNode.title_en | default: relNode.title_nl %}
+            {% if title == nil or title == "" %}
+              {% assign displayText = relNode.name %}
+            {% else %}
+              {% assign displayText = title %}
+            {% endif %}
+            {% if displayText %}
+              <li>
+                <p class="{{ subrel.type | downcase }} rel">{{ displayText }}</p>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </details>
+    {% endif %}
 
     {% if rel.node.year %}
       <div class="hapje">
