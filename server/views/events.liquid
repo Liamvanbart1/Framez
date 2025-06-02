@@ -1,6 +1,8 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
+<div class="eventlist">
+<div>
 {% comment %} wat als er geen engelse titel beschikbaar is? {% endcomment %}
  {% comment %} wat als je meer paginas van evenementen wilt? {% endcomment %}
  <h1 class="h1"> Events in {{year}}</h1>
@@ -14,4 +16,6 @@
     {%endif %}
   {% endfor %}
  </ul>
+ </div>
+ </div>
 {% endblock %}
