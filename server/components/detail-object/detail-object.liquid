@@ -1,14 +1,14 @@
 <section class="object">
     <div class="object-container">
-            {% if event.title_nl %}
+        {% if event.title_nl %}
             <h1 class="event tag">{{ event.title_nl }}</h1>
-            {% elsif event.title_en %}
+        {% elsif event.title_en %}
             <h1 class="event tag">{{ event.title_en }}</h1>
-            {% else %}
+        {% else %}
             <h1 class="event">Event detail</h1>
         {% endif %}
-            <ul>
-                {% for rel in relations %}
+        <ul>
+            {% for rel in relations %}
                 {% if rel.node.name %}
                 <li>
                     {% if rel.node.title_en != null and rel.node.title_en != ""  or if rel.node.title_nl != null and rel.node.title_nl != ""%}
@@ -19,8 +19,8 @@
                     {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
                 </li>
                 {% endif %}
-                {% endfor %}
-            </ul>
+            {% endfor %}
+        </ul>
         {% if assets.size > 0 %}
             <img src="{{ assets[0].origin }}" alt="" />
         {% endif %}
@@ -28,8 +28,9 @@
             <div class="object-content">{{ event.content_nl }}</div>
         {% elsif event.content_en %}
             <div class="object-content">{{ event.content_en }}</div>
-            {% endif %}
-            <div class="time-content">
+        {% endif %}
+            <div class="time-content hapje">
                 <time class="year tag">17-05-2024</time>
             </div>
-    </section>
+    </div>
+</section>

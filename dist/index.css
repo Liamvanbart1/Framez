@@ -135,6 +135,7 @@ footer {
     background-color: #8AB2D1;
 }
 .object {
+    --color-background:black;
     .object-container {
         padding: .5rem;
         background-color: #1e1e1e;
@@ -142,7 +143,7 @@ footer {
 
         display: grid;
         gap: 1rem;
-        grid-template-columns:2fr 3fr;
+        grid-template-columns: 2fr 3fr;
         grid-template-rows: auto auto auto auto;
         grid-template-areas:
             "title title"
@@ -158,7 +159,7 @@ footer {
 
         .time-content {
             grid-area: date;
-            padding: 0.5rem;
+            /* padding: 0.5rem; */
         }
 
         ul {
@@ -185,6 +186,50 @@ footer {
         iframe {
             width: 100%;
             height: auto;
+        }
+
+        .hapje {
+            position: relative;
+            right: .5rem;
+            bottom: -.5rem;
+            /* place-self: end; */
+            /* grid-area: year; */
+            background-color: var(--color-background);
+            outline: var(--color-background) .5rem solid;
+            border-radius: 0 .5rem 0 0;
+            width: max-content;
+
+            display: flex;
+            justify-content: flex-end;
+
+            :before {
+                position: absolute;
+                content: "";
+                display: inline-block;
+                top: -1.5rem;
+                left: 0rem;
+                width: 1rem;
+                height: 1rem;
+                border-bottom-right-radius: 2rem;
+                box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+                background: transparent;
+                rotate: 90deg;
+            }
+
+            :after {
+                position: absolute;
+                content: "";
+                display: inline-block;
+                top: 1rem;
+                right: -1.5rem;
+
+                width: 1rem;
+                height: 1rem;
+                border-bottom-right-radius: 2rem;
+                box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+                background: transparent;
+                rotate: 90deg;
+            }
         }
     }
 }
