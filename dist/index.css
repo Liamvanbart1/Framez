@@ -3,41 +3,122 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 body {
   line-height: 1;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 table {
@@ -66,17 +147,17 @@ body {
 p {
   font-family: favorit-light, Arial, sans-serif;
 }
-body{
-/* standaardkleuren */
+body {
+  /* standaardkleuren */
   --color-text: #231f20;
   --color-background: #050100;
 
-/* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51C0E9;
-  --color-accent2: #F7C3E5;
-  --color-accent3: #BEC4E8;
-  --color-accent4: #EEDE52;
-  --color-accent5: #C7C1AC;
+  /* kleuren van de huisstijl, gebruik er 1 per keer */
+  --color-accent1: #51c0e9;
+  --color-accent2: #f7c3e5;
+  --color-accent3: #bec4e8;
+  --color-accent4: #eede52;
+  --color-accent5: #c7c1ac;
 }
 /*.layout and view styling */
 body {
@@ -121,233 +202,267 @@ footer {
 }
 /* component styling */
 .publication {
-    background-color: #C6A1CE;
+  background-color: #c6a1ce;
 }
 .person {
-    background-color: #AAF7B3;
+  background-color: #aaf7b3;
 }
 .collective {
-    background-color: #8AC1A0;
+  background-color: #8ac1a0;
 }
 .organisation {
-    background-color: #EFEDBD;
+  background-color: #efedbd;
 }
 .event {
-    background-color: #FFC09A;
+  background-color: #ffc09a;
 }
 .serie {
-    background-color: #D67FA7;
+  background-color: #d67fa7;
 }
 .year {
-    background-color: #8AB2D1;
+  background-color: #8ab2d1;
 }
 .object {
-    .object-container {
-        padding: .5rem;
-        background-color: #1e1e1e;
-        border-radius: 8px;
-
-        display: grid;
-        gap: 1rem;
-        grid-template-columns:2fr 3fr;
-        grid-template-rows: auto auto auto auto;
-        grid-template-areas:
-            "title title"
-            "rels rels"
-            "img text"
-            "date date";
-
-
-        >.event {
-            grid-area: title;
-            justify-self: end;
-        }
-
-        .time-content {
-            grid-area: date;
-            padding: 0.5rem;
-        }
-
-        ul {
-            grid-area: rels;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: left;
-        }
-
-        .object-content {
-            grid-area: text;
-            color: #CBC6B9;
-        }
-
-        img {
-            grid-area: img;
-            width: 100%;
-            height: auto;
-        }
-
-        iframe {
-            width: 100%;
-            height: auto;
-        }
-    }
-}
-.relation {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
-    position: relative;
-
-    display: grid;
-    gap: .5rem;
-
-    padding: .5rem;
+  .object-container {
+    padding: 0.5rem;
+    background-color: #1e1e1e;
     border-radius: 8px;
 
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "title title"
+      "rels rels"
+      "img text"
+      "date date";
+
+    > .event {
+      grid-area: title;
+      justify-self: end;
+    }
+
+    .time-content {
+      grid-area: date;
+      padding: 0.5rem;
+    }
+
+    ul {
+      grid-area: rels;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: left;
+    }
+
+    .object-content {
+      grid-area: text;
+      color: #cbc6b9;
+    }
+
+    img {
+      grid-area: img;
+      width: 100%;
+      height: auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.relation {
+  background-color: #1e1e1e;
+  color: #cbc6b9;
+  position: relative;
+
+  display: grid;
+  gap: 0.5rem;
+
+  padding: 0.5rem;
+  border-radius: 8px;
+
+  height: fit-content;
+
+  grid-template: [image-top] "image x title" auto [title] [image-bottom] "image alinea alinea" 1fr [alinea] [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
+
+  p {
+    grid-area: alinea;
+  }
+
+  #img {
+    background-color: rgb(124, 131, 181);
+    border-radius: 8px;
+
+    aspect-ratio: 1;
+
+    grid-area: image;
+
+    border: 0;
+
+    position: relative;
+    left: -3rem;
+  }
+
+  h2,
+  .event {
+    grid-area: title;
+  }
+
+  h2,
+  .event,
+  .rel {
+    color: black;
+    width: fit-content;
     height: fit-content;
+    border-radius: 8px;
+    padding: 8px;
+    padding-inline: 12px;
+    text-decoration: none;
+  }
 
-    grid-template:
-        [image-top] "image x title" auto [title] [image-bottom] "image alinea alinea" 1fr [alinea] [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
-
-    p {
-        grid-area: alinea;
-    }
-
-    #img {
-        background-color: rgb(124, 131, 181);
-        border-radius: 8px;
-
-        aspect-ratio: 1;
-
-        grid-area: image;
-
-
-        border: 0;
-
-        position: relative;
-        left: -3rem;
-    }
-
-    h2,
-    .event {
-        grid-area: title;
-    }
-
-    h2,
-    .event,
-    .rel {
-        color: black;
-        width: fit-content;
-        height: fit-content;
-        border-radius: 8px;
-        padding: 8px;
-        padding-inline: 12px;
-        text-decoration: none;
-    }
-
-    .event::before {
+  /* zorgen dat de hele kaart klikbaar is */
+  /* .event::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-    }
+    } */
 
-
-
-    .relation-relation {
+  /* details{
         grid-area: rels;
-        width: 100%;
-        display: flex;
 
-        gap: .5rem;
-    }
-
-    /* Dit is hoe je de afgeronde hoekjes maakt */
-    .hapje {
-        position: relative;
-        right: -.5rem;
-        bottom: -.5rem;
-        place-self: end;
-        grid-area: year;
-        background-color: var(--color-background);
-        outline: var(--color-background) .5rem solid;
-        border-radius: .5rem 0 0 0;
-        width: max-content;
-
-        display: flex;
-        justify-content: flex-end;
-
-        :before {
-            position: absolute;
-            content: "";
-            display: inline-block;
-            top: 1rem;
-            left: -1.5rem;
-            width: 1rem;
-            height: 1rem;
-            border-bottom-right-radius: 2rem;
-            box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
-            background: transparent;
+        &:open summary ul{
+            background-color: aquamarine;
+            height: 100%;
+            overflow: auto;
         }
+    } */
 
-        :after {
-            position: absolute;
-            content: "";
-            display: inline-block;
-            top: -1.5rem;
-            right: 0rem;
+  .relation-relation {
+    width: 100%;
+    height: 100%;
 
-            width: 1rem;
-            height: 1rem;
-            border-bottom-right-radius: 2rem;
-            box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
-            background: transparent;
-        }
+    gap: 0.5rem;
+    /* background-color: hotpink; */
+    display: flex;
+    flex-wrap: wrap;
+    /* position: relative;
+        top: 2rem; */
+    /* &[open]{
+            background-color: gray;
+        } */
+  }
 
+  .skiplink {
+    grid-area: rels;
+
+    color: black;
+    width: fit-content;
+
+    summary {
+      background-color: rgb(199, 199, 199);
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      width: fit-content;
+
+      list-style-type: none;
+    }
+  }
+
+  details[open] summary {
+    background-color: gray;
+  }
+
+  /* Dit is hoe je de afgeronde hoekjes maakt */
+  .hapje {
+    position: relative;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    place-self: end;
+    grid-area: year;
+    background-color: var(--color-background);
+    outline: var(--color-background) 0.5rem solid;
+    border-radius: 0.5rem 0 0 0;
+    width: max-content;
+
+    display: flex;
+    justify-content: flex-end;
+
+    :before {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      top: 1rem;
+      left: -1.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+      background: transparent;
     }
 
-    .publication {
-        background-color: #C6A1CE;
-    }
+    :after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      top: -1.5rem;
+      right: 0rem;
 
-    .person {
-        background-color: #AAF7B3;
+      width: 1rem;
+      height: 1rem;
+      border-bottom-right-radius: 2rem;
+      box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+      background: transparent;
     }
+  }
 
-    .collective {
-        background-color: #8AC1A0;
-    }
+  .publication {
+    background-color: #c6a1ce;
+  }
 
-    .organisation {
-        background-color: #EFEDBD;
-    }
+  .person {
+    background-color: #aaf7b3;
+  }
 
-    .event {
-        background-color: #FFC09A;
-    }
+  .collective {
+    background-color: #8ac1a0;
+  }
 
-    .serie {
-        background-color: #D67FA7;
-    }
+  .organisation {
+    background-color: #efedbd;
+  }
 
-    .year {
-        background-color: #8AB2D1;
-    }
+  .event,
+  .object {
+    background-color: #ffc09a;
+  }
+
+  .serie {
+    background-color: #d67fa7;
+  }
+
+  .year {
+    background-color: #8ab2d1;
+  }
 }
 .tag {
-    padding: 0.5rem;
-    text-align: center;
-    text-transform: capitalize;
-    width: fit-content;
-    border-radius: 5px;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: capitalize;
+  width: fit-content;
+  border-radius: 5px;
 }
-a:has(.tag){
-    text-decoration: none;
-    color: black
+a:has(.tag) {
+  text-decoration: none;
+  color: black;
 }
 body {
   color: black;
