@@ -82,10 +82,8 @@ body{
 body {
   background: var(--color-background);
   height: 100vh;
-  overflow: hidden;
 }
 header {
-  /* padding: 1rem; */
   background-color: red;
 }
 footer {
@@ -93,7 +91,7 @@ footer {
 }
 #search-overlay {
   position: fixed;
-  top: 60px; /* below your header */
+  top: 60px;
   left: 0;
   right: 0;
   background: white;

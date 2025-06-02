@@ -1,6 +1,15 @@
 const input = document.getElementById("search-input");
 const overlay = document.getElementById("search-overlay");
 const resultsContainer = document.getElementById("search-results");
+const allowedTypes = [
+  "person",
+  "organisation",
+  "collective",
+  "event",
+  "launch",
+  "article",
+  "review"
+];
 let timeout;
 input.addEventListener("input", () => {
   const query = input.value.trim();
@@ -15,12 +24,58 @@ input.addEventListener("input", () => {
       const res = await fetch(`/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       if (data.results && data.results.length > 0) {
-        resultsContainer.innerHTML = data.results.map(
-          (result) => `<a href="/event/${result.uuid}" class="search-result block p-2 hover:bg-gray-100">
-        ${result.title || result.title_en || result.name}
-      </a>`
-        ).join("");
-        overlay.classList.remove("hidden");
+        const filtered = data.results.filter(
+          (result) => {
+            var _a;
+            return allowedTypes.includes((_a = result.nodetype) == null ? void 0 : _a.toLowerCase());
+          }
+        );
+        if (filtered.length > 0) {
+          resultsContainer.innerHTML = filtered.map((result) => {
+            const type = result.nodetype.toLowerCase();
+            return `
+                <a 
+                  href="#" 
+                  class="search-result block p-2 hover:bg-gray-100" 
+                  data-uuid="${result.uuid}" 
+                  data-type="${type}"
+                >
+                  ${result.title || result.title_en || result.name}
+                </a>`;
+          }).join("");
+          overlay.classList.remove("hidden");
+          document.querySelectorAll(".search-result").forEach((el) => {
+            el.addEventListener("click", (e) => {
+              e.preventDefault();
+              const uuid = el.dataset.uuid;
+              const type = el.dataset.type;
+              let href = "#";
+              switch (type) {
+                case "person":
+                  href = `/person/${uuid}`;
+                  break;
+                case "organisation":
+                case "collective":
+                  href = `/organisation/${uuid}`;
+                  break;
+                case "event":
+                case "launch":
+                  href = `/event/${uuid}`;
+                  break;
+                case "article":
+                case "review":
+                  href = `/article/${uuid}`;
+                  break;
+                default:
+                  return;
+              }
+              window.location.href = href;
+            });
+          });
+        } else {
+          resultsContainer.innerHTML = "<div>No results found</div>";
+          overlay.classList.remove("hidden");
+        }
       } else {
         resultsContainer.innerHTML = "<div>No results found</div>";
         overlay.classList.remove("hidden");
@@ -37,4 +92,3 @@ document.addEventListener("click", (e) => {
     overlay.classList.add("hidden");
   }
 });
-console.log("Hello, world!");
