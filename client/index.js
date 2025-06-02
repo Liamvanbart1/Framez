@@ -25,7 +25,11 @@ input.addEventListener("input", () => {
         resultsContainer.innerHTML = data.results
           .map(
             (result) =>
-              `<div>${result.title || result.title_en || result.name}</div>`
+              `<a href="/event/${
+                result.uuid
+              }" class="search-result block p-2 hover:bg-gray-100">
+        ${result.title || result.title_en || result.name}
+      </a>`
           )
           .join("");
         overlay.classList.remove("hidden");

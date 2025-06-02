@@ -16,7 +16,9 @@ input.addEventListener("input", () => {
       const data = await res.json();
       if (data.results && data.results.length > 0) {
         resultsContainer.innerHTML = data.results.map(
-          (result) => `<div>${result.title || result.title_en || result.name}</div>`
+          (result) => `<a href="/event/${result.uuid}" class="search-result block p-2 hover:bg-gray-100">
+        ${result.title || result.title_en || result.name}
+      </a>`
         ).join("");
         overlay.classList.remove("hidden");
       } else {
