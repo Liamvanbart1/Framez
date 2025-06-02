@@ -1,29 +1,29 @@
 .publication {
-    background-color: #C6A1CE;
+  background-color: #c6a1ce;
 }
 
 .person {
-    background-color: #AAF7B3;
+  background-color: #aaf7b3;
 }
 
 .collective {
-    background-color: #8AC1A0;
+  background-color: #8ac1a0;
 }
 
 .organisation {
-    background-color: #EFEDBD;
+  background-color: #efedbd;
 }
 
 .event {
-    background-color: #FFC09A;
+  background-color: #ffc09a;
 }
 
 .serie {
-    background-color: #D67FA7;
+  background-color: #d67fa7;
 }
 
 .year {
-    background-color: #8AB2D1;
+  background-color: #8ab2d1;
 }
 
 .object {
@@ -44,11 +44,10 @@
             "logo text"
             "date date";
 
-
-        >.event {
-            grid-area: title;
-            justify-self: end;
-        }
+    > .event {
+      grid-area: title;
+      justify-self: end;
+    }
 
         .time-content {
             grid-area: date;
@@ -63,26 +62,28 @@
             align-self: end;
         }
 
-        ul {
-            grid-area: rels;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: left;
-        }
+    ul {
+      grid-area: rels;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: left;
+    }
 
-        .object-content {
-            grid-area: text;
-            color: #CBC6B9;
-        }
+    .object-content {
+      grid-area: text;
+      color: #cbc6b9;
+      height: 75vh;
+      overflow-y: scroll;
+    }
 
-        img {
-            grid-area: img;
-            width: 100%;
-            height: auto;
-        }
+    img {
+      grid-area: img;
+      width: 100%;
+      height: auto;
+    }
 
         iframe {
             width: 100%;
