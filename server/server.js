@@ -133,6 +133,52 @@ app.get("/event/:event", async (req, res) => {
   }
 });
 
+app.get("/person/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  const url = `https://archive.framerframed.nl/api/rels-for/person/${uuid}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const person = data.person;
+    const relations = (data.relations || []).filter(rel => rel.type !== "asset");
+
+    return res.send(
+      renderTemplate("server/views/person-detail.liquid", {
+        title: person.name || "Person",
+        person,
+        relations,
+      })
+    );
+  } catch (error) {
+    console.error("Fout bij ophalen persoon:", error);
+    return res.status(500).send("Fout bij ophalen persoonsgegevens.");
+  }
+});
+
+app.get("/organisation/:uuid", async (req, res) => {
+  const uuid = req.params.uuid;
+  const url = `https://archive.framerframed.nl/api/rels-for/organisation/${uuid}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const organisation = data.person; 
+    const relations = (data.relations || []).filter(rel => rel.type !== "asset");
+
+    return res.send(
+      renderTemplate("server/views/organisation-detail.liquid", {
+        title: organisation.name || "Organisation",
+        organisation,
+        relations,
+      })
+    );
+  } catch (error) {
+    console.error("Fout bij ophalen organisatie:", error);
+    return res.status(500).send("Fout bij ophalen organisatiedata.");
+  }
+});
+
 const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, data);
 };
