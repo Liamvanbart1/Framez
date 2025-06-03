@@ -1,12 +1,12 @@
 <section class="object">
     <div class="object-container">
-        {% if event.title_nl %}
-            <h1 class="event tag">{{ event.title_nl }}</h1>
-        {% elsif event.title_en %}
-            <h1 class="event tag">{{ event.title_en }}</h1>
+        {% assign title = event.title_en | default: event.title_nl %}
+        {% if title == nil or title == "" %}
+          {% assign EventTitle = event.name %}
         {% else %}
-            <h1 class="event">Event detail</h1>
+          {% assign EventTitle = title %}
         {% endif %}
+        <h1 class="event tag">{{ EventTitle }}</h1>
         <ul>
             {% for rel in relations %}
                 {% if rel.node.name %}

@@ -4,10 +4,15 @@
   gap: 4rem;
 }
 
-.detail-container > ul {
+h2{
+  color: white;
+  font-size: 3rem;
+}
+
+.detail-container>div>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 96vh;
+  height: 85.7vh;
   overflow-y: scroll;
 }
