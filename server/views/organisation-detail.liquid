@@ -1,0 +1,15 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+<div class="detail-container">
+  {% render 'server/components/detail-object/organisation-object.liquid', organisation: organisation, relations: relations %}
+  <div>
+    <h2>relaties:</h2>
+    <ul>
+      {% for rel in relations %}
+        {% render 'server/components/relation/relation.liquid', rel: rel %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
