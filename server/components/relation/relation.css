@@ -51,14 +51,17 @@
     }
 
     /* zorgen dat de hele kaart klikbaar is */
-    /* .event::before {
+    .title::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
+        /* height: 2rem; */
         bottom: 0;
-    } */
+        /* background-color: hotpink; */
+        z-index: 0;
+    }
 
     /* details{
         grid-area: rels;
@@ -91,6 +94,8 @@
         color: black;
         width: fit-content;
 
+        z-index: 2;
+
         summary {
             background-color: rgb(199, 199, 199);
             border-radius: 8px;
@@ -104,6 +109,7 @@
 
     details[open] summary {
         background-color: gray;
+        z-index: 2;
     }
 
 

@@ -8,11 +8,11 @@
     {% endif %}
 
     {% if rel.node.guid and displayText %}
-      <a href="{{ rel.node.guid }}" class="event" target="_blank">
+      <a href="{{ rel.node.guid }}" class="title rel event" target="_blank">
         {{ displayText }}
       </a>
     {% else %}
-      <p class="event">{{ displayText }}</p>
+      <p class="rel title event">{{ displayText }}</p>
     {% endif %}
 
     {% assign type = rel.node.type | default: rel.node.type_en | default: rel.node.type_nl | downcase %}
