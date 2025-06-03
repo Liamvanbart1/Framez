@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(/Favorit_Regular.otf);
+  src: url(../public/fonts/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(/Favorit_Light.otf);
+  src: url(../public/fonts/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(/Favorit_Bold.otf);
+  src: url(../public/fonts/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
@@ -81,6 +81,8 @@ body{
 /*.layout and view styling */
 body {
   background: var(--color-background);
+  height: 100vh;
+  overflow: hidden;
 }
 header {
   /* padding: 1rem; */
@@ -114,7 +116,11 @@ footer {
   grid-template-columns: 1.6fr 1fr;
   gap: 4rem;
 }
-.detail-container > ul {
+h2{
+  color: white;
+  font-size: 3rem;
+}
+.detail-container>div>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -145,6 +151,82 @@ footer {
     }
 }
 /* component styling */
+.search-result {
+    background-color: #1E1E1E;
+    color: #CBC6B9;
+
+    border-radius: 8px;
+
+    display: grid;
+    grid-template: [title] "title date" auto [date] [type]"type type" auto[type] / 1fr auto;
+
+    margin-block: .5rem;
+    height: fit-content;
+
+    a {
+        grid-area: title;
+        text-decoration: none;
+        margin-right: .5rem;
+        /* font-family: favorit-bold; */
+        font-size: 1.5em;
+        color: #CBC6B9;
+
+        padding: .5rem;
+    }
+
+    p {
+        background-color: lightgrey;
+        grid-area: type;
+        color: black;
+        font-weight: bold;
+
+        padding: .2rem;
+        padding-inline: .5rem;
+
+        border-radius: 0 0 8px 8px;
+
+        text-align: end;
+
+        /* is het verwarrend dat de kleuren switchen van betekenis? */
+        &.Exhibition {
+            background-color: #FFC09A;
+        }
+
+        &.Launch,
+        &.Review,
+        &.News,
+        &.Report {
+            background-color: #AAF7B3;
+        }
+
+        &.Debate,
+        &.Talk,
+        &.Article,
+        &.Interview {
+            background-color: #C6A1CE;
+        }
+
+        &.Symposium,
+        &.Program {
+            background-color: #EFEDBD;
+        }
+
+        &.Public,
+        &.Educational {
+            background-color: #D67FA7;
+        }
+
+        &.Performance,
+        &.Film {
+            background-color: #8AB2D1;
+        }
+    }
+
+    time {
+        grid-area: date;
+        padding: .5rem;
+    }
+}
 .publication {
   background-color: #c6a1ce;
 }
