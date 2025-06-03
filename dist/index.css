@@ -66,17 +66,18 @@ body {
 p {
   font-family: favorit-light, Arial, sans-serif;
 }
-body{
-/* standaardkleuren */
+body {
+  /* standaardkleuren */
   --color-text: #231f20;
   --color-background: #050100;
+  --color-white: #ffff;
 
-/* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51C0E9;
-  --color-accent2: #F7C3E5;
-  --color-accent3: #BEC4E8;
-  --color-accent4: #EEDE52;
-  --color-accent5: #C7C1AC;
+  /* kleuren van de huisstijl, gebruik er 1 per keer */
+  --color-accent1: #51c0e9;
+  --color-accent2: #f7c3e5;
+  --color-accent3: #bec4e8;
+  --color-accent4: #eede52;
+  --color-accent5: #c7c1ac;
 }
 /*.layout and view styling */
 body {
@@ -84,7 +85,9 @@ body {
   height: 100vh;
 }
 header {
-  background-color: red;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
 }
 footer {
   padding: 1rem;
@@ -104,6 +107,11 @@ footer {
 #search-overlay.hidden {
   display: none;
 }
+.logo {
+  margin-top: 0.8em;
+  margin-left: 2em;
+  margin-bottom: 0.5em;
+}
 .grid {
   display: grid;
   gap: 1rem;
@@ -114,7 +122,11 @@ footer {
   grid-template-columns: 1.6fr 1fr;
   gap: 4rem;
 }
-.detail-container > ul {
+h2{
+  color: white;
+  font-size: 3rem;
+}
+.detail-container>div>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
