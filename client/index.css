@@ -31,7 +31,7 @@
 @import '../server/components/relation/relation.css';
 @import '../server/components/rel-tag/rel-tag.css';
 body {
-  color: black;
+  color: var(--color-background);
   margin: 0 auto;
 }
 

@@ -1,13 +1,43 @@
 body {
   /* standaardkleuren */
-  --color-text: #231f20;
+  --color-text: #cbc6b9;
   --color-background: #050100;
-  --color-white: #ffff;
+  --color-background-secondair: #1e1e1e;
 
-  /* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51c0e9;
-  --color-accent2: #f7c3e5;
-  --color-accent3: #bec4e8;
-  --color-accent4: #eede52;
-  --color-accent5: #c7c1ac;
+  /* kleuren van de catogorien */
+  --color-publication: #c6a1ce;
+  --color-person: #aaf7b3;
+  --color-collective: #8ac1a0;
+  --color-organisation: #efedbd;
+  --color-event: #ffc09a;
+  --color-serie: #d67fa7;
+  --color-year: #8ab2d1;
+}
+
+.publication {
+  background-color: var(--color-publication);
+}
+
+.person {
+  background-color: var(--color-person);
+}
+
+.collective {
+  background-color: var(--color-collective);
+}
+
+.organisation {
+  background-color: var(--color-organisation);
+}
+
+.event {
+  background-color: var(--color-event);
+}
+
+.serie {
+  background-color: var(--color-serie);
+}
+
+.year {
+  background-color: var(--color-year);
 }
