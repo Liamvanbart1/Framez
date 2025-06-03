@@ -28,6 +28,7 @@
 
 .object {
     --color-background:black;
+
     .object-container {
         padding: .5rem;
         background-color: #1e1e1e;
