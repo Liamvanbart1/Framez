@@ -2,16 +2,14 @@
 
 {% block content %}
 <div class="detail-container">
-  {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
-  <div class="relaties-container">
+  {% render 'server/components/detail-object/person-object.liquid', person: person, relations: relations %}
+  <div>
     <h2>relaties:</h2>
     <ul>
-    {% for rel in relations %}
+      {% for rel in relations %}
         {% render 'server/components/relation/relation.liquid', rel: rel %}
-    {% endfor %}
+      {% endfor %}
     </ul>
   </div>
-
 </div>
-
 {% endblock %}
