@@ -7,8 +7,8 @@
       {% assign displayText = title %}
     {% endif %}
 
-    {% if rel.node.guid and displayText %}
-      <a href="{{ rel.node.guid }}" class="event" target="_blank">
+    {% if rel.node.uuid and displayText %}
+      <a href="/event/{{ rel.node.uuid }}" class="event">
         {{ displayText }}
       </a>
     {% else %}
