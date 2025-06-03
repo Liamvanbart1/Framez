@@ -135,47 +135,132 @@ app.get("/event/:event", async (req, res) => {
 
 app.get("/person/:uuid", async (req, res) => {
   const uuid = req.params.uuid;
-  const url = `https://archive.framerframed.nl/api/rels-for/person/${uuid}`;
 
   try {
+    // 1. Haal de persoon-relaties op (speciale API)
+    const url = `https://archive.framerframed.nl/api/rels-for/person/${uuid}`;
     const response = await fetch(url);
-    const data = await response.json();
-    const person = data.person;
-    const relations = (data.relations || []).filter(rel => rel.type !== "asset");
+    const json = await response.json();
 
+    const person = json.person;
+    const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
+
+    // 2. Haal sub-relaties op per relatie
+    const relationsWithSubs = await Promise.all(
+      relations.map(async (rel) => {
+        const relNode = rel.node || rel.object;
+        if (!relNode?.uuid) return rel;
+
+        try {
+          let subRels = [];
+
+          if (rel.type === "person") {
+            const personUrl = `https://archive.framerframed.nl/api/rels-for/person/${relNode.uuid}`;
+            const personRes = await fetch(personUrl);
+            const personJson = await personRes.json();
+
+            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: personJson.person,
+              rels: subRels,
+            };
+          } else {
+            const subUrl = `https://archive.framerframed.nl/api/node-by-id/${relNode.uuid}`;
+            const subRes = await fetch(subUrl);
+            const subJson = await subRes.json();
+
+            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: subJson.node,
+              rels: subRels,
+            };
+          }
+        } catch (error) {
+          console.error(`Fout bij ophalen sub-relaties van ${relNode.uuid}:`, error);
+          return { ...rel, rels: [] };
+        }
+      })
+    );
+
+    // 3. Render pagina
     return res.send(
       renderTemplate("server/views/person-detail.liquid", {
-        title: person.name || "Person",
+        title: person.name || "Persoon",
         person,
-        relations,
+        relations: relationsWithSubs,
       })
     );
   } catch (error) {
     console.error("Fout bij ophalen persoon:", error);
-    return res.status(500).send("Fout bij ophalen persoonsgegevens.");
+    return res.status(500).send("Fout bij ophalen persoongegevens.");
   }
 });
 
 app.get("/organisation/:uuid", async (req, res) => {
   const uuid = req.params.uuid;
-  const url = `https://archive.framerframed.nl/api/rels-for/organisation/${uuid}`;
 
   try {
+    const url = `https://archive.framerframed.nl/api/rels-for/organisation/${uuid}`;
     const response = await fetch(url);
-    const data = await response.json();
-    const organisation = data.person; 
-    const relations = (data.relations || []).filter(rel => rel.type !== "asset");
+    const json = await response.json();
+
+    const organisation = json.person || {}; // fallback
+    const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
+
+    const relationsWithSubs = await Promise.all(
+      relations.map(async (rel) => {
+        const relNode = rel.node || rel.object;
+        if (!relNode?.uuid) return rel;
+
+        try {
+          let subRels = [];
+
+          if (rel.type === "person") {
+            const personUrl = `https://archive.framerframed.nl/api/rels-for/person/${relNode.uuid}`;
+            const personRes = await fetch(personUrl);
+            const personJson = await personRes.json();
+
+            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: personJson.person,
+              rels: subRels,
+            };
+          } else {
+            const subUrl = `https://archive.framerframed.nl/api/node-by-id/${relNode.uuid}`;
+            const subRes = await fetch(subUrl);
+            const subJson = await subRes.json();
+
+            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: subJson.node,
+              rels: subRels,
+            };
+          }
+        } catch (error) {
+          console.error(`Fout bij ophalen sub-relaties van ${relNode.uuid}:`, error);
+          return { ...rel, rels: [] };
+        }
+      })
+    );
 
     return res.send(
       renderTemplate("server/views/organisation-detail.liquid", {
-        title: organisation.name || "Organisation",
+        title: organisation.name || "Organisatie",
         organisation,
-        relations,
+        relations: relationsWithSubs,
       })
     );
   } catch (error) {
     console.error("Fout bij ophalen organisatie:", error);
-    return res.status(500).send("Fout bij ophalen organisatiedata.");
+    return res.status(500).send("Fout bij ophalen organisatiegegevens.");
   }
 });
 
