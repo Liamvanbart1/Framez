@@ -1,5 +1,5 @@
 /* global styles */
-@import 'reset.css';
+@import "reset.css";
 @import "typography.css";
 @import "colors.css";
 
@@ -31,7 +31,6 @@
 @import '../server/components/detail-object/detail-object.css';
 @import '../server/components/relation/relation.css';
 @import '../server/components/rel-tag/rel-tag.css';
-
 body {
   color: black;
   margin: 0 auto;
