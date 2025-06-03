@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(/Favorit_Regular.otf);
+  src: url(../public/fonts/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(/Favorit_Light.otf);
+  src: url(../public/fonts/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(/Favorit_Bold.otf);
+  src: url(../public/fonts/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
@@ -66,21 +66,47 @@ body {
 p {
   font-family: favorit-light, Arial, sans-serif;
 }
-body{
-/* standaardkleuren */
-  --color-text: #231f20;
+body {
+  /* standaardkleuren */
+  --color-text: #CBC6B9;
   --color-background: #050100;
+  --color-background-secondair: #1E1E1E;
 
-/* kleuren van de huisstijl, gebruik er 1 per keer */
-  --color-accent1: #51C0E9;
-  --color-accent2: #F7C3E5;
-  --color-accent3: #BEC4E8;
-  --color-accent4: #EEDE52;
-  --color-accent5: #C7C1AC;
+  /* kleuren van de catogorien */
+  --color-publication: #C6A1CE;
+  --color-person: #AAF7B3;
+  --color-collective: #8AC1A0;
+  --color-organisation: #EFEDBD;
+  --color-event: #FFC09A;
+  --color-serie: #D67FA7;
+  --color-year: #8AB2D1;
+}
+.publication {
+  background-color: var(--color-publication);
+}
+.person {
+  background-color: var(--color-person);
+}
+.collective {
+  background-color: var(--color-collective);
+}
+.organisation {
+  background-color: var(--color-organisation);
+}
+.event {
+  background-color: var(--color-event);
+}
+.serie {
+  background-color: var(--color-serie);
+}
+.year {
+  background-color: var(--color-year);
 }
 /*.layout and view styling */
 body {
   background: var(--color-background);
+  height: 100vh;
+  overflow: hidden;
 }
 header {
   /* padding: 1rem; */
@@ -114,7 +140,11 @@ footer {
   grid-template-columns: 1.6fr 1fr;
   gap: 4rem;
 }
-.detail-container > ul {
+h2{
+  color: white;
+  font-size: 3rem;
+}
+.detail-container>div>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -122,32 +152,10 @@ footer {
   overflow-y: scroll;
 }
 /* component styling */
-.publication {
-  background-color: #c6a1ce;
-}
-.person {
-  background-color: #aaf7b3;
-}
-.collective {
-  background-color: #8ac1a0;
-}
-.organisation {
-  background-color: #efedbd;
-}
-.event {
-  background-color: #ffc09a;
-}
-.serie {
-  background-color: #d67fa7;
-}
-.year {
-  background-color: #8ab2d1;
-}
 .object {
-    --color-background:black;
     .object-container {
         padding: .5rem;
-        background-color: #1e1e1e;
+        background-color: var(--color-background-secondair);
         border-radius: 8px;
 
         display: grid;
@@ -191,7 +199,7 @@ footer {
 
     .object-content {
       grid-area: text;
-      color: #cbc6b9;
+      color: var(--color-text);
       height: 75vh;
       overflow-y: scroll;
     }
@@ -253,8 +261,8 @@ footer {
     }
 }
 .relation {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
+    background-color: var(--color-background-secondair);
+    color: var(--color-text);
     position: relative;
 
     display: grid;
@@ -405,35 +413,6 @@ footer {
         }
 
     }
-
-    .publication {
-        background-color: #C6A1CE;
-    }
-
-    .person {
-        background-color: #AAF7B3;
-    }
-
-    .collective {
-        background-color: #8AC1A0;
-    }
-
-    .organisation {
-        background-color: #EFEDBD;
-    }
-
-    .event, .object {
-        background-color: #FFC09A;
-    }
-
-    .serie {
-        background-color: #D67FA7;
-    }
-
-    .year {
-        background-color: #8AB2D1;
-    }
-
 }
 .tag {
     padding: 0.5rem;
@@ -447,7 +426,7 @@ a:has(.tag){
     color: black
 }
 body {
-  color: black;
+  color: var(--color-background);
   margin: 0 auto;
 }
 main {
