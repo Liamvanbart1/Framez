@@ -1,36 +1,7 @@
-.publication {
-  background-color: #c6a1ce;
-}
-
-.person {
-  background-color: #aaf7b3;
-}
-
-.collective {
-  background-color: #8ac1a0;
-}
-
-.organisation {
-  background-color: #efedbd;
-}
-
-.event {
-  background-color: #ffc09a;
-}
-
-.serie {
-  background-color: #d67fa7;
-}
-
-.year {
-  background-color: #8ab2d1;
-}
-
 .object {
-    --color-background:black;
     .object-container {
         padding: .5rem;
-        background-color: #1e1e1e;
+        background-color: var(--color-background-secondair);
         border-radius: 8px;
 
         display: grid;
@@ -74,7 +45,7 @@
 
     .object-content {
       grid-area: text;
-      color: #cbc6b9;
+      color: var(--color-text);
       height: 75vh;
       overflow-y: scroll;
     }
