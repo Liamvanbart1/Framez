@@ -152,32 +152,10 @@ h2{
   overflow-y: scroll;
 }
 /* component styling */
-.publication {
-  background-color: #c6a1ce;
-}
-.person {
-  background-color: #aaf7b3;
-}
-.collective {
-  background-color: #8ac1a0;
-}
-.organisation {
-  background-color: #efedbd;
-}
-.event {
-  background-color: #ffc09a;
-}
-.serie {
-  background-color: #d67fa7;
-}
-.year {
-  background-color: #8ab2d1;
-}
 .object {
-    --color-background:black;
     .object-container {
         padding: .5rem;
-        background-color: #1e1e1e;
+        background-color: var(--color-background-secondair);
         border-radius: 8px;
 
         display: grid;
@@ -221,7 +199,7 @@ h2{
 
     .object-content {
       grid-area: text;
-      color: #cbc6b9;
+      color: var(--color-text);
       height: 75vh;
       overflow-y: scroll;
     }
@@ -283,8 +261,8 @@ h2{
     }
 }
 .relation {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
+    background-color: var(--color-background-secondair);
+    color: var(--color-text);
     position: relative;
 
     display: grid;
@@ -435,35 +413,6 @@ h2{
         }
 
     }
-
-    .publication {
-        background-color: #C6A1CE;
-    }
-
-    .person {
-        background-color: #AAF7B3;
-    }
-
-    .collective {
-        background-color: #8AC1A0;
-    }
-
-    .organisation {
-        background-color: #EFEDBD;
-    }
-
-    .event, .object {
-        background-color: #FFC09A;
-    }
-
-    .serie {
-        background-color: #D67FA7;
-    }
-
-    .year {
-        background-color: #8AB2D1;
-    }
-
 }
 .tag {
     padding: 0.5rem;
