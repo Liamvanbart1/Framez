@@ -5,7 +5,7 @@
     border-radius: 8px;
 
     display: grid;
-    grid-template: [title] "title img" auto [image] [type]"type type" auto[type] / 1fr auto;
+    grid-template: [title] "title date" auto [date] [type]"type type" auto[type] / 1fr auto;
 
     margin-block: .5rem;
     height: fit-content;
@@ -38,20 +38,39 @@
         &.Exhibition {
             background-color: #FFC09A;
         }
-        &.Launch, &.Review, &.News, &.Report{
+
+        &.Launch,
+        &.Review,
+        &.News,
+        &.Report {
             background-color: #AAF7B3;
         }
-        &.Debate, &.Talk, &.Article, &.Interview{
+
+        &.Debate,
+        &.Talk,
+        &.Article,
+        &.Interview {
             background-color: #C6A1CE;
         }
-        &.Symposium, &.Program{
+
+        &.Symposium,
+        &.Program {
             background-color: #EFEDBD;
         }
-        &.Public, &.Educational{
+
+        &.Public,
+        &.Educational {
             background-color: #D67FA7;
         }
-        &.Performance, &.Film{
+
+        &.Performance,
+        &.Film {
             background-color: #8AB2D1;
         }
+    }
+
+    time {
+        grid-area: date;
+        padding: .5rem;
     }
 }

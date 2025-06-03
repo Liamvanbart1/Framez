@@ -1,5 +1,10 @@
 <li class="search-result">
     <a href="/event/{{ e.node.uuid }}" class="h2">{{ title }}</a>
      <p class="{{ e.node.type_en}}">{{e.node.type_nl}}</p>
-     {% comment %} datum toevoegen (voor logica) {% endcomment %}
+     {% if e.node.date_start %}
+        <time datetime="{{e.node.date_start | split: "T" | slice: 0}}">{{e.node.date_start | split: "T" | slice: 0}}</time>
+     {% elsif if e.node.date_end%}
+        <time datetime="{{e.node.date_end | split: "T" | slice: 0}}">{{e.node.date_end | split: "T" | slice: 0}}</time>
+     {% endif %}
+
 </li>
