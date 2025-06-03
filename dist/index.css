@@ -126,11 +126,11 @@ h2{
   color: white;
   font-size: 3rem;
 }
-.detail-container>div>ul {
+.relaties-container>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 96vh;
+  height: 85.7vh;
   overflow-y: scroll;
 }
 /* component styling */

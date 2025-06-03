@@ -55,16 +55,21 @@ input.addEventListener("input", () => {
                   href = `/person/${uuid}`;
                   break;
                 case "organisation":
-                case "collective":
                   href = `/organisation/${uuid}`;
                   break;
+                case "collective":
+                  href = `/collective/${uuid}`;
+                  break;
                 case "event":
+                  href = `/event/${uuid}`;
                 case "launch":
                   href = `/event/${uuid}`;
                   break;
                 case "article":
+                  href = `/event/${uuid}`;
+                  break;
                 case "review":
-                  href = `/article/${uuid}`;
+                  href = `/event/${uuid}`;
                   break;
                 default:
                   return;
