@@ -1,6 +1,6 @@
 .relation {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
+    background-color: var(--color-background-secondair);
+    color: var(--color-text);
     position: relative;
 
     display: grid;
@@ -151,33 +151,4 @@
         }
 
     }
-
-    .publication {
-        background-color: #C6A1CE;
-    }
-
-    .person {
-        background-color: #AAF7B3;
-    }
-
-    .collective {
-        background-color: #8AC1A0;
-    }
-
-    .organisation {
-        background-color: #EFEDBD;
-    }
-
-    .event, .object {
-        background-color: #FFC09A;
-    }
-
-    .serie {
-        background-color: #D67FA7;
-    }
-
-    .year {
-        background-color: #8AB2D1;
-    }
-
 }
