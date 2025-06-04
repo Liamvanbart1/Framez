@@ -45,7 +45,7 @@
 
     {% if rel.rels and rel.rels.size > 0 %}
       <details class="skiplink rel">
-        <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        <summary>{{ rel.rels.size }} relaties van {{ displayText }} </summary>
         <ul class="relation-relation">
           {% for subrel in rel.rels %}
             {% assign relNode = subrel.node | default: subrel.object %}
