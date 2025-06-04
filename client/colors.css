@@ -11,8 +11,7 @@ body {
   --color-organisation: #F0E442;
   --color-event: #E69F00;
   --color-serie: #CC79A7;
-  /* slecht contrast */
-  --color-year: #0072B2;
+  --color-year: #56E04E;
 }
 
 /* check if it supports @media? */
@@ -21,7 +20,7 @@ body {
   /* standaardkleuren */
   --color-text: #050100;
   --color-background: white;
-  --color-background-secondair: rgb(235, 235, 235);
+  --color-background-secondair: #e1e1e1;
 
   /* kleuren van de catogorien - kleurenblind-proof*/
   --color-publication: #D55E00;
@@ -30,8 +29,7 @@ body {
   --color-organisation: #F0E442;
   --color-event: #E69F00;
   --color-serie: #CC79A7;
-  /* niet contrastwaardig */
-  --color-year: #0072B2;
+  --color-year: #56E04E;
 } 
 }
 
