@@ -7,21 +7,23 @@
       {% assign displayText = title %}
     {% endif %}
 
+
     {% assign rel_type = rel.type | downcase %}
     {% assign uuid = rel.node.uuid %}
 
     {% if displayText and uuid %}
       {% if rel_type == "person" %}
-        <a href="/person/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/person/{{ uuid }}" class="person rel title">{{ displayText }}</a>
       {% elsif rel_type == "organisation" %}
-        <a href="/organisation/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/organisation/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
       {% elsif rel_type == "event" %}
-        <a href="/event/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
       {% else %}
-        <a href="/event/{{ uuid }}" class="organisation">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
       {% endif %}
+
     {% else %}
-      <p class="event">{{ displayText }}</p>
+      <p class="rel title">{{ displayText }}</p>
     {% endif %}
 
     {% assign type = rel.node.type | default: rel.node.type_en | default: rel.node.type_nl | downcase %}
@@ -45,7 +47,11 @@
 
     {% if rel.rels and rel.rels.size > 0 %}
       <details class="skiplink rel">
-        <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        {% if rel.rels.size == 1 %}
+          <summary>relatie van {{ displayText }} </summary>
+        {% else %}
+          <summary>{{ rel.rels.size }} relaties van {{ displayText }} </summary>
+        {% endif %}
         <ul class="relation-relation">
           {% for subrel in rel.rels %}
             {% assign relNode = subrel.node | default: subrel.object %}

@@ -20,28 +20,10 @@
         grid-area: alinea;
     }
 
-    #img {
-        background-color: rgb(124, 131, 181);
-        border-radius: 8px;
-
-        aspect-ratio: 1;
-
-        grid-area: image;
-
-
-        border: 0;
-
-        position: relative;
-        left: -3rem;
-    }
-
-    h2,
-    .event {
+    .title {
         grid-area: title;
     }
 
-    h2,
-    .event,
     .rel {
         color: black;
         width: fit-content;
@@ -53,38 +35,24 @@
     }
 
     /* zorgen dat de hele kaart klikbaar is */
-    /* .event::before {
+    .title::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-    } */
 
-    /* details{
-        grid-area: rels;
-
-        &:open summary ul{
-            background-color: aquamarine;
-            height: 100%;
-            overflow: auto;
-        }
-    } */
+        z-index: 0;
+    }
 
     .relation-relation {
         width: 100%;
         height: 100%;
 
         gap: .5rem;
-        /* background-color: hotpink; */
         display: flex;
         flex-wrap: wrap;
-        /* position: relative;
-        top: 2rem; */
-        /* &[open]{
-            background-color: gray;
-        } */
     }
 
     .skiplink {
@@ -93,22 +61,39 @@
         color: black;
         width: fit-content;
 
+        z-index: 2;
+
         summary {
             background-color: rgb(199, 199, 199);
             border-radius: 8px;
             padding: .5rem;
             margin-bottom: .5rem;
-            width: fit-content;
+            width: max-content;
 
-            list-style-type:  none;
+            list-style-type: none;
         }
+    }
+
+    /* animatie foldout relaties */
+    details {
+        overflow: hidden;
+    }
+
+    details::details-content {
+        block-size: 0;
+
+        transition: block-size .5s, content-visibility .5s;
+        transition-behavior: allow-discrete;
+    }
+
+    details[open]::details-content {
+        block-size: auto;
     }
 
     details[open] summary {
         background-color: gray;
+        z-index: 2;
     }
-
-
 
     /* Dit is hoe je de afgeronde hoekjes maakt */
     .hapje {

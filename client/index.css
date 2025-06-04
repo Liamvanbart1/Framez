@@ -31,8 +31,9 @@
 @import '../server/components/relation/relation.css';
 @import '../server/components/rel-tag/rel-tag.css';
 body {
-  color: var(--color-background);
+  color: var(--color-text);
   margin: 0 auto;
+  interpolate-size:allow-keywords;
 }
 
 main {
