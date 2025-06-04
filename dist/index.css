@@ -260,9 +260,6 @@ h2{
         }
     }
 }
-:root{
-  interpolate-size:allow-keywords;
-}
 .relation {
     background-color: var(--color-background-secondair);
     color: var(--color-text);
@@ -416,6 +413,7 @@ a:has(.tag){
 body {
   color: var(--color-background);
   margin: 0 auto;
+  interpolate-size:allow-keywords;
 }
 main {
   padding: 1rem;

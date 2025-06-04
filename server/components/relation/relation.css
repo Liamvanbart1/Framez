@@ -1,7 +1,3 @@
-:root{
-  interpolate-size:allow-keywords;
-}
-
 .relation {
     background-color: var(--color-background-secondair);
     color: var(--color-text);
