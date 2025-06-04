@@ -4,7 +4,9 @@
 {% block content %}
 <div class="detail-container">
   {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
-  <div>
+  <div class="relaties-container">
+    <h2>relaties:</h2>
+    <ul>
     {% for rel in relations %}
       {% if rel.node.content_nl != null and rel.node.content_nl != "" or if rel.node.content_en != null and rel.node.content_en != "" %}
         <p style="color: aqua;">hello</p>

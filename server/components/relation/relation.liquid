@@ -7,10 +7,19 @@
       {% assign displayText = title %}
     {% endif %}
 
-    {% if rel.node.guid and displayText %}
-      <a href="{{ rel.node.guid }}" class="event" target="_blank">
-        {{ displayText }}
-      </a>
+    {% assign rel_type = rel.type | downcase %}
+    {% assign uuid = rel.node.uuid %}
+
+    {% if displayText and uuid %}
+      {% if rel_type == "person" %}
+        <a href="/person/{{ uuid }}" class="event">{{ displayText }}</a>
+      {% elsif rel_type == "organisation" %}
+        <a href="/organisation/{{ uuid }}" class="event">{{ displayText }}</a>
+      {% elsif rel_type == "event" %}
+        <a href="/event/{{ uuid }}" class="event">{{ displayText }}</a>
+      {% else %}
+        <a href="/event/{{ uuid }}" class="organisation">{{ displayText }}</a>
+      {% endif %}
     {% else %}
       <p class="event">{{ displayText }}</p>
     {% endif %}
