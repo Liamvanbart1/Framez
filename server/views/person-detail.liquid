@@ -4,7 +4,7 @@
 <div class="detail-container">
   {% render 'server/components/detail-object/person-object.liquid', person: person, relations: relations %}
   <div class="relaties-container">
-    <h2>relaties:</h2>
+    <h2 class="test">relaties:</h2>
     <ul>
       {% for rel in relations %}
         {% render 'server/components/relation/relation.liquid', rel: rel %}

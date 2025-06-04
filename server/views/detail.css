@@ -3,10 +3,9 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    padding: 2rem;
 
     section{
-      margin: auto;
+      margin: 0 auto 0 auto;
       width: 60vw;
     }
   }
@@ -14,7 +13,7 @@
 
 
 
-.detail-container:has(.test) {
+.detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 4rem;
