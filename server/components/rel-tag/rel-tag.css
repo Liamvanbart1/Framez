@@ -8,5 +8,5 @@
 
 a:has(.tag){
     text-decoration: none;
-    color: black
+    color: var(--color-text)
 }

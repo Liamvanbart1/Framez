@@ -18,19 +18,19 @@
             "img text"
             "date date";
 
-    > .event {
-      grid-area: title;
-      justify-self: end;
-    }
+        >.event {
+            grid-area: title;
+            justify-self: end;
+        }
 
         .time-content {
             grid-area: date;
             /* padding: 0.5rem; */
         }
-        
+
         .logo {
             grid-area: logo;
-            fill:  white;
+            fill: var(--color-text);
             width: 100%;
             height: auto;
             align-self: end;
@@ -53,25 +53,28 @@
       justify-content: left;
     }
 
-    .object-content {
-      grid-area: text;
-      color: #cbc6b9;
-      height: 100%;
-      overflow-y: scroll;
-
+        .object-content {
+            grid-area: text;
+            color: var(--color-text);
+            height: 100%;
+            overflow-y: scroll;
+    
       scrollbar-color: #F9F6EE black;
       scrollbar-width: thin;
     }
 
-    img {
-      grid-area: img;
-      width: 100%;
-      height: auto;
-    }
+        img {
+            grid-area: img;
+            width: 100%;
+            height: auto;
+        }
 
         iframe {
             width: 100%;
             height: auto;
+        }
+        .tag{
+            color: black;
         }
 
         .hapje {

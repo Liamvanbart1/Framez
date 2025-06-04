@@ -7,7 +7,7 @@
 .relaties-container{
 
   h2 {
-  color: white;
+  color: var(--color-text);
   font-size: 3rem;
   }
 
