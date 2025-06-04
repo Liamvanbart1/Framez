@@ -1,7 +1,7 @@
 .detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 h2{
