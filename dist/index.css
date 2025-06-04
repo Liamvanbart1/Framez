@@ -111,7 +111,20 @@ footer {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-.detail-container {
+@media screen and (min-width: 768px) {
+  .detail-container:not(:has(.test)) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+
+    section{
+      margin: auto;
+      width: 60vw;
+    }
+  }
+}
+.detail-container:has(.test) {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 4rem;
