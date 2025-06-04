@@ -59,16 +59,14 @@ app.get("/event/:event", async (req, res) => {
   const uuid = req.params.event;
 
   try {
-    // 1. Haal event data op
     const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
     const response = await fetch(url);
     const json = await response.json();
 
     const event = json.node;
     const assets = json.assets || [];
-    const relations = (json.rels || []).filter((rel) => rel.type !== "asset"); // filter assets weg
+    const relations = (json.rels || []).filter((rel) => rel.type !== "asset");
 
-    // 2. Voor elke relatie haal subrelaties op (speciale route voor 'person')
     const relationsWithSubs = await Promise.all(
       relations.map(async (rel) => {
         if (!rel.node?.uuid) return rel;
@@ -76,32 +74,36 @@ app.get("/event/:event", async (req, res) => {
         try {
           let subRels = [];
 
-          if (rel.type == "person") {
-            // Speciaal pad voor personen
+          if (rel.type === "person") {
             const personUrl = `https://archive.framerframed.nl/api/rels-for/person/${rel.node.uuid}`;
             const personRes = await fetch(personUrl);
             const personJson = await personRes.json();
 
-            // Gebruik alleen niet-asset sub-relaties
-            subRels = (personJson.relations || []).filter(
-              (sub) => sub.type !== "asset"
-            );
+            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
 
-            // Person-data zelf zit in personJson.person
             return {
               ...rel,
-              node: personJson.person, // vervang met volledige person info
+              node: personJson.person,
+              rels: subRels,
+            };
+          } else if (rel.type === "organisation") {
+            const orgUrl = `https://archive.framerframed.nl/api/rels-for/organisation/${rel.node.uuid}`;
+            const orgRes = await fetch(orgUrl);
+            const orgJson = await orgRes.json();
+
+            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: orgJson.person, // Let op: key is 'person' ook bij organisatie API
               rels: subRels,
             };
           } else {
-            // Standaard pad
             const subUrl = `https://archive.framerframed.nl/api/node-by-id/${rel.node.uuid}`;
             const subRes = await fetch(subUrl);
             const subJson = await subRes.json();
 
-            subRels = (subJson.rels || []).filter(
-              (sub) => sub.type !== "asset"
-            );
+            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
 
             return {
               ...rel,
@@ -109,16 +111,12 @@ app.get("/event/:event", async (req, res) => {
             };
           }
         } catch (error) {
-          console.error(
-            `Fout bij ophalen sub-relaties van ${rel.node.uuid}:`,
-            error
-          );
+          console.error(`Fout bij ophalen sub-relaties van ${rel.node.uuid}:`, error);
           return { ...rel, rels: [] };
         }
       })
     );
 
-    // 3. Render de detailpagina
     return res.send(
       renderTemplate("server/views/detail.liquid", {
         title: event.title_nl || event.title_en || "Event detail",
@@ -137,7 +135,6 @@ app.get("/person/:uuid", async (req, res) => {
   const uuid = req.params.uuid;
 
   try {
-    // 1. Haal de persoon-relaties op (speciale API)
     const url = `https://archive.framerframed.nl/api/rels-for/person/${uuid}`;
     const response = await fetch(url);
     const json = await response.json();
@@ -145,7 +142,6 @@ app.get("/person/:uuid", async (req, res) => {
     const person = json.person;
     const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
 
-    // 2. Haal sub-relaties op per relatie
     const relationsWithSubs = await Promise.all(
       relations.map(async (rel) => {
         const relNode = rel.node || rel.object;
@@ -164,6 +160,18 @@ app.get("/person/:uuid", async (req, res) => {
             return {
               ...rel,
               node: personJson.person,
+              rels: subRels,
+            };
+          } else if (rel.type === "organisation") {
+            const orgUrl = `https://archive.framerframed.nl/api/rels-for/organisation/${relNode.uuid}`;
+            const orgRes = await fetch(orgUrl);
+            const orgJson = await orgRes.json();
+
+            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: orgJson.person,
               rels: subRels,
             };
           } else {
@@ -186,7 +194,6 @@ app.get("/person/:uuid", async (req, res) => {
       })
     );
 
-    // 3. Render pagina
     return res.send(
       renderTemplate("server/views/person-detail.liquid", {
         title: person.name || "Persoon",
@@ -208,7 +215,7 @@ app.get("/organisation/:uuid", async (req, res) => {
     const response = await fetch(url);
     const json = await response.json();
 
-    const organisation = json.person || {}; // fallback
+    const organisation = json.person || {};
     const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
 
     const relationsWithSubs = await Promise.all(
@@ -229,6 +236,18 @@ app.get("/organisation/:uuid", async (req, res) => {
             return {
               ...rel,
               node: personJson.person,
+              rels: subRels,
+            };
+          } else if (rel.type === "organisation") {
+            const orgUrl = `https://archive.framerframed.nl/api/rels-for/organisation/${relNode.uuid}`;
+            const orgRes = await fetch(orgUrl);
+            const orgJson = await orgRes.json();
+
+            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+
+            return {
+              ...rel,
+              node: orgJson.person,
               rels: subRels,
             };
           } else {
