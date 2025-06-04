@@ -13,17 +13,17 @@
 
     {% if displayText and uuid %}
       {% if rel_type == "person" %}
-        <a href="/person/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/person/{{ uuid }}" class="person rel title">{{ displayText }}</a>
       {% elsif rel_type == "organisation" %}
-        <a href="/organisation/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/organisation/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
       {% elsif rel_type == "event" %}
-        <a href="/event/{{ uuid }}" class="event">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
       {% else %}
-        <a href="/event/{{ uuid }}" class="organisation">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
       {% endif %}
 
     {% else %}
-      <p class="rel title event">{{ displayText }}</p>
+      <p class="rel title">{{ displayText }}</p>
     {% endif %}
 
     {% assign type = rel.node.type | default: rel.node.type_en | default: rel.node.type_nl | downcase %}
