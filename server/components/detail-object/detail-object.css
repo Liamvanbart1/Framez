@@ -1,4 +1,6 @@
 .object {
+    --color-background:black;
+
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
@@ -7,12 +9,11 @@
         display: grid;
         gap: 1rem;
         grid-template-columns: 2fr 3fr;
-        grid-template-rows: auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas:
             "title title"
             "rels rels"
             "img text"
-            "logo text"
             "date date";
 
     > .event {
@@ -35,6 +36,13 @@
 
     ul {
       grid-area: rels;
+
+      max-height: 7rem; 
+      overflow-y: auto;
+
+      scrollbar-color: #F9F6EE black;
+      scrollbar-width: thin;
+
       list-style: none;
       display: flex;
       flex-direction: row;
@@ -45,9 +53,12 @@
 
     .object-content {
       grid-area: text;
-      color: var(--color-text);
-      height: 75vh;
+      color: #cbc6b9;
+      height: 20rem;
       overflow-y: scroll;
+
+      scrollbar-color: #F9F6EE black;
+      scrollbar-width: thin;
     }
 
     img {

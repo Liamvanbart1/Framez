@@ -29,8 +29,10 @@
         {% elsif event.content_en %}
             <div class="object-content">{{ event.content_en }}</div>
         {% endif %}
-            <div class="time-content hapje">
-                <time class="year tag">17-05-2024</time>
-            </div>
+        <div class="time-content hapje">
+            <time class="year tag" datetime="{{ event.year }}-01-01">
+                {{ event.year }}
+            </time>
+        </div>
     </div>
 </section>
