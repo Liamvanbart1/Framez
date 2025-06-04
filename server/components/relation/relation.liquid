@@ -47,7 +47,11 @@
 
     {% if rel.rels and rel.rels.size > 0 %}
       <details class="skiplink rel">
-        <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        {% if rel.rels.size == 1 %}
+          <summary>Laat {{ rel.rels.size }} relatie zien</summary>
+        {% else %}
+          <summary>Laat {{ rel.rels.size }} relaties zien</summary>
+        {% endif %}
         <ul class="relation-relation">
           {% for subrel in rel.rels %}
             {% assign relNode = subrel.node | default: subrel.object %}
