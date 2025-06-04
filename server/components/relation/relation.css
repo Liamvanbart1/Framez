@@ -1,3 +1,7 @@
+:root{
+  interpolate-size:allow-keywords;
+}
+
 .relation {
     background-color: var(--color-background-secondair);
     color: var(--color-text);
@@ -12,10 +16,7 @@
     height: fit-content;
 
     grid-template:
-        [image-top] "image x title" auto [title] 
-        [image-bottom] "image alinea alinea" 1fr [alinea] 
-        [rels-left] "rels rels year" auto [rels-right] 
-        / 1fr 3fr auto;
+        [image-top] "image x title" auto [title] [image-bottom] "image alinea alinea" 1fr [alinea] [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
 
     p {
         grid-area: alinea;
@@ -71,8 +72,24 @@
             margin-bottom: .5rem;
             width: max-content;
 
-            list-style-type:  none;
+            list-style-type: none;
         }
+    }
+
+    /* animatie foldout relaties */
+    details {
+        overflow: hidden;
+    }
+
+    details::details-content {
+        block-size: 0;
+
+        transition: block-size .5s, content-visibility .5s;
+        transition-behavior: allow-discrete;
+    }
+
+    details[open]::details-content {
+        block-size: auto;
     }
 
     details[open] summary {
