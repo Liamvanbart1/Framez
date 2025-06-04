@@ -16,6 +16,7 @@
 body {
   color: var(--color-text);
   margin: 0 auto;
+  interpolate-size:allow-keywords;
 }
 
 main {

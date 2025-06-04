@@ -28,6 +28,7 @@
             /* padding: 0.5rem; */
         }
 
+
         .logo {
             grid-area: logo;
             fill: var(--color-text);
@@ -63,6 +64,11 @@
       scrollbar-width: thin;
     }
 
+        img {
+            grid-area: img;
+            width: 100%;
+            height: auto;
+        }
         img {
             grid-area: img;
             width: 100%;
