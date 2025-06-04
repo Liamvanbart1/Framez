@@ -1,0 +1,29 @@
+<section class="object">
+  <div class="object-container">
+    <h1 class="event tag">{{ organisation.name }}</h1>
+      <ul>
+        {% for rel in relations %}
+          {% if rel.node.name %}
+            <li>
+              {% if rel.node.title_en != null and rel.node.title_en != ""  or if rel.node.title_nl != null and rel.node.title_nl != ""%}
+                {% assign text = rel.node.title_en | default: rel.node.title_nl %}
+              {% else %}
+                {% assign text = rel.node.name %}
+              {% endif %}
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% if organisation.about_nl != "" %}
+      <div class="object-content">{{ organisation.about_nl }}</div>
+    {% elsif organisation.about_en %}
+      <div class="object-content">{{ organisation.about_en }}</div>
+    {% endif %}
+    {% if organisation.created %}
+      <div class="time-content hapje">
+        <time class="year tag">{{ organisation.created | date: "%d-%m-%Y" }}</time>
+      </div>
+    {% endif %}
+  </div>
+</section>
