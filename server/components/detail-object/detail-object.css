@@ -1,10 +1,12 @@
 .object {
     --color-background:black;
+    height: 90vh;
 
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
         border-radius: 8px;
+        height: 100%;
 
         display: grid;
         gap: 1rem;
@@ -54,7 +56,7 @@
     .object-content {
       grid-area: text;
       color: #cbc6b9;
-      height: 20rem;
+      height: 100%;
       overflow-y: scroll;
 
       scrollbar-color: #F9F6EE black;
