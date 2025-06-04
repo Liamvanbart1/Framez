@@ -5,39 +5,68 @@ body {
   --color-background-secondair: #1E1E1E;
 
   /* kleuren van de catogorien */
-  --color-publication: #C6A1CE;
+  --color-publication: #D55E00;
+  --color-person: #56B4E9;
+  --color-collective: #009E73;
+  --color-organisation: #F0E442;
+  --color-event: #E69F00;
+  --color-serie: #CC79A7;
+  /* slecht contrast */
+  --color-year: #0072B2;
+}
+
+/* check if it supports @media? */
+@media (prefers-color-scheme: light) {
+body {
+  /* standaardkleuren */
+  --color-text: #050100;
+  --color-background: white;
+  --color-background-secondair: rgb(235, 235, 235);
+
+  /* kleuren van de catogorien - kleurenblind-proof*/
+  --color-publication: #D55E00;
+  --color-person: #56B4E9;
+  --color-collective: #009E73;
+  --color-organisation: #F0E442;
+  --color-event: #E69F00;
+  --color-serie: #CC79A7;
+  /* niet contrastwaardig */
+  --color-year: #0072B2;
+} 
+}
+
+  /* OG kleuren */
+  /* --color-publication: #C6A1CE;
   --color-person: #AAF7B3;
   --color-collective: #8AC1A0;
   --color-organisation: #EFEDBD;
   --color-event: #FFC09A;
   --color-serie: #D67FA7;
-  --color-year: #8AB2D1;
-}
+  --color-year: #8AB2D1; */
 
 .publication {
   background-color: var(--color-publication);
 }
-
 .person {
   background-color: var(--color-person);
 }
-
 .collective {
   background-color: var(--color-collective);
 }
-
 .organisation {
   background-color: var(--color-organisation);
 }
-
 .event {
   background-color: var(--color-event);
 }
-
 .serie {
   background-color: var(--color-serie);
 }
-
 .year {
   background-color: var(--color-year);
+}
+
+.object, .report, .article {
+  /* FIXME: tijdelijke kleur type= article en report*/
+  background-color: teal;
 }
