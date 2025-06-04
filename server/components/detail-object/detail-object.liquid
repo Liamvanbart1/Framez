@@ -1,4 +1,4 @@
-<section class="object">
+<section class="detail-object">
     <div class="object-container">
         {% assign title = event.title_en | default: event.title_nl %}
         {% if title == nil or title == "" %}
@@ -6,7 +6,7 @@
         {% else %}
           {% assign EventTitle = title %}
         {% endif %}
-        <h1 class="event tag">{{ EventTitle }}</h1>
+        <h1 class="title">{{ EventTitle }}</h1>
         <ul>
             {% for rel in relations %}
                 {% if rel.node.name %}
@@ -29,8 +29,10 @@
         {% elsif event.content_en %}
             <div class="object-content">{{ event.content_en }}</div>
         {% endif %}
-            <div class="time-content hapje">
-                <time class="year tag">17-05-2024</time>
-            </div>
+        <div class="time-content hapje">
+            <time class="year tag" datetime="{{ event.year }}-01-01">
+                {{ event.year }}
+            </time>
+        </div>
     </div>
 </section>

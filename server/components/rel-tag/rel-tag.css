@@ -1,12 +1,13 @@
 .tag {
-    padding: 0.5rem;
+    padding: 0.2rem;
     text-align: center;
     text-transform: capitalize;
     width: fit-content;
     border-radius: 5px;
+    font-size: 0.7rem;
 }
 
 a:has(.tag){
     text-decoration: none;
-    color: black
+    color: var(--color-text)
 }

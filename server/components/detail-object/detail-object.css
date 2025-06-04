@@ -1,33 +1,37 @@
-.object {
+.detail-object {
+    --color-background:black;
+    height: 90vh;
+
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
         border-radius: 8px;
+        height: 100%;
 
         display: grid;
         gap: 1rem;
         grid-template-columns: 2fr 3fr;
-        grid-template-rows: auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto;
         grid-template-areas:
             "title title"
             "rels rels"
             "img text"
-            "logo text"
             "date date";
 
-    > .event {
-      grid-area: title;
-      justify-self: end;
-    }
+        >.title {
+            grid-area: title;
+            justify-self: end;
+        }
 
         .time-content {
             grid-area: date;
             /* padding: 0.5rem; */
         }
-        
+
+
         .logo {
             grid-area: logo;
-            fill:  white;
+            fill: var(--color-text);
             width: 100%;
             height: auto;
             align-self: end;
@@ -35,30 +39,48 @@
 
     ul {
       grid-area: rels;
+
+      max-height: 7rem; 
+      overflow-y: auto;
+
+      scrollbar-color: #F9F6EE black;
+      scrollbar-width: thin;
+
       list-style: none;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.2rem;
       justify-content: left;
     }
 
-    .object-content {
-      grid-area: text;
-      color: var(--color-text);
-      height: 75vh;
-      overflow-y: scroll;
+        .object-content {
+            grid-area: text;
+            color: var(--color-text);
+            height: 100%;
+            overflow-y: scroll;
+    
+      scrollbar-color: #F9F6EE black;
+      scrollbar-width: thin;
     }
 
-    img {
-      grid-area: img;
-      width: 100%;
-      height: auto;
-    }
+        img {
+            grid-area: img;
+            width: 100%;
+            height: auto;
+        }
+        img {
+            grid-area: img;
+            width: 100%;
+            height: auto;
+        }
 
         iframe {
             width: 100%;
             height: auto;
+        }
+        .tag{
+            color: black;
         }
 
         .hapje {
