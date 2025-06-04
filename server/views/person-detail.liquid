@@ -3,7 +3,7 @@
 {% block content %}
 <div class="detail-container">
   {% render 'server/components/detail-object/person-object.liquid', person: person, relations: relations %}
-  <div>
+  <div class="relaties-container">
     <h2>relaties:</h2>
     <ul>
       {% for rel in relations %}
