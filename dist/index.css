@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(../public/fonts/Favorit_Regular.otf);
+  src: url(/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(../public/fonts/Favorit_Light.otf);
+  src: url(/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(../public/fonts/Favorit_Bold.otf);
+  src: url(/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
@@ -68,18 +68,19 @@ p {
 }
 body {
   /* standaardkleuren */
-  --color-text: #CBC6B9;
+  --color-text: #cbc6b9;
   --color-background: #050100;
-  --color-background-secondair: #1E1E1E;
+  --color-background-secondair: #1e1e1e;
+  --color-white: #ffff;
 
   /* kleuren van de catogorien */
-  --color-publication: #C6A1CE;
-  --color-person: #AAF7B3;
-  --color-collective: #8AC1A0;
-  --color-organisation: #EFEDBD;
-  --color-event: #FFC09A;
-  --color-serie: #D67FA7;
-  --color-year: #8AB2D1;
+  --color-publication: #c6a1ce;
+  --color-person: #aaf7b3;
+  --color-collective: #8ac1a0;
+  --color-organisation: #efedbd;
+  --color-event: #ffc09a;
+  --color-serie: #d67fa7;
+  --color-year: #8ab2d1;
 }
 .publication {
   background-color: var(--color-publication);
@@ -106,18 +107,18 @@ body {
 body {
   background: var(--color-background);
   height: 100vh;
-  overflow: hidden;
 }
 header {
-  /* padding: 1rem; */
-  background-color: red;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
 }
 footer {
   padding: 1rem;
 }
 #search-overlay {
   position: fixed;
-  top: 60px; /* below your header */
+  top: 60px;
   left: 0;
   right: 0;
   background: white;
@@ -129,6 +130,11 @@ footer {
 }
 #search-overlay.hidden {
   display: none;
+}
+.logo {
+  margin-top: 0.8em;
+  margin-left: 2em;
+  margin-bottom: 0.5em;
 }
 .grid {
   display: grid;
@@ -144,14 +150,113 @@ h2{
   color: white;
   font-size: 3rem;
 }
-.detail-container>div>ul {
+.relaties-container>ul {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 96vh;
+  height: 85.7vh;
   overflow-y: scroll;
 }
+.eventlist {
+    color: white;
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    div {
+        max-width: 50em;
+
+        max-height: 85dvh;
+        overflow: scroll;
+    }
+
+    h1 {
+        position: sticky;
+        top: -1px;
+        background-color: black;
+        padding-bottom: .5rem;
+    }
+}
 /* component styling */
+.search-result {
+    background-color: #1E1E1E;
+    color: #CBC6B9;
+
+    border-radius: 8px;
+
+    display: grid;
+    grid-template: [title] "title date" auto [date] [type]"type type" auto[type] / 1fr auto;
+
+    margin-block: .5rem;
+    height: fit-content;
+
+    a {
+        grid-area: title;
+        text-decoration: none;
+        margin-right: .5rem;
+        /* font-family: favorit-bold; */
+        font-size: 1.5em;
+        color: #CBC6B9;
+
+        padding: .5rem;
+    }
+
+    p {
+        background-color: lightgrey;
+        grid-area: type;
+        color: black;
+        font-weight: bold;
+
+        padding: .2rem;
+        padding-inline: .5rem;
+
+        border-radius: 0 0 8px 8px;
+
+        text-align: end;
+
+        /* is het verwarrend dat de kleuren switchen van betekenis? */
+        &.Exhibition {
+            background-color: #FFC09A;
+        }
+
+        &.Launch,
+        &.Review,
+        &.News,
+        &.Report {
+            background-color: #AAF7B3;
+        }
+
+        &.Debate,
+        &.Talk,
+        &.Article,
+        &.Interview {
+            background-color: #C6A1CE;
+        }
+
+        &.Symposium,
+        &.Program {
+            background-color: #EFEDBD;
+        }
+
+        &.Public,
+        &.Educational {
+            background-color: #D67FA7;
+        }
+
+        &.Performance,
+        &.Film {
+            background-color: #8AB2D1;
+        }
+    }
+
+    time {
+        grid-area: date;
+        padding: .5rem;
+    }
+}
 .object {
     .object-container {
         padding: .5rem;
@@ -260,6 +365,17 @@ h2{
         }
     }
 }
+.tag {
+    padding: 0.5rem;
+    text-align: center;
+    text-transform: capitalize;
+    width: fit-content;
+    border-radius: 5px;
+}
+a:has(.tag){
+    text-decoration: none;
+    color: black
+}
 .relation {
     background-color: var(--color-background-secondair);
     color: var(--color-text);
@@ -274,7 +390,9 @@ h2{
     height: fit-content;
 
     grid-template:
-        [image-top] "image x title" auto [title] [image-bottom] "image alinea alinea" 1fr [alinea] [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
+        [image-top] "image x title" auto [title] 
+        [image-bottom] "image alinea alinea" 1fr [alinea] 
+        [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
 
     p {
         grid-area: alinea;
@@ -414,16 +532,17 @@ h2{
 
     }
 }
-.tag {
-    padding: 0.5rem;
-    text-align: center;
-    text-transform: capitalize;
-    width: fit-content;
-    border-radius: 5px;
-}
-a:has(.tag){
-    text-decoration: none;
-    color: black
+:root{
+/* standaardkleuren */
+  --color-text: #231f20;
+  --color-background: #FFFFFF;
+
+  /* kleuren van de huisstijl, gebruik er 1 per keer */
+  --color-accent1: #51C0E9;
+  --color-accent2: #F7C3E5;
+  --color-accent3: #BEC4E8;
+  --color-accent4: #EEDE52;
+  --color-accent5: #C7C1AC;
 }
 body {
   color: var(--color-background);
