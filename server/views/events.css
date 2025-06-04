@@ -1,0 +1,23 @@
+.eventlist {
+    color: white;
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    div {
+        max-width: 50em;
+
+        max-height: 85dvh;
+        overflow: scroll;
+    }
+
+    h1 {
+        position: sticky;
+        top: -1px;
+        background-color: black;
+        padding-bottom: .5rem;
+    }
+}
