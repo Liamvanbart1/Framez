@@ -33,15 +33,6 @@ body {
 } 
 }
 
-  /* OG kleuren */
-  /* --color-publication: #C6A1CE;
-  --color-person: #AAF7B3;
-  --color-collective: #8AC1A0;
-  --color-organisation: #EFEDBD;
-  --color-event: #FFC09A;
-  --color-serie: #D67FA7;
-  --color-year: #8AB2D1; */
-
 .publication {
   background-color: var(--color-publication);
 }
@@ -57,14 +48,10 @@ body {
 .event {
   background-color: var(--color-event);
 }
-.serie {
+.serie, .object, .report, .article {
   background-color: var(--color-serie);
 }
 .year {
   background-color: var(--color-year);
 }
 
-.object, .report, .article {
-  /* FIXME: tijdelijke kleur type= article en report*/
-  background-color: teal;
-}
