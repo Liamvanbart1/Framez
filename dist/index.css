@@ -124,10 +124,8 @@ body {
 body {
   background: var(--color-background);
   height: 100vh;
-  /* overflow: hidden; */
 }
 header {
-  /* padding: 1rem; */
   background-color: red;
 }
 footer {
@@ -157,16 +155,16 @@ footer {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   grid-template-rows: 90dvh;
-  /* grid-template-areas: "detail" "relations"; */
+  grid-template-areas: "detail" "relations";
   gap: 2rem;
 
-  h2 {
-    color: var(--color-text);
-  }
+  margin-inline:clamp(1rem, -9rem + 22.8571vw, 4rem);;
 
   .relaties-container {
     display: block;
-
+  h2 {
+    color: var(--color-text);
+  }
     ul {
       display: flex;
       flex-direction: column;
@@ -196,7 +194,7 @@ footer {
   }
 }
 .eventlist {
-    color: white;
+    color: var(--color-text);
     display: flex;
     justify-content: center;
 
@@ -214,14 +212,14 @@ footer {
     h1 {
         position: sticky;
         top: -1px;
-        background-color: black;
+        background-color: var(--color-background);
         padding-bottom: .5rem;
     }
 }
 /* component styling */
 .search-result {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
+    background-color: var(--color-background-secondair);
+    color: var(--color-text);
 
     border-radius: 8px;
 
@@ -237,13 +235,13 @@ footer {
         margin-right: .5rem;
         /* font-family: favorit-bold; */
         font-size: 1.5em;
-        color: #CBC6B9;
+        color: var(--color-text);
 
         padding: .5rem;
     }
 
     p {
-        background-color: lightgrey;
+        background-color: var(--color-background-secondair);
         grid-area: type;
         color: black;
         font-weight: bold;
@@ -256,37 +254,37 @@ footer {
         text-align: end;
 
         /* is het verwarrend dat de kleuren switchen van betekenis? */
-        &.Exhibition {
-            background-color: #FFC09A;
+        &.Exhibition, 
+        &.Launch {
+            background-color: var(--color-publication);
         }
 
-        &.Launch,
         &.Review,
         &.News,
         &.Report {
-            background-color: #AAF7B3;
+            background-color: var(--color-person);
         }
 
         &.Debate,
         &.Talk,
         &.Article,
         &.Interview {
-            background-color: #C6A1CE;
+            background-color: var(--color-collective);
         }
 
         &.Symposium,
         &.Program {
-            background-color: #EFEDBD;
+            background-color: var(--color-organisation);
         }
 
         &.Public,
         &.Educational {
-            background-color: #D67FA7;
+            background-color: var(--color-event);
         }
 
         &.Performance,
         &.Film {
-            background-color: #8AB2D1;
+            background-color: var(--color-serie);
         }
     }
 
@@ -505,6 +503,9 @@ a:has(.tag){
             border-radius: 5px;
             padding: .5rem;
             margin-bottom: .5rem;
+
+            font-family: favorit-light, Arial, sans-serif;
+
 
             /* width: max-content;
             max-width: 15rem; */

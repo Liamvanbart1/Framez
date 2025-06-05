@@ -1,6 +1,6 @@
 .search-result {
-    background-color: #1E1E1E;
-    color: #CBC6B9;
+    background-color: var(--color-background-secondair);
+    color: var(--color-text);
 
     border-radius: 8px;
 
@@ -16,13 +16,13 @@
         margin-right: .5rem;
         /* font-family: favorit-bold; */
         font-size: 1.5em;
-        color: #CBC6B9;
+        color: var(--color-text);
 
         padding: .5rem;
     }
 
     p {
-        background-color: lightgrey;
+        background-color: var(--color-background-secondair);
         grid-area: type;
         color: black;
         font-weight: bold;
@@ -35,37 +35,37 @@
         text-align: end;
 
         /* is het verwarrend dat de kleuren switchen van betekenis? */
-        &.Exhibition {
-            background-color: #FFC09A;
+        &.Exhibition, 
+        &.Launch {
+            background-color: var(--color-publication);
         }
 
-        &.Launch,
         &.Review,
         &.News,
         &.Report {
-            background-color: #AAF7B3;
+            background-color: var(--color-person);
         }
 
         &.Debate,
         &.Talk,
         &.Article,
         &.Interview {
-            background-color: #C6A1CE;
+            background-color: var(--color-collective);
         }
 
         &.Symposium,
         &.Program {
-            background-color: #EFEDBD;
+            background-color: var(--color-organisation);
         }
 
         &.Public,
         &.Educational {
-            background-color: #D67FA7;
+            background-color: var(--color-event);
         }
 
         &.Performance,
         &.Film {
-            background-color: #8AB2D1;
+            background-color: var(--color-serie);
         }
     }
 

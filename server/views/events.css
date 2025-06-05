@@ -1,5 +1,5 @@
 .eventlist {
-    color: white;
+    color: var(--color-text);
     display: flex;
     justify-content: center;
 
@@ -17,7 +17,7 @@
     h1 {
         position: sticky;
         top: -1px;
-        background-color: black;
+        background-color: var(--color-background);
         padding-bottom: .5rem;
     }
 }

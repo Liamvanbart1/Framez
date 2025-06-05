@@ -84,6 +84,33 @@
       </details>
     {% endif %}
 
+
+{% if rel.rels and rel.rels.size > 0 %}
+      <details class="skiplink rel">
+        {% if rel.rels.size == 1 %}
+          <summary>relatie van {{ displayText }} </summary>
+        {% else %}
+          <summary>{{ rel.rels.size }} relaties van {{ displayText }} </summary>
+        {% endif %}
+        <ul class="relation-relation">
+          {% for subrel in rel.rels %}
+            {% assign relNode = subrel.node | default: subrel.object %}
+            {% assign title = relNode.title_en | default: relNode.title_nl %}
+            {% if title == nil or title == "" %}
+              {% assign displayText = relNode.name %}
+            {% else %}
+              {% assign displayText = title %}
+            {% endif %}
+            {% if displayText %}
+              <li>
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: displayText, class_name: subrel.type | downcase %}
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </details>
+    {% endif %}
+
     {% if rel.node.year %}
       <div class="hapje">
         <time class="year rel" datetime="{{ rel.node.year }}-01-01">

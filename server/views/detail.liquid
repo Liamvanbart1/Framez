@@ -3,8 +3,9 @@
 
 {% block content %}
 <div class="detail-container">
+  <div class="main-container">
   {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
-  
+  </div>
   <div class="relaties-container">
       {% if relations.size > 0 %}
         <h2 class="test">relaties:</h2>
