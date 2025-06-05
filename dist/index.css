@@ -111,21 +111,17 @@ footer {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-@media screen and (min-width: 768px) {
-  .detail-container:not(:has(.test)) {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-
-    section{
-      margin: 0 auto 0 auto;
-      width: 60vw;
-    }
-  }
-}
 .detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
+  gap: 4rem;
+}
+.detail-container:not(:has(.relaties-container ul)) {
+  width: 60%;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.6fr;
   gap: 4rem;
 }
 h2{
@@ -138,6 +134,12 @@ h2{
   gap: 1rem;
   height: 85.7vh;
   overflow-y: scroll;
+}
+.relaties-container {
+  display: none;
+}
+.relaties-container {
+  display: block;
 }
 /* component styling */
 .publication {
