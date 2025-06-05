@@ -4,6 +4,7 @@
 {% block content %}
 <div class="detail-container">
   {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
+  
   <div class="relaties-container">
       {% if relations.size > 0 %}
         <h2 class="test">relaties:</h2>
