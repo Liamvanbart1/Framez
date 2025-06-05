@@ -16,6 +16,7 @@
                     {% else %}
                         {% assign text = rel.node.name %}
                     {% endif %}
+                    
                     {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
                 </li>
                 {% endif %}
