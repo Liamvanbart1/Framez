@@ -4,7 +4,19 @@
   gap: 2rem;
 }
 
-.relaties-container{
+.detail-container:not(:has(.relaties-container ul)) {
+  width: 60%;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.6fr;
+  gap: 4rem;
+}
+
+h2{
+  color: white;
+  font-size: 3rem;
+}
 
   h2 {
   color: var(--color-text);
@@ -21,4 +33,11 @@
     scrollbar-width: thin;
     scrollbar-color: #F9F6EE black;
   }
+
+.relaties-container {
+  display: none;
+}
+
+.relaties-container {
+  display: block;
 }
