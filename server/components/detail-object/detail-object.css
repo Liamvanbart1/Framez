@@ -11,48 +11,49 @@
         display: grid;
         gap: 1rem;
         grid-template-columns: 2fr 3fr;
-        grid-template-rows: auto auto auto auto;
+        grid-template-rows: min-content min-content auto min-content;
         grid-template-areas:
             "title title"
             "rels rels"
             "img text"
             "date date";
 
-        >.title {
+        .title {
             grid-area: title;
             justify-self: end;
+            height: fit-content;
         }
 
         .time-content {
             grid-area: date;
-            /* padding: 0.5rem; */
+            
+            .rel {
+            color: black;
+            width: fit-content;
+            height: fit-content;
+            border-radius: 8px;
+            padding: 8px;
+            padding-inline: 12px;
+            text-decoration: none;
+            }
         }
 
+        ul {
+          grid-area: rels;
 
-        .logo {
-            grid-area: logo;
-            fill: var(--color-text);
-            width: 100%;
-            height: auto;
-            align-self: end;
+          max-height: 7rem; 
+          overflow-y: auto;
+
+          scrollbar-color: #F9F6EE black;
+          scrollbar-width: thin;
+
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0.2rem;
+          justify-content: left;
         }
-
-    ul {
-      grid-area: rels;
-
-      max-height: 7rem; 
-      overflow-y: auto;
-
-      scrollbar-color: #F9F6EE black;
-      scrollbar-width: thin;
-
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-      justify-content: left;
-    }
 
         .object-content {
             grid-area: text;
@@ -60,15 +61,10 @@
             height: 100%;
             overflow-y: scroll;
     
-      scrollbar-color: #F9F6EE black;
-      scrollbar-width: thin;
-    }
-
-        img {
-            grid-area: img;
-            width: 100%;
-            height: auto;
+            scrollbar-color: #F9F6EE black;
+            scrollbar-width: 8px;
         }
+
         img {
             grid-area: img;
             width: 100%;
