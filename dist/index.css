@@ -154,11 +154,8 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 :hover, :active, :focus{
-  /* outline:dashed var(--color-title) 3px; */
+  outline:solid var(--color-title) 3px;
   box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275), 3px 3px 3px rgba(65, 65, 65, 0.275);
-  /* background-color: hotpink; */
-  /* filter: brightness(2); */
-  font-weight: bold;
 }
 .detail-container {
   display: grid;
@@ -483,6 +480,8 @@ a:has(.tag){
     .title {
         grid-area: title;
         font-weight: bold;
+
+        max-width: 15rem;
 
         /* zorgen dat de hele kaart klikbaar is */
         &::before {

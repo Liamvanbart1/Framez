@@ -33,6 +33,8 @@
         grid-area: title;
         font-weight: bold;
 
+        max-width: 15rem;
+
         /* zorgen dat de hele kaart klikbaar is */
         &::before {
             content: "";
