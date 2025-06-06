@@ -42,10 +42,10 @@
 
         ul {
             grid-area: rels;
-            max-height: 7rem;
-            /* overflow-y: auto; */
+            max-height: 3.8rem;
+            overflow-y: auto;
 
-            scrollbar-color: #F9F6EE black;
+            scrollbar-color: var(--color-title) var(--color-background-secondair);
             scrollbar-width: thin;
 
             list-style: none;
@@ -53,17 +53,15 @@
             flex-direction: row;
             flex-wrap: wrap;
             gap: 0.2rem;
-            /* justify-content: left; */
         }
+
 
         .object-content {
             grid-area: text;
             color: var(--color-text);
-            /* height: 100%; */
-            /* max-height:; */
             overflow-y: scroll;
 
-            scrollbar-color: #F9F6EE black;
+            scrollbar-color: var(--color-title) var(--color-background-secondair);
             scrollbar-width: 8px;
         }
 
@@ -105,7 +103,7 @@
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg; 
+                rotate: 90deg;
             }
 
             :after {
