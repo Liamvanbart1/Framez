@@ -31,20 +31,10 @@
         <div class="object-content">{{ event.content_en }}</div>
         {% endif %}
         <div class="time-content hapje">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <time class="year tag">17-05-2024</time>
-        </div>
-        <div class="time-content hapje">
-            <time class="year tag">17-05-2024</time>
-=======
             <time class="year tag" datetime="{{ event.year }}-01-01">
-=======
-            <time class="year rel" datetime="{{ event.year }}-01-01">
->>>>>>> 88226378120261b32bd779afa16b10a1c12cae03
-                {{ event.year }}
-            </time>
->>>>>>> 4ecc6db16754c9e52b3db499b172a550e99b75be
+                <time class="year rel" datetime="{{ event.year }}-01-01">
+                    {{ event.year }}
+                </time>
         </div>
     </div>
 </section>
