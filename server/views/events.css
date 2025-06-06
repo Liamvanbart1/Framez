@@ -1,5 +1,5 @@
 .eventlist {
-    color: var(--color-text);
+    color: var(--color-title);
     display: flex;
     justify-content: center;
 
@@ -12,6 +12,9 @@
 
         max-height: 85dvh;
         overflow: scroll;
+
+        scrollbar-color: var(--color-title) var(--color-background);
+        scrollbar-width: thin;
     }
 
     h1 {

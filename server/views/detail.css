@@ -14,9 +14,10 @@
     h2 {
       color: var(--color-title);
       font-size: 1.5em;
+      padding-block: .5rem;
     }
 
-    & > ul {
+    &>ul {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -41,9 +42,11 @@
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 60rem) {
   .detail-container {
     grid-template-columns: 1fr;
     grid-template-rows: 70dvh auto;
+
+    width: min(100% - 4rem, 45rem);
   }
 }

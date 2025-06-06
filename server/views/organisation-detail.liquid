@@ -5,7 +5,7 @@
   {% render 'server/components/detail-object/organisation-object.liquid', organisation: organisation, relations: relations %}
   <div class="relaties-container">
     {% if relations.size > 0 %}
-        <h2 class="test">relaties:</h2>
+        <h2 class="test">gerelateerde onderwerpen:</h2>
         <ul>
           {% for rel in relations %}
             {% render 'server/components/relation/relation.liquid', rel: rel %}

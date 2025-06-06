@@ -22,7 +22,7 @@
     }
 
     p {
-        background-color: var(--color-background-secondair);
+        background-color: lightgray;
         grid-area: type;
         color: black;
         font-weight: bold;
@@ -64,7 +64,7 @@
         }
 
         &.Performance,
-        &.Film {
+        &.Film, &.Video &.Podcast {
             background-color: var(--color-serie);
         }
     }

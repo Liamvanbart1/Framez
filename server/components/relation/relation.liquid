@@ -45,47 +45,8 @@
       <p>{{ text | strip_html | truncate: 300 }}</p>
     {% endif %}
 
-    {% if rel.rels and rel.rels.size > 0 %}
-      <details class="skiplink rel">
-        {% comment %} mogelijk alleen de extra displaytext voor screenreaders?decluttering {% endcomment %}
-        {% if rel.rels.size == 1 %}
-          <summary>relatie van {{ displayText }} </summary>
-        {% else %}
-          <summary>{{ rel.rels.size }} relaties van {{ displayText }} </summary>
-        {% endif %}
-        <ul class="relation-relation">
-          {% for subrel in rel.rels %}
 
-            <li>
-              {% if subrel.node.name %}
-                {% assign relNode = subrel.node | default: subrel.object %}
-
-              {% elsif relNode.title_nl %}
-                {% assign title = relNode.title_en | default: relNode.title_nl %}
-                {% render 'server/components/rel-tag/rel-tag.liquid', rel: title, class_name: subrel.type %}
-                {% comment %} <p>nl title: {{relNode.title_nl}}</p> {% endcomment %}
-              {% else %}
-              {% assign title = relNode.title_en | default: relNode.title_nl %}
-              {% render 'server/components/rel-tag/rel-tag.liquid', rel: title, class_name: subrel.type %}
-              
-                {% comment %} <p>en title: {{relNode.title_en}}</p> {% endcomment %}
-              {% endif %}
-
-              {% comment %} {% assign displayText = title %}
-                {% if title == nil or title == "" %}
-                  {% assign displayText = relNode.name %}
-                {% endif %}
-                <p>{{relNode.title_nl}}+{{relNode.title_en}}+{{relNode.name}}</p>
-              {% render 'server/components/rel-tag/rel-tag.liquid', rel: displayText, class_name: subrel.type %} {% endcomment %}
-            </li>
-
-          {% endfor %}
-        </ul>
-      </details>
-    {% endif %}
-
-
-{% if rel.rels and rel.rels.size > 0 %}
+  {% if rel.rels and rel.rels.size > 0 %}
       <details class="skiplink rel">
         {% if rel.rels.size == 1 %}
           <summary>relatie van {{ displayText }} </summary>
