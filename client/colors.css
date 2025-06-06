@@ -3,6 +3,7 @@ body {
   --color-text: #CBC6B9;
   --color-background: #050100;
   --color-background-secondair: #1E1E1E;
+  --color-title:white;
 
   /* kleuren van de catogorien */
   --color-publication: #D55E00;
@@ -21,6 +22,7 @@ body {
   --color-text: #050100;
   --color-background: white;
   --color-background-secondair: #e1e1e1;
+  --color-title:black;
 
   /* kleuren van de catogorien - kleurenblind-proof*/
   --color-publication: #D55E00;

@@ -71,6 +71,7 @@ body {
   --color-text: #CBC6B9;
   --color-background: #050100;
   --color-background-secondair: #1E1E1E;
+  --color-title:white;
 
   /* kleuren van de catogorien */
   --color-publication: #D55E00;
@@ -88,6 +89,7 @@ body {
   --color-text: #050100;
   --color-background: white;
   --color-background-secondair: #e1e1e1;
+  --color-title:black;
 
   /* kleuren van de catogorien - kleurenblind-proof*/
   --color-publication: #D55E00;
@@ -158,13 +160,22 @@ footer {
   grid-template-areas: "detail" "relations";
   gap: 2rem;
 
-  margin-inline:clamp(1rem, -9rem + 22.8571vw, 4rem);;
+  /* tijdelijk tot er een beter oplossing gevonden kan worden met grid */
+  /* margin-inline: max(1.5rem,((100%-75rem)/2)); */
+  /* background-color: aquamarine; */
+  width: min(100% - 4rem, 90rem);
+  /* width: max(75%); */
+  margin-inline: auto;
+
 
   .relaties-container {
     display: block;
-  h2 {
-    color: var(--color-text);
-  }
+
+    h2 {
+      color: var(--color-title);
+      font-size: 1.5em;
+    }
+
     ul {
       display: flex;
       flex-direction: column;
@@ -316,6 +327,9 @@ footer {
             grid-area: title;
             justify-self: end;
             height: fit-content;
+
+            color: var(--color-title);
+            font-size: 2em;
         }
 
         .time-content {
@@ -397,7 +411,7 @@ footer {
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
+                rotate: 90deg; 
             }
 
             :after {

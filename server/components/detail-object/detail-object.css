@@ -21,6 +21,9 @@
             grid-area: title;
             justify-self: end;
             height: fit-content;
+
+            color: var(--color-title);
+            font-size: 2em;
         }
 
         .time-content {
@@ -102,7 +105,7 @@
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
+                rotate: 90deg; 
             }
 
             :after {
