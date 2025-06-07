@@ -2,10 +2,26 @@
 
 {% block content %}
 
-<h1 class="h1">{{ title }}</h1>
+<div class="home-container">
+  <section class="homeleft-container">
+    <h1>
+      Search the digital archive
+    </h1>
+    <ul>
+      <li>Person</li>
+      <li>Collective</li>
+      <li>Organisation</li>
+      <li>Event</li>
+      <li>Event</li>
+      <li>Serie</li>
+      <li>Year</li>
+    </ul>
+  </section>
+
+</div>
 <ul class="grid">
   {% for item in years %}
-    <a href="/year/{{item.year}}">{{item.year}}</a>
-  {% endfor %} 
+  <a href="/year/{{item.year}}">{{item.year}}</a>
+  {% endfor %}
 </ul>
 {% endblock %}

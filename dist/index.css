@@ -173,6 +173,27 @@ footer {
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+.home-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+
+  .homeleft-container {
+    height: 90vh;
+    padding: 0.5rem;
+    background-color: var(--color-background-secondair);
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: min-content min-content auto min-content;
+    grid-template-areas:
+      "title title"
+      "rels rels"
+      "img text"
+      "date date";
+  }
+}
 .detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
