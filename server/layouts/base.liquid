@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <a href="/">
       <svg class="logo" width="220" height="83.09" viewBox="0 0 247 93" xmlns="http://www.w3.org/2000/svg">
         <title>logo</title>
@@ -25,12 +25,12 @@
         </g>
       </svg>
     </a>
-    <form id="search-form" onsubmit="return false;">
-      <input type="text" id="search-input" placeholder="Search..." />
+    <form id="framez-search-form" class="framez-search-form" onsubmit="return false;">
+      <input type="text" id="framez-search-input" class="framez-search-input" placeholder="Search..." />
+      <div id="framez-search-overlay" class="framez-search-overlay hidden">
+        <div id="framez-search-results" class="framez-search-results"></div>
+      </div>
     </form>
-    <div id="search-overlay" class="hidden">
-      <div id="search-results"></div>
-    </div>
   </header>
   <main>
     {% block content %}{% endblock %}

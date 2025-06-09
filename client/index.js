@@ -37,14 +37,18 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
         const data = await res.json();
 
         if (data.results && data.results.length > 0) {
-          const filtered = data.results.filter((result) =>
-            allowedTypes.includes(result.nodetype?.toLowerCase())
+          // Filter results to include only allowed types and ensure uuid exists
+          const filtered = data.results.filter(
+            (result) =>
+              result.uuid &&
+              result.nodetype &&
+              allowedTypes.includes(result.nodetype.toLowerCase())
           );
 
           if (filtered.length > 0) {
             resultsContainer.innerHTML = filtered
               .map((result) => {
-                const type = result.nodetype?.toLowerCase();
+                const type = result.nodetype.toLowerCase();
                 const title =
                   result.title || result.title_en || result.name || "No title";
                 return `
@@ -60,8 +64,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
                   </li>`;
               })
               .join("");
-
-            resultsContainer.style.display = "block"; // show results container
+            resultsContainer.style.display = "block";
             overlay?.classList.remove("hidden");
           } else {
             resultsContainer.innerHTML = "<li>No results found</li>";
@@ -123,6 +126,10 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
   });
 }
 
-// Setup the search instances
-setupSearch("#search-input", "#search-results", "#search-overlay"); // header
+// Setup search instances
+setupSearch(
+  "#framez-search-input",
+  "#framez-search-results",
+  "#framez-search-overlay"
+); // header
 setupSearch("#search", ".search-results"); // homepage
