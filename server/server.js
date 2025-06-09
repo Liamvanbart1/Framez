@@ -79,7 +79,9 @@ app.get("/event/:event", async (req, res) => {
             const personRes = await fetch(personUrl);
             const personJson = await personRes.json();
 
-            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (personJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -91,7 +93,9 @@ app.get("/event/:event", async (req, res) => {
             const orgRes = await fetch(orgUrl);
             const orgJson = await orgRes.json();
 
-            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (orgJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -103,7 +107,9 @@ app.get("/event/:event", async (req, res) => {
             const subRes = await fetch(subUrl);
             const subJson = await subRes.json();
 
-            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
+            subRels = (subJson.rels || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -111,7 +117,10 @@ app.get("/event/:event", async (req, res) => {
             };
           }
         } catch (error) {
-          console.error(`Fout bij ophalen sub-relaties van ${rel.node.uuid}:`, error);
+          console.error(
+            `Fout bij ophalen sub-relaties van ${rel.node.uuid}:`,
+            error
+          );
           return { ...rel, rels: [] };
         }
       })
@@ -140,7 +149,9 @@ app.get("/person/:uuid", async (req, res) => {
     const json = await response.json();
 
     const person = json.person;
-    const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
+    const relations = (json.relations || []).filter(
+      (rel) => rel.type !== "asset"
+    );
 
     const relationsWithSubs = await Promise.all(
       relations.map(async (rel) => {
@@ -155,7 +166,9 @@ app.get("/person/:uuid", async (req, res) => {
             const personRes = await fetch(personUrl);
             const personJson = await personRes.json();
 
-            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (personJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -167,7 +180,9 @@ app.get("/person/:uuid", async (req, res) => {
             const orgRes = await fetch(orgUrl);
             const orgJson = await orgRes.json();
 
-            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (orgJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -179,7 +194,9 @@ app.get("/person/:uuid", async (req, res) => {
             const subRes = await fetch(subUrl);
             const subJson = await subRes.json();
 
-            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
+            subRels = (subJson.rels || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -188,7 +205,10 @@ app.get("/person/:uuid", async (req, res) => {
             };
           }
         } catch (error) {
-          console.error(`Fout bij ophalen sub-relaties van ${relNode.uuid}:`, error);
+          console.error(
+            `Fout bij ophalen sub-relaties van ${relNode.uuid}:`,
+            error
+          );
           return { ...rel, rels: [] };
         }
       })
@@ -216,7 +236,9 @@ app.get("/organisation/:uuid", async (req, res) => {
     const json = await response.json();
 
     const organisation = json.person || {};
-    const relations = (json.relations || []).filter((rel) => rel.type !== "asset");
+    const relations = (json.relations || []).filter(
+      (rel) => rel.type !== "asset"
+    );
 
     const relationsWithSubs = await Promise.all(
       relations.map(async (rel) => {
@@ -231,7 +253,9 @@ app.get("/organisation/:uuid", async (req, res) => {
             const personRes = await fetch(personUrl);
             const personJson = await personRes.json();
 
-            subRels = (personJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (personJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -243,7 +267,9 @@ app.get("/organisation/:uuid", async (req, res) => {
             const orgRes = await fetch(orgUrl);
             const orgJson = await orgRes.json();
 
-            subRels = (orgJson.relations || []).filter((sub) => sub.type !== "asset");
+            subRels = (orgJson.relations || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -255,7 +281,9 @@ app.get("/organisation/:uuid", async (req, res) => {
             const subRes = await fetch(subUrl);
             const subJson = await subRes.json();
 
-            subRels = (subJson.rels || []).filter((sub) => sub.type !== "asset");
+            subRels = (subJson.rels || []).filter(
+              (sub) => sub.type !== "asset"
+            );
 
             return {
               ...rel,
@@ -264,7 +292,10 @@ app.get("/organisation/:uuid", async (req, res) => {
             };
           }
         } catch (error) {
-          console.error(`Fout bij ophalen sub-relaties van ${relNode.uuid}:`, error);
+          console.error(
+            `Fout bij ophalen sub-relaties van ${relNode.uuid}:`,
+            error
+          );
           return { ...rel, rels: [] };
         }
       })
