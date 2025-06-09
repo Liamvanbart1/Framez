@@ -25,9 +25,21 @@
             <img src="{{ assets[0].origin }}" alt="" />
         {% endif %}
         {% if event.content_nl != "" %}
-            <div class="object-content">{{ event.content_nl }}</div>
+            <section class="object-content scroll-root">
+                <div class="scroll-viewport">
+                    <div class="scroll-content">
+                        {{ event.content_nl }}
+                    </div>
+                </div>
+            </section>
         {% elsif event.content_en %}
-            <div class="object-content">{{ event.content_en }}</div>
+            <section class="object-content scroll-root">
+                <div class="scroll-viewport">
+                    <div class="scroll-content">
+                        {{ event.content_en }}
+                    </div>
+                </div>
+            </section>
         {% endif %}
         <div class="time-content hapje">
             <time class="year rel" datetime="{{ event.year }}-01-01">
