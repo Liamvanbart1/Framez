@@ -4,7 +4,7 @@ body {
 }
 
 header {
-  background-color: var(--color-white);
+  background-color: var(--color-background-secundair);
   display: flex;
   justify-content: space-between;
 }
