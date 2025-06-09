@@ -7,17 +7,11 @@
   border-radius: 8px;
   display: grid;
   grid-template-areas:
-    "logo"
     "title"
     "types"
     "search";
   row-gap: 1rem;
   place-items: center;
-
-  .logo {
-    fill: white;
-    grid-area: logo;
-  }
 
   .type-list {
     display: flex;
