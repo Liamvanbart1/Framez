@@ -1,7 +1,108 @@
-.grid {
+.home-container {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 1fr;
+  height: 90vh;
+  padding: 0.5rem;
+  background-color: var(--color-background-secondair);
+  border-radius: 8px;
+  display: grid;
+  grid-template-areas:
+    "logo"
+    "title"
+    "types"
+    "search";
+  row-gap: 1rem;
+  place-items: center;
+
+  .logo {
+    fill: white;
+    grid-area: logo;
+  }
+
+  .type-list {
+    display: flex;
+    gap: 1em;
+    grid-area: types;
+  }
+
+  .home-title {
+    display: flex;
+    flex-direction: column;
+    color: #f3f0ea;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .home-title .line1 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .home-title .highlight {
+    font-weight: 900;
+    font-size: 4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .home-title .light {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: lowercase;
+    color: #f3f0ea;
+  }
+
+  .home-title .line2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-top: 0.3rem;
+  }
+
+  .search-container {
+    background: rgba(250, 240, 230, 0.9);
+    border-radius: 12px;
+    padding: 1rem;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    padding: 0.5rem 0;
+  }
+
+  .search-input-wrapper input {
+    flex: 1;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .search-input-wrapper button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .search-results {
+    height: 10em;
+    overflow: scroll;
+    list-style: none;
+    padding: 0.5rem 0 0 0;
+    margin: 0;
+  }
+
+  .search-results li {
+    font-size: 1.5rem;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+  }
 }
 
 :hover, :active, :focus{

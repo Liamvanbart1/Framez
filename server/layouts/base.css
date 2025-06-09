@@ -4,7 +4,9 @@ body {
 }
 
 header {
-  background-color: red;
+  background-color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
 }
 
 footer {
@@ -13,7 +15,7 @@ footer {
 
 #search-overlay {
   position: fixed;
-  top: 60px; /* below your header */
+  top: 60px;
   left: 0;
   right: 0;
   background: white;
@@ -26,4 +28,10 @@ footer {
 
 #search-overlay.hidden {
   display: none;
+}
+
+.logo {
+  margin-top: 0.8em;
+  margin-left: 2em;
+  margin-bottom: 0.5em;
 }

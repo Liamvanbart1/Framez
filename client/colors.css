@@ -1,18 +1,18 @@
 body {
   /* standaardkleuren */
-  --color-text: #CBC6B9;
+  --color-text: #cbc6b9;
   --color-background: #050100;
   --color-background-secondair: #1E1E1E;
   --color-title:white;
 
   /* kleuren van de catogorien */
-  --color-publication: #D55E00;
-  --color-person: #56B4E9;
-  --color-collective: #009E73;
-  --color-organisation: #F0E442;
-  --color-event: #E69F00;
-  --color-serie: #CC79A7;
-  --color-year: #56E04E;
+  --color-publication: #d55e00;
+  --color-person: #56b4e9;
+  --color-collective: #009e73;
+  --color-organisation: #f0e442;
+  --color-event: #e69f00;
+  --color-serie: #cc79a7;
+  --color-year: #56e04e;
 }
 
 /* check if it supports @media? */
@@ -24,15 +24,15 @@ body {
   --color-background-secondair: #e1e1e1;
   --color-title:black;
 
-  /* kleuren van de catogorien - kleurenblind-proof*/
-  --color-publication: #D55E00;
-  --color-person: #56B4E9;
-  --color-collective: #009E73;
-  --color-organisation: #F0E442;
-  --color-event: #E69F00;
-  --color-serie: #CC79A7;
-  --color-year: #56E04E;
-} 
+    /* kleuren van de catogorien - kleurenblind-proof*/
+    --color-publication: #d55e00;
+    --color-person: #56b4e9;
+    --color-collective: #009e73;
+    --color-organisation: #f0e442;
+    --color-event: #e69f00;
+    --color-serie: #cc79a7;
+    --color-year: #56e04e;
+  }
 }
 
 .publication {
