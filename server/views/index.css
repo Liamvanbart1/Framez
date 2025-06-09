@@ -1,7 +1,7 @@
 .home-container {
   display: grid;
   grid-template-columns: 1fr;
-  height: 90vh;
+  height: 50vh;
   padding: 0.5rem;
   background-color: var(--color-background-secondair);
   border-radius: 8px;
@@ -102,5 +102,13 @@
     font-size: 1.5rem;
     padding: 0.3rem 0;
     border-bottom: 1px solid transparent;
+  }
+
+  li {
+    color: black;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    padding: 8px;
   }
 }
