@@ -1,6 +1,6 @@
 .detail-object {
     --color-background: black;
-    height: 90vh;
+    height: calc(82dvh - .5rem);
 
     .object-container {
         padding: .5rem;
@@ -268,5 +268,11 @@
             }
         }
 
+    }
+}
+
+@media (max-width: 60rem) {
+    .detail-object {
+        height: calc(70dvh - .5rem);
     }
 }
