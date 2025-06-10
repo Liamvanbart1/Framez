@@ -439,7 +439,7 @@ footer {
     }
 }
 .detail-object {
-    --color-background:black;
+    --color-background: black;
     height: 90vh;
 
     .object-container {
@@ -460,39 +460,40 @@ footer {
 
         .title {
             grid-area: title;
-            justify-self: end;
             height: fit-content;
         }
 
         .time-content {
             grid-area: date;
-            
+
+            justify-self: end;
+
             .rel {
-            color: black;
-            width: fit-content;
-            height: fit-content;
-            border-radius: 8px;
-            padding: 8px;
-            padding-inline: 12px;
-            text-decoration: none;
+                color: black;
+                width: fit-content;
+                height: fit-content;
+                border-radius: 8px;
+                padding: 8px;
+                padding-inline: 12px;
+                text-decoration: none;
             }
         }
 
         ul {
-          grid-area: rels;
+            grid-area: rels;
 
-          max-height: 7rem; 
-          overflow-y: auto;
+            max-height: 7rem;
+            overflow-y: auto;
 
-          scrollbar-color: #F9F6EE black;
-          scrollbar-width: thin;
+            scrollbar-color: #F9F6EE black;
+            scrollbar-width: thin;
 
-          list-style: none;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 0.2rem;
-          justify-content: left;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            justify-content: left;
         }
 
         .object-content {
@@ -500,7 +501,7 @@ footer {
             color: var(--color-text);
             height: 100%;
             overflow-y: scroll;
-    
+
             scrollbar-color: #F9F6EE black;
             scrollbar-width: 8px;
         }
@@ -515,19 +516,20 @@ footer {
             width: 100%;
             height: auto;
         }
-        .tag{
+
+        .tag {
             color: black;
         }
 
         .hapje {
             position: relative;
-            right: .5rem;
+            right: 0;
             bottom: -.5rem;
             /* place-self: end; */
             /* grid-area: year; */
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
-            border-radius: 0 .5rem 0 0;
+            border-radius: 0.5rem 0 0 0;
             width: max-content;
 
             display: flex;
@@ -537,29 +539,27 @@ footer {
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: -1.5rem;
-                left: 0rem;
+                bottom: 0;
+                left: -1.5rem;
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
 
             :after {
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: 1rem;
-                right: -1.5rem;
+                top: -1.5rem;
+                right: -0.5rem;
 
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
         }
     }
