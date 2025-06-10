@@ -2,8 +2,8 @@ body {
   /* standaardkleuren */
   --color-text: #cbc6b9;
   --color-background: #050100;
-  --color-background-secondair: #1e1e1e;
-  --color-white: #ffff;
+  --color-background-secondair: #1E1E1E;
+  --color-title:white;
 
   /* kleuren van de catogorien */
   --color-publication: #d55e00;
@@ -17,11 +17,12 @@ body {
 
 /* check if it supports @media? */
 @media (prefers-color-scheme: light) {
-  body {
-    /* standaardkleuren */
-    --color-text: #050100;
-    --color-background: white;
-    --color-background-secondair: #e1e1e1;
+body {
+  /* standaardkleuren */
+  --color-text: #050100;
+  --color-background: white;
+  --color-background-secondair: #e1e1e1;
+  --color-title:black;
 
     /* kleuren van de catogorien - kleurenblind-proof*/
     --color-publication: #d55e00;
@@ -33,15 +34,6 @@ body {
     --color-year: #56e04e;
   }
 }
-
-/* OG kleuren */
-/* --color-publication: #C6A1CE;
-  --color-person: #AAF7B3;
-  --color-collective: #8AC1A0;
-  --color-organisation: #EFEDBD;
-  --color-event: #FFC09A;
-  --color-serie: #D67FA7;
-  --color-year: #8AB2D1; */
 
 .publication {
   background-color: var(--color-publication);
@@ -58,16 +50,9 @@ body {
 .event {
   background-color: var(--color-event);
 }
-.serie {
+.serie, .object, .report, .article {
   background-color: var(--color-serie);
 }
 .year {
   background-color: var(--color-year);
-}
-
-.object,
-.report,
-.article {
-  /* FIXME: tijdelijke kleur type= article en report*/
-  background-color: teal;
 }

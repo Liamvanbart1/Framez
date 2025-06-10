@@ -1,17 +1,21 @@
 {% layout "server/layouts/base.liquid" %}
+{% assign test = false %}
 
 {% block content %}
 <div class="detail-container">
+  <div class="main-container">
   {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
-  <div class="relaties-container">
-    <h2>relaties:</h2>
-    <ul>
-    {% for rel in relations %}
-        {% render 'server/components/relation/relation.liquid', rel: rel %}
-    {% endfor %}
-    </ul>
   </div>
-
+  <div class="relaties-container">
+      {% if relations.size > 0 %}
+        <h2 class="test">Gerelateerde onderwerpen:</h2>
+        <ul>
+          {% for rel in relations %}
+            {% render 'server/components/relation/relation.liquid', rel: rel %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+  </div>
 </div>
 
 {% endblock %}

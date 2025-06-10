@@ -106,3 +106,8 @@
     padding: 8px;
   }
 }
+
+:hover, :active, :focus{
+  outline:solid var(--color-title) 3px;
+  box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275), 3px 3px 3px rgba(65, 65, 65, 0.275);
+}

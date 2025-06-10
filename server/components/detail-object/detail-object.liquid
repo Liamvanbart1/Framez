@@ -7,6 +7,7 @@
         {% assign EventTitle = title %}
         {% endif %}
         <h1 class="title">{{ EventTitle }}</h1>
+        {% comment %} <h2>relaties van {{EventTitle}}:</h2> {% endcomment %}
         <ul>
             {% for rel in relations %}
             {% if rel.node.name %}
