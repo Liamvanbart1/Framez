@@ -2,27 +2,29 @@
     <div class="object-container">
         {% assign title = event.title_en | default: event.title_nl %}
         {% if title == nil or title == "" %}
-          {% assign EventTitle = event.name %}
+        {% assign EventTitle = event.name %}
         {% else %}
-          {% assign EventTitle = title %}
+        {% assign EventTitle = title %}
         {% endif %}
         <h1 class="title">{{ EventTitle }}</h1>
+        {% comment %} <h2>relaties van {{EventTitle}}:</h2> {% endcomment %}
         <ul>
             {% for rel in relations %}
-                {% if rel.node.name %}
-                <li>
-                    {% if rel.node.title_en != null and rel.node.title_en != ""  or if rel.node.title_nl != null and rel.node.title_nl != ""%}
-                        {% assign text = rel.node.title_en | default: rel.node.title_nl %}
-                    {% else %}
-                        {% assign text = rel.node.name %}
-                    {% endif %}
-                    {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
-                </li>
+            {% if rel.node.name %}
+            <li>
+                {% if rel.node.title_en != null and rel.node.title_en != "" or if rel.node.title_nl != null and
+                rel.node.title_nl != ""%}
+                {% assign text = rel.node.title_en | default: rel.node.title_nl %}
+                {% else %}
+                {% assign text = rel.node.name %}
                 {% endif %}
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
+            </li>
+            {% endif %}
             {% endfor %}
         </ul>
         {% if assets.size > 0 %}
-            <img src="{{ assets[0].origin }}" alt="" />
+        <img src="{{ assets[0].origin }}" alt="" />
         {% endif %}
         {% if event.content_nl != "" %}
             <section class="object-content scroll-root">
@@ -42,9 +44,10 @@
             </section>
         {% endif %}
         <div class="time-content hapje">
-            <time class="year rel" datetime="{{ event.year }}-01-01">
-                {{ event.year }}
-            </time>
+            <time class="year tag" datetime="{{ event.year }}-01-01">
+                <time class="year rel" datetime="{{ event.year }}-01-01">
+                    {{ event.year }}
+                </time>
         </div>
     </div>
 </section>

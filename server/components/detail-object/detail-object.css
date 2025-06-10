@@ -22,12 +22,23 @@
             grid-area: title;
             justify-self: end;
             height: fit-content;
+
+            color: var(--color-title);
+            font-size: 2em;
         }
 
         .time-content {
             grid-area: date;
 
+
             .rel {
+                color: black;
+                width: fit-content;
+                height: fit-content;
+                border-radius: 8px;
+                padding: 8px;
+                padding-inline: 12px;
+                text-decoration: none;
                 color: black;
                 width: fit-content;
                 height: fit-content;
@@ -40,11 +51,10 @@
 
         ul {
             grid-area: rels;
-
-            max-height: 7rem;
+            max-height: 3.8rem;
             overflow-y: auto;
 
-            scrollbar-color: #F9F6EE black;
+            scrollbar-color: var(--color-title) var(--color-background-secondair);
             scrollbar-width: thin;
 
             list-style: none;
@@ -52,8 +62,8 @@
             flex-direction: row;
             flex-wrap: wrap;
             gap: 0.2rem;
-            justify-content: left;
         }
+
 
         .object-content {
             grid-area: text;
@@ -213,6 +223,8 @@
         }
 
         .tag {
+
+        .tag {
             color: black;
         }
 
@@ -220,8 +232,6 @@
             position: relative;
             right: .5rem;
             bottom: -.5rem;
-            /* place-self: end; */
-            /* grid-area: year; */
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
             border-radius: 0 .5rem 0 0;
