@@ -2,10 +2,38 @@
 
 {% block content %}
 
-<h1 class="h1">{{ title }}</h1>
-<ul class="grid">
+<section class="home-container">
+  <h1 class="home-title" aria-label="Search the digital archive">
+    <span class="line1">
+      <span class="highlight">SEARCH</span>
+      <span class="light">the</span>
+    </span>
+    <span class="line2">DIGITAL ARCHIVE</span>
+  </h1>
+  <ul class="type-list">
+    <li class="person">Person</li>
+    <li class="collective">Collective</li>
+    <li class="organisation">Organisation</li>
+    <li class="event">Event</li>
+    <li class="serie">Serie</li>
+    <li class="year">Year</li>
+  </ul>
+  <div class="search-container" role="search">
+    <label for="search">Search</label>
+    <div class="search-input-wrapper">
+      <input type="text" id="search" placeholder="Search the Archive" />
+      <button aria-label="Search">🔍</button>
+    </div>
+
+    <ul class="search-results" role="list">
+    </ul>
+  </div>
+</section>
+
+{% comment %} </section> {% endcomment %}
+{% comment %} <ul class="grid">
   {% for item in years %}
-    <a href="/year/{{item.year}}">{{item.year}}</a>
-  {% endfor %} 
-</ul>
+  <a href="/year/{{item.year}}">{{item.year}}</a>
+  {% endfor %}
+</ul> {% endcomment %}
 {% endblock %}

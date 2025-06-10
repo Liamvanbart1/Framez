@@ -10,17 +10,27 @@
   <script src="/index.js" defer></script>
   {% block styles %}{% endblock %}
   {% block scripts %}{% endblock %}
+  <link rel="icon" type="image/png" href="https://framerframed.nl/wp-content/themes/theme/assets/images/favicon-16.png"
+    sizes="16x16" />
 </head>
 
 <body>
-  <header>
-    <form id="search-form" onsubmit="return false;">
-      <input type="text" id="search-input" placeholder="Search..." />
+  <header class="header">
+    <a href="/">
+      <svg class="logo" width="220" height="83.09" viewBox="0 0 247 93" xmlns="http://www.w3.org/2000/svg">
+        <title>logo</title>
+        <g>
+          <path
+            d="M0 44.023h6.145V25.897h20.891v-5.53H6.145V6.54h23.964V1.01H0v43.012zm41.561-22.735V6.54H52.93c5.223 0 8.295 2.458 8.295 7.066 0 4.302-3.072 7.68-8.295 7.68H41.561zm-6.144 22.735h6.144V26.818h14.747c3.38 0 4.302.922 4.302 4.301v12.904h6.144v-14.44c0-4.3-1.535-6.022-6.451-6.022 3.994-1.229 7.066-5.345 7.066-10.876 0-6.759-5.53-11.674-13.518-11.674H35.417v43.012zm64.783-16.59H83.977l8.112-20.77 8.11 20.77zm6.451 16.59h6.39L96.145 1.011H88.28L71.258 44.023h6.268l4.301-11.06h20.523l4.301 11.06zm30.311 0h7.865l12.658-37.79v37.79h6.145V1.011h-10.138l-12.597 37.236-12.843-37.236h-10.2v43.012h6.145V6.418l12.965 37.605zm33.168 0h31.952v-5.53h-25.807V24.667h21.506v-5.53h-21.506V6.542h25.193V1.01H170.13v43.012zm44.026-22.735V6.54h11.368c5.223 0 8.295 2.458 8.295 7.066 0 4.302-3.072 7.68-8.295 7.68h-11.368zm-6.145 22.735h6.145V26.818h14.747c3.38 0 4.302.922 4.302 4.301v12.904h6.144v-14.44c0-4.3-1.536-6.022-6.451-6.022 3.993-1.229 7.066-5.345 7.066-10.876 0-6.759-5.53-11.674-13.519-11.674h-18.434v43.012zM0 49.987h6.145v18.127h20.891v5.53H6.145V87.47h23.964V93H0V49.987zm41.561 22.736V87.47H52.93c5.223 0 8.295-2.458 8.295-7.066 0-4.302-3.072-7.681-8.295-7.681H41.561zm-6.144-22.736h6.144v17.205h14.747c3.38 0 4.302-.921 4.302-4.3V49.986h6.144v14.44c0 4.301-1.535 6.022-6.451 6.022 3.994 1.23 7.066 5.346 7.066 10.876 0 6.76-5.53 11.675-13.518 11.675H35.417V49.987zM100.2 66.578H83.977l8.112 20.769 8.11-20.769zm6.451-16.59h6.39L96.145 93H88.28L71.258 49.987h6.268l4.301 11.06h20.523l4.301-11.06zm30.311 0h7.865l12.658 37.79v-37.79h6.145V93h-10.138l-12.597-37.237L128.052 93h-10.2V49.987h6.145v37.606l12.965-37.606zm33.168 0h31.952v5.53h-25.807v13.825h21.506v5.53h-21.506V87.47h25.193V93H170.13V49.987zm37.881 0h15.362c11.982 0 19.97 7.988 19.97 21.506S235.355 93 223.373 93h-15.362V49.987zm6.145 5.53V87.47h8.603c9.217 0 14.44-5.53 14.44-15.976 0-10.446-5.223-15.976-14.44-15.976h-8.603z" />
+        </g>
+      </svg>
+    </a>
+    <form id="framez-search-form" class="framez-search-form" onsubmit="return false;">
+      <input type="text" id="framez-search-input" class="framez-search-input" placeholder="Search..." />
+      <div id="framez-search-overlay" class="framez-search-overlay hidden">
+        <div id="framez-search-results" class="framez-search-results"></div>
+      </div>
     </form>
-
-    <div id="search-overlay" class="hidden">
-      <div id="search-results"></div>
-    </div>
   </header>
   <main>
     {% block content %}{% endblock %}

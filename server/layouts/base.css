@@ -1,31 +1,83 @@
 body {
   background: var(--color-background);
   height: 100vh;
-  overflow: hidden;
 }
 
-header {
-  /* padding: 1rem; */
-  background-color: red;
+.header {
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 footer {
   padding: 1rem;
 }
 
-#search-overlay {
-  position: fixed;
-  top: 60px; /* below your header */
-  left: 0;
-  right: 0;
-  background: white;
-  max-height: 80vh;
-  overflow-y: auto;
-  z-index: 1000;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.framez-search-form {
+  position: relative;
+  max-width: 25em;
+  margin: 1em;
 }
 
-#search-overlay.hidden {
+.framez-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.framez-search-input:focus {
+  border-color: #007bff;
+}
+
+.framez-search-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.framez-search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.framez-search-results li {
+  padding: 10px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.framez-search-results li:last-child {
+  border-bottom: none;
+}
+
+.framez-search-results li:hover {
+  background-color: #f5f5f5;
+}
+
+/* Hidden class if needed */
+.hidden {
   display: none;
+}
+
+.logo {
+  margin-top: 0.8em;
+  margin-left: 2em;
+  margin-bottom: 0.5em;
 }
