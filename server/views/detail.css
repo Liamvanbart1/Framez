@@ -1,12 +1,7 @@
 .detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 90dvh;
   gap: 2rem;
-
-  width: min(100% - 4rem, 90rem);
-  margin-inline: auto;
-
 
   .relaties-container {
     display: block;

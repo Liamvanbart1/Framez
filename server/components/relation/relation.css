@@ -11,8 +11,11 @@
 
     height: fit-content;
 
-    grid-template:
-        [image-top] "image x title" auto [title] [image-bottom] "image alinea alinea" 1fr [alinea] [rels-left] "rels rels year" auto [rels-right] / 1fr 3fr auto;
+    grid-template-areas:
+    "title title title"
+    "image alinea alinea"
+    "rels rels year";
+    grid-template-columns: 1fr 3fr auto;
 
     p {
         grid-area: alinea;

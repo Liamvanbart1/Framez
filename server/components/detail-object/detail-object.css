@@ -20,7 +20,6 @@
 
         .title {
             grid-area: title;
-            justify-self: end;
             height: fit-content;
 
             color: var(--color-title);
