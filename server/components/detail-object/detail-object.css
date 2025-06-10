@@ -69,12 +69,12 @@
         }
 
         .scroll-root {
-            --_space: 1lh;
-            --_theme: light-dark(hsl(none none 100%), hsl(none none 20%));
+            --space: 1lh;
+            --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
             anchor-name: --scroll-root;
             border-radius: 10px;
             border: 1px solid var(--_theme);
-            padding-inline-end: var(--_space);
+            padding-inline-end: var(--space);
 
             >.scroll-viewport {
                 container: --scrollport / size scroll-state;
@@ -195,8 +195,8 @@
                         position-area: inline-start span-block-start;
                         position-anchor: --scroll-root;
                         anchor-name: --scroll-buttondown;
-                        margin-inline-end: var(--_space);
-                        margin-block-end: calc(3 * var(--_space));
+                        margin-inline-end: var(--space);
+                        margin-block-end: calc(3 * var(--space));
                     }
 
                     &::scroll-button(down) {
@@ -204,7 +204,7 @@
 
                         position-anchor: --scroll-buttondown;
                         position-area: block-end;
-                        margin-block-start: calc(var(--_space) / 2);
+                        margin-block-start: calc(var(--space) / 2);
                     }
                 }
             }

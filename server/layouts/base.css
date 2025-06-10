@@ -1,6 +1,7 @@
 body {
   background: var(--color-background);
   height: 100vh;
+  color-scheme: light dark;
 }
 
 .header {
