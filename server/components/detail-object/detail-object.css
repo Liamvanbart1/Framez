@@ -1,6 +1,5 @@
 .detail-object {
-    --color-background:black;
-    height: 90vh;
+    /* height: 90vh; */
 
     .object-container {
         padding: .5rem;
@@ -22,46 +21,47 @@
             grid-area: title;
             justify-self: end;
             height: fit-content;
+
+            color: var(--color-title);
+            font-size: 2em;
         }
 
         .time-content {
             grid-area: date;
-            
+
             .rel {
-            color: black;
-            width: fit-content;
-            height: fit-content;
-            border-radius: 8px;
-            padding: 8px;
-            padding-inline: 12px;
-            text-decoration: none;
+                color: black;
+                width: fit-content;
+                height: fit-content;
+                border-radius: 8px;
+                padding: 8px;
+                padding-inline: 12px;
+                text-decoration: none;
             }
         }
 
         ul {
-          grid-area: rels;
+            grid-area: rels;
+            max-height: 3.8rem;
+            overflow-y: auto;
 
-          max-height: 7rem; 
-          overflow-y: auto;
+            scrollbar-color: var(--color-title) var(--color-background-secondair);
+            scrollbar-width: thin;
 
-          scrollbar-color: #F9F6EE black;
-          scrollbar-width: thin;
-
-          list-style: none;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: 0.2rem;
-          justify-content: left;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.2rem;
         }
+
 
         .object-content {
             grid-area: text;
             color: var(--color-text);
-            height: 100%;
             overflow-y: scroll;
-    
-            scrollbar-color: #F9F6EE black;
+
+            scrollbar-color: var(--color-title) var(--color-background-secondair);
             scrollbar-width: 8px;
         }
 
@@ -75,7 +75,8 @@
             width: 100%;
             height: auto;
         }
-        .tag{
+
+        .tag {
             color: black;
         }
 
@@ -83,8 +84,6 @@
             position: relative;
             right: .5rem;
             bottom: -.5rem;
-            /* place-self: end; */
-            /* grid-area: year; */
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
             border-radius: 0 .5rem 0 0;
