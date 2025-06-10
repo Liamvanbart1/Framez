@@ -1,6 +1,7 @@
 .detail-object {
     --color-background: black;
     height: calc(82dvh - .5rem);
+    font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
@@ -156,7 +157,7 @@
                 }
 
                 >.scroll-content {
-                    padding: var(--_space);
+                    padding: var(--space);
                 }
 
                 /* todo: buttons needs not be present if on mobile */

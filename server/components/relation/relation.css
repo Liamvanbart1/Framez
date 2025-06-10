@@ -35,7 +35,7 @@
     .title {
         grid-area: title;
         font-weight: bold;
-
+        font-family: favorit-light, Arial, sans-serif;
         max-width: 15rem;
 
         /* zorgen dat de hele kaart klikbaar is */
