@@ -3,9 +3,9 @@ body {
   height: 100vh;
   color-scheme: light dark;
 
-  &:has(footer){
+  &:has(footer) {
     main {
-      height: calc(100vh - 19.2rem);
+      height: calc(100vh - 19.3rem);
     }
 
     footer {
@@ -29,8 +29,8 @@ body {
   }
 
   svg {
-      fill: var(--color-title);
-    }
+    fill: var(--color-title);
+  }
 
   form {
     display: flex;
@@ -42,7 +42,7 @@ body {
 }
 
 main {
-  height: calc(100vh - 9rem);
+  height: calc(100vh - 19.3rem);
 }
 
 footer {
@@ -114,6 +114,30 @@ footer {
   margin-top: 0.8em;
   margin-left: 2em;
   margin-bottom: 0.5em;
+}
+
+.image-toggle-btn {
+  height: 3em;
+  background-color: #1f2937;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.image-toggle-btn:hover {
+  background-color: #111827;
+  transform: translateY(-1px);
+}
+
+.image-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 60rem) {

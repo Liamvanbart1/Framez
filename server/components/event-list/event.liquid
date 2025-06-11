@@ -1,11 +1,15 @@
 <li class="search-result">
-   <div class="{{ e.node.type_en}}">
-      <p>{{e.node.type_en}}</p>
-         {% if e.node.date_start %}
-     <time datetime="{{e.node.date_start | split: "T" | slice: 0}}">{{e.node.date_start | split: "T" | slice: 0}}</time>
-  {% elsif if e.node.date_end%}
-     <time datetime="{{e.node.date_end | split: "T" | slice: 0}}">{{e.node.date_end | split: "T" | slice: 0}}</time>
-  {% endif %}
+   <div class="{{ e.node.type_en }}">
+      <p>{{ e.node.type_en }}</p>
+
+      {% if e.node.date_start %}
+      <time datetime="{{ e.node.date_start | split: " T" | slice: 0 }}">{{ e.node.date_start | split: "T" | slice: 0
+         }}</time>
+      {% elsif e.node.date_end %}
+      <time datetime="{{ e.node.date_end | split: " T" | slice: 0 }}">{{ e.node.date_end | split: "T" | slice: 0
+         }}</time>
+      {% endif %}
    </div>
-   <a href="/event/{{ e.node.uuid }}" class="h2">{{ title }}</a>
+
+   <a href="/{{ base }}/{{ e.node.uuid }}" class="h2">{{ title }}</a>
 </li>

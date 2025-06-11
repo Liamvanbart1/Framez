@@ -1,0 +1,17 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+<div class="eventlist">
+    <div>
+        <ul class="ul-years">
+            {% for item in years %}
+            {% render "server/components/item-list/item-list.liquid",
+            uuid: item.year,
+            title: item.year,
+            base: "year",
+            type: "Year" %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

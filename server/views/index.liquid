@@ -2,39 +2,36 @@
 
 {% block content %}
 
-<section class="home-container">
-  <h1 class="home-title" aria-label="Search the digital archive">
-    <span class="line1">
-      <span class="highlight">SEARCH</span>
-      <span class="light">the</span>
-    </span>
-    <span class="line2">DIGITAL ARCHIVE</span>
-  </h1>
-  <ul class="type-list">
-    <li class="person">Person</li>
-    <li class="collective">Collective</li>
-    <li class="organisation">Organisation</li>
-    <li class="event">Event</li>
-    <li class="serie">Serie</li>
-    <li class="year">Year</li>
-  </ul>
-  <div class="search-container" role="search">
-    <label for="search">Search</label>
-    <div class="search-input-wrapper">
-      <input type="text" id="search" placeholder="Search the Archive" />
-      <button aria-label="Search">🔍</button>
+<div class="home-container">
+  <section class="home-left">
+    <h1 class="home-title" aria-label="Search the digital archive">
+      <span class="line1">
+        <span class="highlight">SEARCH</span>
+        <span class="light">the</span>
+      </span>
+      <span class="line2">DIGITAL ARCHIVE</span>
+    </h1>
+    <div class="search-container" role="search">
+      <label for="search">Search</label>
+      <div class="search-input-wrapper">
+        <input type="text" id="search" placeholder="Search the Archive" />
+        <button aria-label="Search">🔍</button>
+      </div>
+
+      <ul class="search-results" role="list">
+      </ul>
     </div>
-
-    <ul class="search-results" role="list">
+  </section>
+  <section class="home-right">
+    <h2 class="h2">Explore All Persons, Organisations, Events, Publications and Years</h2>
+    <ul class="type-list">
+      <li class="person"><a href="/persons">Persons</a></li>
+      <li class="organisation"><a href="/organisations">Organisations</a></li>
+      <li class="event"><a href="events">Events</a></li>
+      <li class="year"><a href="years">Years</a></li>
     </ul>
-  </div>
-</section>
+  </section>
+</div>
 
-{% comment %} </section> {% endcomment %}
-{% comment %} <ul class="grid">
-  {% for item in years %}
-  <a href="/year/{{item.year}}">{{item.year}}</a>
-  {% endfor %}
-</ul> {% endcomment %}
 
 {% endblock %}

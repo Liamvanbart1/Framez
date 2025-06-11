@@ -1,0 +1,19 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+<div class="eventlist">
+    <div>
+        <h1 class="h1">Events in {{ year }}</h1>
+        <ul>
+            {% for e in event %}
+            {% comment %} Prefer English title, fall back to Dutch {% endcomment %}
+            {% if e.node.title_en != "" %}
+            {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_en, base: "event" %}
+            {% elsif e.node.title_nl != "" %}
+            {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_nl, base: "event" %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

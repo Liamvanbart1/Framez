@@ -2,22 +2,23 @@
 
 {% block content %}
 <div class="detail-container">
-  {% render 'server/components/detail-object/organisation-object.liquid', organisation: organisation, relations: relations %}
+  {% render 'server/components/detail-object/organisation-object.liquid', organisation: organisation, relations:
+  relations %}
   <div class="relaties-container">
     {% if relations.size > 0 %}
-        <h2 class="test">Gerelateerde onderwerpen:</h2>
-        <section class="object-content scroll-root-relations">
-          <div class="scroll-viewport">
-            <div class="scroll-content">
-              <ul>
-                {% for rel in relations %}
-                  {% render 'server/components/relation/relation.liquid', rel: rel %}
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-        </section>
-      {% endif %}
+    <h2 class="test">Related items:</h2>
+    <section class="object-content scroll-root-relations">
+      <div class="scroll-viewport">
+        <div class="scroll-content">
+          <ul>
+            {% for rel in relations %}
+            {% render 'server/components/relation/relation.liquid', rel: rel %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

@@ -1,28 +1,50 @@
 .home-container {
   display: grid;
-  grid-template-columns: 1fr;
-  height: 50vh;
-  padding: 0.5rem;
-  background-color: var(--color-background-secondair);
-  border-radius: 8px;
-  display: grid;
-  grid-template-areas:
-    "title"
-    "types"
-    "search";
-  row-gap: 1rem;
-  place-items: center;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 2rem;
+  height: 50%;
+
+  .home-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100%;
+    padding: 0.5rem;
+    background-color: var(--color-background-secondair);
+    border-radius: 8px;
+    display: grid;
+    grid-template-areas:
+      "title"
+      "types"
+      "search";
+    row-gap: 1rem;
+    place-items: center;
+  }
+
+  .home-right {
+    background-color: var(--color-background-secondair);
+    height: 100%;
+    display: grid;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  .h2 {
+    color: var(--color-title);
+    font-size: 2em;
+  }
 
   .type-list {
     display: flex;
+    flex-direction: column;
     gap: 1em;
     grid-area: types;
+    row-gap: 1rem;
   }
 
   .home-title {
     display: flex;
     flex-direction: column;
-    color: #f3f0ea;
+    color: var(--color-title);
     text-transform: uppercase;
     line-height: 1.2;
   }
@@ -107,7 +129,20 @@
   }
 }
 
-:hover, :active, :focus{
-  outline:solid var(--color-title) 3px;
-  box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275), 3px 3px 3px rgba(65, 65, 65, 0.275);
+:hover,
+:active,
+:focus {
+  outline: solid var(--color-title) 3px;
+  box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275),
+    3px 3px 3px rgba(65, 65, 65, 0.275);
+}
+
+body.no-images img {
+  display: none !important;
+}
+
+@media (max-width: 45rem) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
 }
