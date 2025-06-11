@@ -7,11 +7,17 @@
   <div class="relaties-container">
       {% if relations.size > 0 %}
         <h2 class="test">Related items:</h2>
-        <ul>
-          {% for rel in relations %}
-            {% render 'server/components/relation/relation.liquid', rel: rel %}
-          {% endfor %}
-        </ul>
+          <section class="object-content scroll-root-relations">
+            <div class="scroll-viewport">
+              <div class="scroll-content">
+                <ul>
+                  {% for rel in relations %}
+                    {% render 'server/components/relation/relation.liquid', rel: rel %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </section>
       {% endif %}
   </div>
 </div>
