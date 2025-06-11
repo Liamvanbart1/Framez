@@ -18,8 +18,8 @@ body {
   }
 
   svg {
-      fill: var(--color-title);
-    }
+    fill: var(--color-title);
+  }
 
   form {
     display: flex;
