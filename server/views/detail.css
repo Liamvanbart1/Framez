@@ -6,7 +6,7 @@
 
   .relaties-container {
     display: block;
-    height: calc(82dvh + .5rem);
+    height: calc(100dvh - 9rem);
 
     h2 {
       color: var(--color-title);
@@ -19,7 +19,7 @@
       --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
       border-radius: 10px;
       padding-inline-end: var(--space);
-      max-height: calc(82dvh - 2rem);
+      max-height: calc(100dvh - 11.5rem);
       height: 100%;
 
       >.scroll-viewport {
@@ -102,7 +102,7 @@
         }
 
         >.scroll-content {
-          padding: var(--space);
+          padding-right: var(--space);
         }
       }
     }

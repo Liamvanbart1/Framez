@@ -1,13 +1,13 @@
 .detail-object {
     --color-background: black;
-    height: calc(82dvh - .5rem);
+    height: calc(100dvh - 9rem);
     font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
         border-radius: 8px;
-        height: 100%;
+        height: calc(100% - 1rem);
 
         display: grid;
         gap: 1rem;
@@ -64,6 +64,17 @@
 
         .object-content {
             grid-area: text;
+            line-height: 1.2;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .scroll-root {
@@ -214,10 +225,7 @@
             height: auto;
         }
 
-        iframe {
-            width: 100%;
-            height: auto;
-        }
+        
 
 
         .tag {
@@ -274,14 +282,6 @@
             "date date";
 
         .object-content {
-            grid-area: text;
-            color: var(--color-text);
-            height: 100%;
-            overflow-y: scroll;
-    
-            scrollbar-color: #F9F6EE black;
-            scrollbar-width: 8px;
-
             width: 60%;
             margin: auto;
         }

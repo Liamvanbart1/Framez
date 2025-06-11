@@ -72,7 +72,7 @@
       </details>
     {% endif %}
 
-    {% if rel.node.year %}
+    {% if rel.node.year > 0 %}
       <div class="hapje">
         <time class="year rel" datetime="{{ rel.node.year }}-01-01">
           {{ rel.node.year }}
