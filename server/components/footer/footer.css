@@ -1,9 +1,7 @@
 .footer {
     background-color: var(--color-text);
     color: var(--color-background);
-    width: calc(100dvw - 2rem);
-
-    height: 7rem;
+    width: 100dvw;
 
     transform: translateX(-1rem);
 
@@ -16,7 +14,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 
-    padding: 1em;
+    padding-block: 1em;
     line-height: 2.5ch;
 
     a {
@@ -54,8 +52,7 @@
     .footer {
         grid-template-rows: repeat(3, auto);
         grid-template-columns: 1fr;
-        width: calc(100dvw - 2rem);
-        height: 20rem;
+        width: 100dvw;
         /* padding-inline: 0; */
 
         .static{
