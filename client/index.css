@@ -8,6 +8,7 @@
 @import "../server/views/index.css";
 @import "../server/views/detail.css";
 @import "../server/views/events.css";
+@import "../server/views/years.css";
 
 /* component styling */
 @import "../server/components/event-list/event.css";

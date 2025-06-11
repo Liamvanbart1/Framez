@@ -2,12 +2,12 @@
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   gap: 2rem;
-  height: calc(100dvh - 19.2rem);
+  height: 50%;
 
   .home-left {
     display: grid;
     grid-template-columns: 1fr;
-    height: calc(100dvh - 19.2rem);
+    height: 100%;
     padding: 0.5rem;
     background-color: var(--color-background-secondair);
     border-radius: 8px;
@@ -22,7 +22,7 @@
 
   .home-right {
     background-color: var(--color-background-secondair);
-    height: calc(100dvh - 19.2rem);
+    height: 100%;
     display: grid;
     border-radius: 8px;
     padding: 0.5rem;
@@ -139,4 +139,10 @@
 
 body.no-images img {
   display: none !important;
+}
+
+@media (max-width: 45rem) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
 }

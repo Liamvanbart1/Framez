@@ -19,15 +19,9 @@ app
 
 // stuur de info naar de index pagina
 app.get("/", async (req, res) => {
-  // haal de api op om mee te sturen
-  const yearUrl = `https://archive.framerframed.nl/api/get-years`;
-  const responseYear = await fetch(yearUrl);
-  const jsonYear = await responseYear.json();
-
   return res.send(
     renderTemplate("server/views/index.liquid", {
       title: "Home",
-      years: jsonYear.nodes,
     })
   );
 });

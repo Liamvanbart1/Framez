@@ -3,7 +3,7 @@
 {% block content %}
 <div class="eventlist">
     <div>
-        <ul>
+        <ul class="ul-years">
             {% for item in years %}
             {% render "server/components/item-list/item-list.liquid",
             uuid: item.year,
