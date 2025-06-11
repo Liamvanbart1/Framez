@@ -127,6 +127,17 @@ body {
   background: var(--color-background);
   height: 100vh;
   color-scheme: light dark;
+
+  &:has(footer) {
+    main {
+      height: calc(100vh - 19.2rem);
+    }
+
+    footer {
+      padding: 0;
+      height: 10.2rem;
+    }
+  }
 }
 .header {
   position: relative;
@@ -215,6 +226,27 @@ footer {
   margin-top: 0.8em;
   margin-left: 2em;
   margin-bottom: 0.5em;
+}
+.image-toggle-btn {
+  height: 3em;
+  background-color: #1f2937;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.image-toggle-btn:hover {
+  background-color: #111827;
+  transform: translateY(-1px);
+}
+.image-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 @media (max-width: 60rem) {
   main {
@@ -357,6 +389,9 @@ footer {
   outline: solid var(--color-title) 3px;
   box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275),
     3px 3px 3px rgba(65, 65, 65, 0.275);
+}
+body.no-images img {
+  display: none !important;
 }
 .detail-container {
   display: grid;
@@ -1104,31 +1139,43 @@ a:has(.tag){
 .footer {
     background-color: var(--color-text);
     color: var(--color-background);
-    width: 100%;
-    max-width: 100dvw;
+    width: 100dvw;
 
-    position: absolute;
+    transform: translateX(-1rem);
+
+    /* position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; */
     /* z-index: -1; */
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 
-    padding: 1em;
+    padding-block: 1em;
     line-height: 2.5ch;
 
     a {
         color: var(--color-background);
         text-decoration: none;
-
         fill:var(--color-background);
+
+        &:has(svg:hover){
+            fill:var(--color-title);
+            outline: none;
+            box-shadow: none;
+        }
     }
 
     .static {
         border-inline: 5px solid var(--color-background);
         padding-inline: .5rem;
+
+        a:hover{
+            text-decoration: underline;
+            outline: none;
+            box-shadow: none;
+        }
     }
 
     .social-media {
@@ -1142,7 +1189,7 @@ a:has(.tag){
     .footer {
         grid-template-rows: repeat(3, auto);
         grid-template-columns: 1fr;
-        max-width: calc(100dvw - 2rem);
+        width: 100dvw;
         /* padding-inline: 0; */
 
         .static{

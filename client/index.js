@@ -133,3 +133,43 @@ setupSearch(
   "#framez-search-overlay"
 ); // header
 setupSearch("#search", ".search-results"); // homepage
+
+const setupImageToggle = () => {
+  const toggleBtn = document.getElementById("image-toggle-btn");
+
+  if (!toggleBtn) return;
+
+  const toggleImages = (disabled) => {
+    document.body.classList.toggle("no-images", disabled);
+
+    document.querySelectorAll("img").forEach((img) => {
+      if (disabled) {
+        if (!img.dataset.src) {
+          img.dataset.src = img.src;
+          img.src = "";
+        }
+      } else {
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
+      }
+    });
+
+    toggleBtn.textContent = disabled ? "Enable Images" : "Disable Images";
+  };
+
+  const imagesDisabled = localStorage.getItem("disableImages") === "true";
+  toggleImages(imagesDisabled);
+
+  toggleBtn.addEventListener("click", () => {
+    const currentlyDisabled = document.body.classList.contains("no-images");
+    const newValue = !currentlyDisabled;
+
+    localStorage.setItem("disableImages", newValue);
+    toggleImages(newValue);
+  });
+};
+document.addEventListener("DOMContentLoaded", () => {
+  setupImageToggle();
+});

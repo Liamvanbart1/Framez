@@ -136,3 +136,7 @@
   box-shadow: inset 3px 3px 3px rgba(65, 65, 65, 0.275),
     3px 3px 3px rgba(65, 65, 65, 0.275);
 }
+
+body.no-images img {
+  display: none !important;
+}
