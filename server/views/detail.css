@@ -21,6 +21,7 @@
 
       max-height: calc(82dvh - 2rem);
       overflow-y: scroll;
+      overscroll-behavior: contain;
 
       scrollbar-width: thin;
       scrollbar-color: var(--color-title) var(--color-background);
