@@ -15,19 +15,19 @@
           {% endif %}
         {% endfor %}
       </ul>
-    {% if person.bio_nl != "" %}
-      <section class="object-content scroll-root">
-        <div class="scroll-viewport">
-          <div class="scroll-content">
-            {{ person.bio_nl }}
-          </div>
-        </div>
-      </section>
-    {% elsif person.bio_en %}
+    {% if person.bio_en != "" %}
       <section class="object-content scroll-root">
         <div class="scroll-viewport">
           <div class="scroll-content">
             {{ person.bio_en }}
+          </div>
+        </div>
+      </section>
+    {% elsif person.bio_nl %}
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ person.bio_nl }}
           </div>
         </div>
       </section>

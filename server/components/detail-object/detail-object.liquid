@@ -22,19 +22,19 @@
         {% if assets.size > 0 %}
         <img src="{{ assets[0].origin }}" alt="" />
         {% endif %}
-        {% if event.content_nl != "" %}
-            <section class="object-content scroll-root">
-                <div class="scroll-viewport">
-                    <div class="scroll-content">
-                        {{ event.content_nl }}
-                    </div>
-                </div>
-            </section>
-        {% elsif event.content_en %}
+        {% if event.content_en != "" %}
             <section class="object-content scroll-root">
                 <div class="scroll-viewport">
                     <div class="scroll-content">
                         {{ event.content_en }}
+                    </div>
+                </div>
+            </section>
+        {% elsif event.content_nl %}
+            <section class="object-content scroll-root">
+                <div class="scroll-viewport">
+                    <div class="scroll-content">
+                        {{ event.content_nl }}
                     </div>
                 </div>
             </section>

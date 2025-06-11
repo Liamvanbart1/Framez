@@ -15,19 +15,19 @@
           {% endif %}
         {% endfor %}
       </ul>
-    {% if organisation.about_nl != "" %}
+    {% if organisation.about_en != "" %}
         <section class="object-content scroll-root">
           <div class="scroll-viewport">
             <div class="scroll-content">
-              {{ organisation.about_nl }}
+              {{ organisation.about_en }}
             </div>
           </div>
         </section>
-    {% elsif organisation.about_en %}
+    {% elsif organisation.about_nl %}
       <section class="object-content scroll-root">
         <div class="scroll-viewport">
           <div class="scroll-content">
-            {{ organisation.about_en }}
+            {{ organisation.about_nl }}
           </div>
         </div>
       </section>
