@@ -126,13 +126,23 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
   });
 }
 
-// Setup search instances
-setupSearch(
-  "#framez-search-input",
-  "#framez-search-results",
-  "#framez-search-overlay"
-); // header
-setupSearch("#search", ".search-results"); // homepage
+if (
+  document.querySelector("#framez-search-input") &&
+  document.querySelector("#framez-search-results")
+) {
+  setupSearch(
+    "#framez-search-input",
+    "#framez-search-results",
+    "#framez-search-overlay"
+  );
+}
+
+if (
+  document.querySelector("#search") &&
+  document.querySelector(".search-results")
+) {
+  setupSearch("#search", ".search-results");
+}
 
 const setupImageToggle = () => {
   const toggleBtn = document.getElementById("image-toggle-btn");
