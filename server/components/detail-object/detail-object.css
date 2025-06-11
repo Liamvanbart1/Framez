@@ -64,6 +64,17 @@
 
         .object-content {
             grid-area: text;
+            line-height: 1.2;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .scroll-root {
@@ -214,10 +225,7 @@
             height: auto;
         }
 
-        iframe {
-            width: 100%;
-            height: auto;
-        }
+        
 
 
         .tag {
