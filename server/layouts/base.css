@@ -7,13 +7,31 @@ body {
 .header {
   position: relative;
   z-index: 1;
-  background-color: white;
+  background-color: var(--color-background);
   display: flex;
   justify-content: space-between;
+  height: 7rem;
+
+  a:hover {
+    outline: none;
+    box-shadow: none;
+  }
+
+  svg {
+      fill: var(--color-title);
+    }
+
+  form {
+    display: flex;
+
+    input {
+      align-self: center;
+    }
+  }
 }
 
 main {
-  height: 83dvh;
+  height: calc(100vh - 9rem);
 }
 
 footer {
