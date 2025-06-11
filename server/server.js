@@ -79,6 +79,29 @@ app.get("/organisations", async (req, res) => {
   }
 });
 
+app.get("/events", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/events"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter(
+      (item) => item.event && item.event.name && item.event.uuid
+    );
+
+    res.send(
+      renderTemplate("server/views/events.liquid", {
+        title: "All Events",
+        events: filtered,
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen Events:", err);
+    res.status(500).send("Fout bij ophalen Events.");
+  }
+});
+
 // als er op de knop gedrukt word van een jaar
 app.get("/year/:year", async (req, res) => {
   // het jaar word meegegeven
