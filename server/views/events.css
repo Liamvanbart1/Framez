@@ -24,13 +24,4 @@
         padding-bottom: .5rem;
     }
 
-    .legendaContainer{
-        background-color: red;
-        z-index: 3;
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        left: 0;
-    }
 }

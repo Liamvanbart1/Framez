@@ -5,7 +5,7 @@
 <div>
 {% comment %} wat als er geen engelse titel beschikbaar is? {% endcomment %}
  {% comment %} wat als je meer paginas van evenementen wilt? {% endcomment %}
- <h1 class="h1"> Events in {{year}}</h1>
+ <h1 class="h1"> Events and Exhibitions in {{year}}</h1>
  <ul>
   {% for e in event %}
     {% comment %} engels en nederlands render, nederlands heeft voorrang {% endcomment %}
@@ -17,8 +17,6 @@
   {% endfor %}
  </ul>
  </div>
-  <div class="legendaContainer">
+ </div>
  {% render 'server/components/legenda/legenda.liquid'%}
- </div>
- </div>
 {% endblock %}

@@ -1,12 +1,41 @@
-.legenda{
-    width: 20px;
-    background: linear-gradient(in hsl longer hue, red, rebeccapurple);
-    /* background-color: red; */
-    text-orientation: sideways;
-    height: fit-content;
+/* Optie 2, popover */
+.button-legenda {
+    anchor-name: --legenda-button;
+    border: var(--color-text) solid 1px;
 
-    p{
-        height: 30%;
-        text-orientation: sideways;
+
+    background-color: rgb(199, 199, 199);
+
+    padding: .5rem;
+    border-radius: 5px;
+    margin-block: .2rem;
+
+    z-index: 3;
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    box-shadow: 0 0 5px var(--color-text);
+}
+
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.601);
+    backdrop-filter: blur(3px);
+}
+
+.legenda {
+    background-color: transparent;
+
+    position: absolute;
+    position-anchor: --legenda-button;
+    top: calc(anchor(bottom) - 18rem);
+    left: anchor(left);
+
+    p {
+        width: fit-content;
+
+        padding: .5rem;
+        border-radius: 5px;
+        margin-block: .2rem;
     }
 }
