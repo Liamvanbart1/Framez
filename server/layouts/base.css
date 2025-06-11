@@ -5,7 +5,7 @@ body {
 
   &:has(footer) {
     main {
-      height: calc(100vh - 19.3rem);
+      min-height: calc(100vh - 19.3rem);
     }
 
     footer {

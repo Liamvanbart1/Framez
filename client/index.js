@@ -98,7 +98,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
   });
 
   resultsContainer?.addEventListener("click", (e) => {
-    const el = e.target.closest(".framez-search-results");
+    const el = e.target.closest("li[data-uuid][data-type]");
     if (!el) return;
 
     e.preventDefault();
