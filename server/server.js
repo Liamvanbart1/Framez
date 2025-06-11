@@ -120,7 +120,7 @@ app.get("/years", async (req, res) => {
 // als er op de knop gedrukt word van een jaar
 app.get("/year/:year", async (req, res) => {
   // het jaar word meegegeven
-  console.log(req.params.year);
+  // console.log(req.params.year);
   const year = req.params.year;
 
   // roep de api op
@@ -128,7 +128,7 @@ app.get("/year/:year", async (req, res) => {
   const response = await fetch(url);
   const json = await response.json();
 
-  console.log(json.events[0].node);
+  // console.log(json.events[0].node);
 
   // laad de detailpagina voor de expos
   return res.send(
@@ -405,7 +405,7 @@ const renderTemplate = (template, data) => {
 };
 
 app.get("/search", async (req, res) => {
-  const baseUrl = process.env.NIEUWE_BASE_URL;
+  const baseUrl = "https://archive.framerframed.nl";
   const query = req.query.q;
 
   try {
@@ -415,9 +415,9 @@ app.get("/search", async (req, res) => {
     // new URL is minder foutgevoelig en zorgt ervoor dat de string correct wordt geparsed naar een geldige URL
 
     const response = await fetch(apiUrl);
-    console.log(response, "response");
+    // console.log(response, "response");
     const data = await response.json();
-    console.log(data, "data");
+    // console.log(data, "data");
 
     res.json({ results: data });
   } catch (err) {
