@@ -46,11 +46,11 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(/Favorit_Regular.otf);
+  src: url(../public/fonts/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(/Favorit_Light.otf);
+  src: url(../public/fonts/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
@@ -475,7 +475,7 @@ footer {
     padding: 0;
     border: 0;
 
-    div {
+    & > div {
         max-width: 50em;
 
         max-height: 85dvh;
@@ -1074,6 +1074,73 @@ a:has(.tag){
         padding: .5rem;
         border-radius: 5px;
         margin-block: .2rem;
+    }
+}
+.footer {
+    background-color: var(--color-text);
+    color: var(--color-background);
+    width: calc(100dvw - 2rem);
+
+    height: 7rem;
+
+    transform: translateX(-1rem);
+
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+    /* z-index: -1; */
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    padding: 1em;
+    line-height: 2.5ch;
+
+    a {
+        color: var(--color-background);
+        text-decoration: none;
+        fill:var(--color-background);
+
+        &:has(svg:hover){
+            fill:var(--color-title);
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .static {
+        border-inline: 5px solid var(--color-background);
+        padding-inline: .5rem;
+
+        a:hover{
+            text-decoration: underline;
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .social-media {
+        ul{
+            display: flex;
+            gap: .5rem;
+        }
+    }
+}
+@media (max-width: 45rem) {
+    .footer {
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: 1fr;
+        width: calc(100dvw - 2rem);
+        height: 20rem;
+        /* padding-inline: 0; */
+
+        .static{
+            border-block: 5px solid var(--color-background);
+            border-inline: none;
+            padding-inline: 0;
+            padding-block: .5rem;
+        }
     }
 }
 body {
