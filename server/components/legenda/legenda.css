@@ -1,0 +1,12 @@
+.legenda{
+    width: 20px;
+    background: linear-gradient(in hsl longer hue, red, rebeccapurple);
+    /* background-color: red; */
+    text-orientation: sideways;
+    height: fit-content;
+
+    p{
+        height: 30%;
+        text-orientation: sideways;
+    }
+}
