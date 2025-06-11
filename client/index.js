@@ -37,7 +37,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
         const data = await res.json();
 
         if (data.results && data.results.length > 0) {
-          // Filter results to include only allowed types and ensure uuid exists
+          // Filter alleen types met uuid en die in de lijst
           const filtered = data.results.filter(
             (result) =>
               result.uuid &&
@@ -55,7 +55,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
                   <li>
                     <a 
                       href="#" 
-                      class="search-result block p-2 hover:bg-gray-100" 
+                      class="framez-search-results" 
                       data-uuid="${result.uuid}" 
                       data-type="${type}"
                     >
@@ -98,7 +98,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
   });
 
   resultsContainer?.addEventListener("click", (e) => {
-    const el = e.target.closest(".search-result");
+    const el = e.target.closest(".framez-search-results");
     if (!el) return;
 
     e.preventDefault();

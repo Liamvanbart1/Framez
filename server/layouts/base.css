@@ -66,19 +66,17 @@ footer {
   transition: border-color 0.2s ease;
 }
 
-.framez-search-input:focus {
-  border-color: #007bff;
-}
-
 .framez-search-overlay {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 7rem;
   left: 0;
   right: 0;
-  margin-top: 4px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  width: 100vw;
+  margin: 0;
+  background: var(--color-background-secondair);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-radius: 0;
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -102,7 +100,7 @@ footer {
 }
 
 .framez-search-results li:hover {
-  background-color: #f5f5f5;
+  background: var(--color-background);
 }
 
 /* Hidden class if needed */
