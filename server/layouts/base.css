@@ -10,10 +10,11 @@ body {
   background-color: white;
   display: flex;
   justify-content: space-between;
+  height: 7rem;
 }
 
 main {
-  height: 83dvh;
+  height: calc(100vh - 9rem);
 }
 
 footer {

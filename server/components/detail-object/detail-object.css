@@ -1,13 +1,13 @@
 .detail-object {
     --color-background: black;
-    height: calc(82dvh - .5rem);
+    height: calc(100dvh - 9rem);
     font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
         border-radius: 8px;
-        height: 100%;
+        height: calc(100% - 1rem);
 
         display: grid;
         gap: 1rem;
