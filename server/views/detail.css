@@ -102,7 +102,7 @@
         }
 
         >.scroll-content {
-          padding: var(--space);
+          padding-right: var(--space);
         }
       }
     }

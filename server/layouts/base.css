@@ -12,8 +12,21 @@ body {
   justify-content: space-between;
   height: 7rem;
 
+  a:hover {
+    outline: none;
+    box-shadow: none;
+  }
+
   svg {
-    fill: var(--color-title);
+      fill: var(--color-title);
+    }
+
+  form {
+    display: flex;
+
+    input {
+      align-self: center;
+    }
   }
 }
 
