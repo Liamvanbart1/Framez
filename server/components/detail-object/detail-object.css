@@ -1,6 +1,6 @@
 .detail-object {
-    --color-background: black;
-    height: 90vh;
+    height: calc(82dvh - .5rem);
+    font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
@@ -21,52 +21,197 @@
         .title {
             grid-area: title;
             height: fit-content;
+
+            color: var(--color-title);
+            font-size: 2em;
         }
 
         .time-content {
-            grid-area: date;
-
             justify-self: end;
-
+            grid-area: date;
+            
             .rel {
-                color: black;
-                width: fit-content;
-                height: fit-content;
-                border-radius: 8px;
-                padding: 8px;
-                padding-inline: 12px;
-                text-decoration: none;
+            color: black;
+            width: fit-content;
+            height: fit-content;
+            border-radius: 8px;
+            padding: 8px;
+            padding-inline: 12px;
+            text-decoration: none;
             }
         }
 
         ul {
-            grid-area: rels;
+          grid-area: rels;
 
-            max-height: 7rem;
-            overflow-y: auto;
+          max-height: 4rem; 
+          overflow-y: auto;
 
-            scrollbar-color: #F9F6EE black;
-            scrollbar-width: thin;
+          scrollbar-color: #F9F6EE black;
+          scrollbar-width: thin;
 
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            justify-content: left;
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 0.2rem;
+          justify-content: left;
         }
+
 
         .object-content {
             grid-area: text;
             color: var(--color-text);
             height: 100%;
             overflow-y: scroll;
-
+    
             scrollbar-color: #F9F6EE black;
             scrollbar-width: 8px;
         }
 
-        img {
+        .scroll-root {
+            --space: 1lh;
+            --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
+            anchor-name: --scroll-root;
+            border-radius: 10px;
+            border: 1px solid var(--_theme);
+            padding-inline-end: var(--space);
+
+            >.scroll-viewport {
+                container: --scrollport / size scroll-state;
+                anchor-name: --scroll-viewport;
+                height: 100%;
+                overflow: hidden auto;
+                overscroll-behavior-y: contain;
+
+                @media (prefers-reduced-motion: no-preference) {
+                    scroll-behavior: smooth;
+                }
+
+                &:is(:focus-visible, :focus-within) {
+                    outline-offset: -2px;
+                    outline: none;
+                }
+
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: color-mix(in srgb, var(--_theme), #0000 80%);
+                    border-radius: 1e3px;
+                    background-clip: padding-box;
+                    margin-block: 1lh;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: color-mix(in srgb, var(--_theme), #0000 25%);
+                    border-radius: 1e3px;
+                }
+
+                &:is(:focus-visible, :focus-within)::-webkit-scrollbar-thumb {
+                    background: var(--_theme);
+                }
+
+                @media (forced-colors: active) {
+                    &::-webkit-scrollbar-thumb {
+                        border: 2px solid currentcolor;
+                    }
+                }
+
+                @media (hover) {
+                    &::-webkit-scrollbar {
+                        opacity: .5;
+                    }
+
+                    &::-webkit-scrollbar:hover {
+                        opacity: 1;
+                    }
+
+                    &:hover::-webkit-scrollbar-thumb {
+                        background: color-mix(in srgb, var(--_theme), #0000 10%);
+                    }
+
+                    &::-webkit-scrollbar-thumb:hover {
+                        background: var(--_theme);
+                    }
+                }
+
+                @supports (-moz-appearance:none) {
+                    scrollbar-width: thin;
+                    scrollbar-color: var(--_theme) #0000;
+                    transition: scrollbar-color .3s ease;
+
+                    &:is(:focus-visible, :focus-within) {
+                        scrollbar-color: LinkText #0000;
+                    }
+
+                    @media (hover) {
+                        scrollbar-color:
+                            light-dark(#eee, #333) #0000;
+
+                        &:hover {
+                            scrollbar-color: var(--_theme) #0000;
+                        }
+                    }
+                }
+
+                >.scroll-content {
+                    padding: var(--space);
+                }
+
+                /* todo: buttons needs not be present if on mobile */
+                @supports selector(::scroll-button(*)) {
+                    &::scroll-button(*) {
+                        position: fixed;
+                        appearance: none;
+                        background: none;
+                        -webkit-tap-highlight-color: transparent;
+                        border: 1px solid var(--_theme);
+                        border-radius: 50%;
+                        aspect-ratio: 1;
+                        inline-size: 36px;
+
+                        transition:
+                            opacity .5s,
+                            scale .8s,
+                            background-color .2s;
+                    }
+
+                    &::scroll-button(*):not(:disabled):is(:hover, :focus-visible) {
+                        background: color-mix(in srgb, var(--_theme), #0000 90%);
+                    }
+
+                    &::scroll-button(*):not(:disabled):active {
+                        scale: 80%;
+                    }
+
+                    &::scroll-button(*):disabled {
+                        opacity: 25%;
+                    }
+
+                    &::scroll-button(up) {
+                        content: '▲' / 'Scroll up';
+
+                        position-area: inline-start span-block-start;
+                        position-anchor: --scroll-root;
+                        anchor-name: --scroll-buttondown;
+                        margin-inline-end: var(--space);
+                        margin-block-end: calc(3 * var(--space));
+                    }
+
+                    &::scroll-button(down) {
+                        content: '▼' / 'Scroll down';
+
+                        position-anchor: --scroll-buttondown;
+                        position-area: block-end;
+                        margin-block-start: calc(var(--space) / 2);
+                    }
+                }
+            }
+        }
+
+        .object-img {
             grid-area: img;
             width: 100%;
             height: auto;
@@ -76,8 +221,7 @@
             width: 100%;
             height: auto;
         }
-
-        .tag {
+        .tag{
             color: black;
         }
 
@@ -85,8 +229,6 @@
             position: relative;
             right: 0;
             bottom: -.5rem;
-            /* place-self: end; */
-            /* grid-area: year; */
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
             border-radius: 0.5rem 0 0 0;
@@ -122,5 +264,33 @@
                 background: transparent;
             }
         }
+
+    }
+
+    .object-container:not(:has(.object-img)) {
+        grid-template-areas:
+            "title title"
+            "rels rels"
+            "text text"
+            "date date";
+
+        .object-content {
+            grid-area: text;
+            color: var(--color-text);
+            height: 100%;
+            overflow-y: scroll;
+    
+            scrollbar-color: #F9F6EE black;
+            scrollbar-width: 8px;
+
+            width: 60%;
+            margin: auto;
+        }
+    }
+}
+
+@media (max-width: 60rem) {
+    .detail-object {
+        height: calc(70dvh - .5rem);
     }
 }
