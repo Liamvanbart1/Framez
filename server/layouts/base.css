@@ -2,6 +2,17 @@ body {
   background: var(--color-background);
   height: 100vh;
   color-scheme: light dark;
+
+  &:has(footer){
+    main {
+      height: calc(100vh - 19.2rem);
+    }
+
+    footer {
+      padding: 0;
+      height: 10.2rem;
+    }
+  }
 }
 
 .header {
