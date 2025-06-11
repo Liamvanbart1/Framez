@@ -32,6 +32,53 @@ app.get("/", async (req, res) => {
   );
 });
 
+// Routes voor de overzichtspagina's
+
+app.get("/persons", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/persons"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter((item) => item.person && item.person.uuid);
+
+    res.send(
+      renderTemplate("server/views/persons.liquid", {
+        title: "All Persons",
+        persons: filtered,
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen persons:", err);
+    res.status(500).send("Fout bij ophalen persons.");
+  }
+});
+
+app.get("/organisations", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/organisations"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter(
+      (item) =>
+        item.organisation && item.organisation.name && item.organisation.uuid
+    );
+
+    res.send(
+      renderTemplate("server/views/organisations.liquid", {
+        title: "All Organisations",
+        organisations: filtered,
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen Organisations:", err);
+    res.status(500).send("Fout bij ophalen Organisations.");
+  }
+});
+
 // als er op de knop gedrukt word van een jaar
 app.get("/year/:year", async (req, res) => {
   // het jaar word meegegeven
