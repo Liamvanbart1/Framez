@@ -27,12 +27,19 @@
         &:has(svg:hover){
             fill:var(--color-title);
             outline: none;
+            box-shadow: none;
         }
     }
 
     .static {
         border-inline: 5px solid var(--color-background);
         padding-inline: .5rem;
+
+        a:hover{
+            text-decoration: underline;
+            outline: none;
+            box-shadow: none;
+        }
     }
 
     .social-media {
