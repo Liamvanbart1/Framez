@@ -7,10 +7,14 @@ body {
 .header {
   position: relative;
   z-index: 1;
-  background-color: white;
+  background-color: var(--color-background);
   display: flex;
   justify-content: space-between;
   height: 7rem;
+
+  svg {
+    fill: var(--color-title);
+  }
 }
 
 main {
