@@ -1,6 +1,7 @@
 body {
   background: var(--color-background);
   height: 100vh;
+  color-scheme: light dark;
 }
 
 .header {
@@ -9,6 +10,10 @@ body {
   background-color: white;
   display: flex;
   justify-content: space-between;
+}
+
+main {
+  height: 83dvh;
 }
 
 footer {
@@ -80,4 +85,10 @@ footer {
   margin-top: 0.8em;
   margin-left: 2em;
   margin-bottom: 0.5em;
+}
+
+@media (max-width: 60rem) {
+  main {
+    height: auto;
+  }
 }

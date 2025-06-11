@@ -11,10 +11,11 @@
 
     height: fit-content;
 
-    grid-template:
-        [image-top] "title title x" auto [title] 
-        [image-bottom] "alinea alinea alinea" 1fr [alinea] 
-        [rels-left] "year rels rels" auto [rels-right] / 1fr 3fr auto;
+    grid-template-areas:
+    "title title title"
+    "alinea alinea x"
+    "rels rels year";
+    grid-template-columns: 1fr 3fr auto;
 
     p {
         grid-area: alinea;
@@ -34,8 +35,8 @@
     .title {
         grid-area: title;
         font-weight: bold;
-
-        /* max-width: 15rem; */
+        font-family: favorit-light, Arial, sans-serif;
+        max-width: 15rem;
 
         /* zorgen dat de hele kaart klikbaar is */
         &::before {

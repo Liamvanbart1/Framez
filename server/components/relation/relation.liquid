@@ -19,7 +19,7 @@
       {% elsif rel_type == "event" %} 
         <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
       {% else %}
-        <a href="/event/{{ uuid }}" class="object rel title">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="{{ rel_type }} rel title">{{ displayText }}</a>
       {% endif %}
 
     {% else %}

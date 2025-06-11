@@ -4,7 +4,7 @@
     text-transform: capitalize;
     width: fit-content;
     border-radius: 5px;
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 
 a:has(.tag){
