@@ -16,9 +16,21 @@
         {% endfor %}
       </ul>
     {% if person.bio_nl != "" %}
-      <div class="object-content">{{ person.bio_nl }}</div>
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ person.bio_nl }}
+          </div>
+        </div>
+      </section>
     {% elsif person.bio_en %}
-      <div class="object-content">{{ person.bio_en }}</div>
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ person.bio_en }}
+          </div>
+        </div>
+      </section>
     {% endif %}
   </div>
 </section>

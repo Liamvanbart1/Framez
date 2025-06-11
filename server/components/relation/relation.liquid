@@ -19,7 +19,7 @@
       {% elsif rel_type == "event" %}
         <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
       {% else %}
-        <a href="/event/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="{{ rel_type }} rel title">{{ displayText }}</a>
       {% endif %}
 
     {% else %}
@@ -45,7 +45,8 @@
       <p>{{ text | strip_html | truncate: 300 }}</p>
     {% endif %}
 
-    {% if rel.rels and rel.rels.size > 0 %}
+
+  {% if rel.rels and rel.rels.size > 0 %}
       <details class="skiplink rel">
         {% if rel.rels.size == 1 %}
           <summary>relatie van {{ displayText }} </summary>
@@ -63,7 +64,7 @@
             {% endif %}
             {% if displayText %}
               <li>
-                <p class="{{ subrel.type | downcase }} rel">{{ displayText }}</p>
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: displayText, class_name: subrel.type | downcase %}
               </li>
             {% endif %}
           {% endfor %}

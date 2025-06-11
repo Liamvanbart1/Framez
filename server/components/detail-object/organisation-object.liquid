@@ -16,9 +16,21 @@
         {% endfor %}
       </ul>
     {% if organisation.about_nl != "" %}
-      <div class="object-content">{{ organisation.about_nl }}</div>
+        <section class="object-content scroll-root">
+          <div class="scroll-viewport">
+            <div class="scroll-content">
+              {{ organisation.about_nl }}
+            </div>
+          </div>
+        </section>
     {% elsif organisation.about_en %}
-      <div class="object-content">{{ organisation.about_en }}</div>
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ organisation.about_en }}
+          </div>
+        </div>
+      </section>
     {% endif %}
     {% if organisation.created %}
       <div class="time-content hapje">
