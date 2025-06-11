@@ -126,6 +126,7 @@ body {
 body {
   background: var(--color-background);
   height: 100vh;
+  color-scheme: light dark;
 }
 .header {
   position: relative;
@@ -133,6 +134,9 @@ body {
   background-color: white;
   display: flex;
   justify-content: space-between;
+}
+main {
+  height: 83dvh;
 }
 footer {
   padding: 1rem;
@@ -193,6 +197,11 @@ footer {
   margin-top: 0.8em;
   margin-left: 2em;
   margin-bottom: 0.5em;
+}
+@media (max-width: 60rem) {
+  main {
+    height: auto;
+  }
 }
 .home-container {
   display: grid;
@@ -309,15 +318,12 @@ footer {
 .detail-container {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 90dvh;
   gap: 2rem;
-
-  width: min(100% - 4rem, 90rem);
-  margin-inline: auto;
-
+  height: 100%;
 
   .relaties-container {
     display: block;
+    height: calc(82dvh + .5rem);
 
     h2 {
       color: var(--color-title);
@@ -330,8 +336,9 @@ footer {
       flex-direction: column;
       gap: 1rem;
 
-      max-height: 90dvh;
+      max-height: calc(82dvh - 2rem);
       overflow-y: scroll;
+      overscroll-behavior: contain;
 
       scrollbar-width: thin;
       scrollbar-color: var(--color-title) var(--color-background);
@@ -350,9 +357,7 @@ footer {
 @media (max-width: 60rem) {
   .detail-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 70dvh auto;
-
-    width: min(100% - 4rem, 45rem);
+    height: auto;
   }
 }
 .eventlist {
@@ -460,7 +465,9 @@ footer {
     }
 }
 .detail-object {
-    /* height: 90vh; */
+    --color-background: black;
+    height: calc(82dvh - .5rem);
+    font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
@@ -480,7 +487,6 @@ footer {
 
         .title {
             grid-area: title;
-            justify-self: end;
             height: fit-content;
 
             color: var(--color-title);
@@ -489,6 +495,8 @@ footer {
 
         .time-content {
             grid-area: date;
+
+            justify-self: end;
 
             .rel {
                 color: black;
@@ -503,7 +511,8 @@ footer {
 
         ul {
             grid-area: rels;
-            max-height: 3.8rem;
+
+            max-height: 7rem;
             overflow-y: auto;
 
             scrollbar-color: var(--color-title) var(--color-background-secondair);
@@ -514,16 +523,154 @@ footer {
             flex-direction: row;
             flex-wrap: wrap;
             gap: 0.2rem;
+            justify-content: left;
         }
 
 
         .object-content {
             grid-area: text;
-            color: var(--color-text);
-            overflow-y: scroll;
+        }
 
-            scrollbar-color: var(--color-title) var(--color-background-secondair);
-            scrollbar-width: 8px;
+        .scroll-root {
+            --space: 1lh;
+            --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
+            anchor-name: --scroll-root;
+            border-radius: 10px;
+            border: 1px solid var(--_theme);
+            padding-inline-end: var(--space);
+
+            >.scroll-viewport {
+                container: --scrollport / size scroll-state;
+                anchor-name: --scroll-viewport;
+                height: 100%;
+                overflow: hidden auto;
+                overscroll-behavior-y: contain;
+
+                @media (prefers-reduced-motion: no-preference) {
+                    scroll-behavior: smooth;
+                }
+
+                &:is(:focus-visible, :focus-within) {
+                    outline-offset: -2px;
+                    outline: none;
+                }
+
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: color-mix(in srgb, var(--_theme), #0000 80%);
+                    border-radius: 1e3px;
+                    background-clip: padding-box;
+                    margin-block: 1lh;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: color-mix(in srgb, var(--_theme), #0000 25%);
+                    border-radius: 1e3px;
+                }
+
+                &:is(:focus-visible, :focus-within)::-webkit-scrollbar-thumb {
+                    background: var(--_theme);
+                }
+
+                @media (forced-colors: active) {
+                    &::-webkit-scrollbar-thumb {
+                        border: 2px solid currentcolor;
+                    }
+                }
+
+                @media (hover) {
+                    &::-webkit-scrollbar {
+                        opacity: .5;
+                    }
+
+                    &::-webkit-scrollbar:hover {
+                        opacity: 1;
+                    }
+
+                    &:hover::-webkit-scrollbar-thumb {
+                        background: color-mix(in srgb, var(--_theme), #0000 10%);
+                    }
+
+                    &::-webkit-scrollbar-thumb:hover {
+                        background: var(--_theme);
+                    }
+                }
+
+                @supports (-moz-appearance:none) {
+                    scrollbar-width: thin;
+                    scrollbar-color: var(--_theme) #0000;
+                    transition: scrollbar-color .3s ease;
+
+                    &:is(:focus-visible, :focus-within) {
+                        scrollbar-color: LinkText #0000;
+                    }
+
+                    @media (hover) {
+                        scrollbar-color:
+                            light-dark(#eee, #333) #0000;
+
+                        &:hover {
+                            scrollbar-color: var(--_theme) #0000;
+                        }
+                    }
+                }
+
+                >.scroll-content {
+                    padding: var(--space);
+                }
+
+                /* todo: buttons needs not be present if on mobile */
+                @supports selector(::scroll-button(*)) {
+                    &::scroll-button(*) {
+                        position: fixed;
+                        appearance: none;
+                        background: none;
+                        -webkit-tap-highlight-color: transparent;
+                        border: 1px solid var(--_theme);
+                        border-radius: 50%;
+                        aspect-ratio: 1;
+                        inline-size: 36px;
+
+                        transition:
+                            opacity .5s,
+                            scale .8s,
+                            background-color .2s;
+                    }
+
+                    &::scroll-button(*):not(:disabled):is(:hover, :focus-visible) {
+                        background: color-mix(in srgb, var(--_theme), #0000 90%);
+                    }
+
+                    &::scroll-button(*):not(:disabled):active {
+                        scale: 80%;
+                    }
+
+                    &::scroll-button(*):disabled {
+                        opacity: 25%;
+                    }
+
+                    &::scroll-button(up) {
+                        content: '▲' / 'Scroll up';
+
+                        position-area: inline-start span-block-start;
+                        position-anchor: --scroll-root;
+                        anchor-name: --scroll-buttondown;
+                        margin-inline-end: var(--space);
+                        margin-block-end: calc(3 * var(--space));
+                    }
+
+                    &::scroll-button(down) {
+                        content: '▼' / 'Scroll down';
+
+                        position-anchor: --scroll-buttondown;
+                        position-area: block-end;
+                        margin-block-start: calc(var(--space) / 2);
+                    }
+                }
+            }
         }
 
         img {
@@ -537,17 +684,18 @@ footer {
             height: auto;
         }
 
+
         .tag {
             color: black;
         }
 
         .hapje {
             position: relative;
-            right: .5rem;
+            right: 0;
             bottom: -.5rem;
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
-            border-radius: 0 .5rem 0 0;
+            border-radius: 0.5rem 0 0 0;
             width: max-content;
 
             display: flex;
@@ -557,31 +705,35 @@ footer {
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: -1.5rem;
-                left: 0rem;
+                bottom: 0;
+                left: -1.5rem;
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
 
             :after {
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: 1rem;
-                right: -1.5rem;
+                top: -1.5rem;
+                right: -0.5rem;
 
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
         }
+
+    }
+}
+@media (max-width: 60rem) {
+    .detail-object {
+        height: calc(70dvh - .5rem);
     }
 }
 .tag {
@@ -590,7 +742,7 @@ footer {
     text-transform: capitalize;
     width: fit-content;
     border-radius: 5px;
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 a:has(.tag){
     text-decoration: none;
@@ -609,12 +761,14 @@ a:has(.tag){
 
     height: fit-content;
 
-    grid-template:
-        [image-top] "title title x" auto [title] 
-        [image-bottom] "alinea alinea alinea" 1fr [alinea] 
-        [rels-left] "year rels rels" auto [rels-right] / 1fr 3fr auto;
+    grid-template-areas:
+    "title title title"
+    "alinea alinea x"
+    "rels rels year";
+    grid-template-columns: 1fr 3fr auto;
 
     p {
+        margin-inline: 1rem;
         grid-area: alinea;
     }
 
@@ -632,8 +786,10 @@ a:has(.tag){
     .title {
         grid-area: title;
         font-weight: bold;
+        font-family: favorit-light, Arial, sans-serif;
+        max-width: 15rem;
 
-        /* max-width: 15rem; */
+        margin-inline: .5rem;
 
         /* zorgen dat de hele kaart klikbaar is */
         &::before {
@@ -653,7 +809,7 @@ a:has(.tag){
         width: 100%;
         height: 100%;
 
-        gap: .5rem;
+        gap: .2rem;
         display: flex;
         flex-wrap: wrap;
     }
@@ -662,8 +818,6 @@ a:has(.tag){
         grid-area: rels;
 
         color: black;
-        /* width: fit-content; */
-        /* max-width: 15rem; */
 
         overflow: auto;
 
@@ -678,20 +832,16 @@ a:has(.tag){
             font-family: favorit-light, Arial, sans-serif;
             cursor: pointer;
 
-
-            /* width: max-content;
-            max-width: 15rem; */
-
             list-style-type: none;
-            /* ik weet niet of het handig is om te werken met fonts minder dan 1 rem aangezien we met slechtziende werken... */
-            /* font-size: .7rem; */
-            /* padding: .2rem; */
         }
     }
 
     ul {
         display: flex;
         flex-direction: row;
+        li p{
+            margin-inline: 0;
+        }
     }
 
     /* animatie foldout relaties */
