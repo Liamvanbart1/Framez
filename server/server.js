@@ -102,6 +102,30 @@ app.get("/events", async (req, res) => {
   }
 });
 
+app.get("/publications", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/publications"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter(
+      (item) =>
+        item.publication && item.publication.title && item.publication.uuid
+    );
+
+    res.send(
+      renderTemplate("server/views/publications.liquid", {
+        title: "All Publications",
+        publications: filtered,
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen Publications:", err);
+    res.status(500).send("Fout bij ophalen Publications.");
+  }
+});
+
 // als er op de knop gedrukt word van een jaar
 app.get("/year/:year", async (req, res) => {
   // het jaar word meegegeven
@@ -117,7 +141,7 @@ app.get("/year/:year", async (req, res) => {
 
   // laad de detailpagina voor de expos
   return res.send(
-    renderTemplate("server/views/events.liquid", {
+    renderTemplate("server/views/years.liquid", {
       title: "Events",
       event: json.events,
       year: year,

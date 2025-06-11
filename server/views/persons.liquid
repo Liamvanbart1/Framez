@@ -1,14 +1,17 @@
 {% layout "server/layouts/base.liquid" %}
 
 {% block content %}
-
-<h1>{{ title }}</h1>
-<ul>
-    {% for item in persons %}
-    {% if item.person %}
-    <li><a href="/person/{{ item.person.uuid }}">{{ item.person.name }}</a></li>
-    {% endif %}
-    {% endfor %}
-</ul>
+<div class="eventList">
+    <div>
+        <h1>{{ title }}</h1>
+        <ul>
+            {% for item in persons %}
+            {% if item.person %}
+            <li class="search-result"><a href="/person/{{ item.person.uuid }}">{{ item.person.name }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock %}
