@@ -331,17 +331,105 @@ footer {
       padding-block: .5rem;
     }
 
-    &>ul {
+    .scroll-root-relations {
+      --space: 1lh;
+      --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
+      border-radius: 10px;
+      padding-inline-end: var(--space);
+      max-height: calc(82dvh - 2rem);
+      height: 100%;
+
+      >.scroll-viewport {
+        container: --scrollport / size scroll-state;
+        anchor-name: --scroll-viewport;
+        height: inherit;
+        overflow: hidden auto;
+        overscroll-behavior-y: contain;
+
+        @media (prefers-reduced-motion: no-preference) {
+          scroll-behavior: smooth;
+        }
+
+        &:is(:focus-visible, :focus-within) {
+          outline-offset: -2px;
+          outline: none;
+        }
+
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: color-mix(in srgb, var(--_theme), #0000 80%);
+          border-radius: 1e3px;
+          background-clip: padding-box;
+          margin-block: 1lh;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: color-mix(in srgb, var(--_theme), #0000 25%);
+          border-radius: 1e3px;
+        }
+
+        &:is(:focus-visible, :focus-within)::-webkit-scrollbar-thumb {
+          background: var(--_theme);
+        }
+
+        @media (forced-colors: active) {
+          &::-webkit-scrollbar-thumb {
+            border: 2px solid currentcolor;
+          }
+        }
+
+        @media (hover) {
+          &::-webkit-scrollbar {
+            opacity: .5;
+          }
+
+          &::-webkit-scrollbar:hover {
+            opacity: 1;
+          }
+
+          &:hover::-webkit-scrollbar-thumb {
+            background: color-mix(in srgb, var(--_theme), #0000 10%);
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: var(--_theme);
+          }
+        }
+
+        @supports (-moz-appearance:none) {
+          scrollbar-width: thin;
+          scrollbar-color: var(--_theme) #0000;
+          transition: scrollbar-color .3s ease;
+
+          &:is(:focus-visible, :focus-within) {
+            scrollbar-color: LinkText #0000;
+          }
+
+          @media (hover) {
+            scrollbar-color:
+              light-dark(#eee, #333) #0000;
+
+            &:hover {
+              scrollbar-color: var(--_theme) #0000;
+            }
+          }
+        }
+
+        >.scroll-content {
+          padding: var(--space);
+        }
+      }
+    }
+
+    .scroll-content>ul {
       display: flex;
       flex-direction: column;
       gap: 1rem;
 
       max-height: calc(82dvh - 2rem);
-      overflow-y: scroll;
-      overscroll-behavior: contain;
-
-      scrollbar-width: thin;
-      scrollbar-color: var(--color-title) var(--color-background);
     }
   }
 }
