@@ -28,6 +28,7 @@
         }
 
         .time-content {
+            justify-self: end;
             grid-area: date;
 
             justify-self: end;
@@ -207,7 +208,7 @@
             }
         }
 
-        img {
+        .object-img {
             grid-area: img;
             width: 100%;
             height: auto;
@@ -263,6 +264,27 @@
             }
         }
 
+    }
+
+    .object-container:not(:has(.object-img)) {
+        grid-template-areas:
+            "title title"
+            "rels rels"
+            "text text"
+            "date date";
+
+        .object-content {
+            grid-area: text;
+            color: var(--color-text);
+            height: 100%;
+            overflow-y: scroll;
+    
+            scrollbar-color: #F9F6EE black;
+            scrollbar-width: 8px;
+
+            width: 60%;
+            margin: auto;
+        }
     }
 }
 

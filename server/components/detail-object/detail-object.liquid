@@ -20,7 +20,7 @@
             {% endfor %}
         </ul>
         {% if assets.size > 0 %}
-        <img src="{{ assets[0].origin }}" alt="" />
+        <img class="object-img" src="{{ assets[0].origin }}" alt="" />
         {% endif %}
         {% if event.content_en != "" %}
             <section class="object-content scroll-root">
@@ -39,10 +39,12 @@
                 </div>
             </section>
         {% endif %}
-        <div class="time-content hapje">
-            <time class="year rel" datetime="{{ event.year }}-01-01">
-                {{ event.year }}
-            </time>
-        </div>
+        {% if event.year > 0 %}
+            <div class="time-content hapje">
+                <time class="year rel" datetime="{{ event.year }}-01-01">
+                    {{ event.year | split: "-" | last }}
+                </time>
+            </div>
+        {% endif %}
     </div>
 </section>

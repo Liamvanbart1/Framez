@@ -18,6 +18,7 @@
     grid-template-columns: 1fr 3fr auto;
 
     p {
+        margin-inline: 1rem;
         grid-area: alinea;
     }
 
@@ -38,6 +39,8 @@
         font-family: favorit-light, Arial, sans-serif;
         max-width: 15rem;
 
+        margin-inline: .5rem;
+
         /* zorgen dat de hele kaart klikbaar is */
         &::before {
             content: "";
@@ -46,7 +49,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            /* background-color: rgba(255, 105, 180, 0.323); */
 
             z-index: 0;
             cursor: pointer;
@@ -57,7 +59,7 @@
         width: 100%;
         height: 100%;
 
-        gap: .5rem;
+        gap: .2rem;
         display: flex;
         flex-wrap: wrap;
     }
@@ -66,8 +68,6 @@
         grid-area: rels;
 
         color: black;
-        /* width: fit-content; */
-        /* max-width: 15rem; */
 
         overflow: auto;
 
@@ -82,20 +82,16 @@
             font-family: favorit-light, Arial, sans-serif;
             cursor: pointer;
 
-
-            /* width: max-content;
-            max-width: 15rem; */
-
             list-style-type: none;
-            /* ik weet niet of het handig is om te werken met fonts minder dan 1 rem aangezien we met slechtziende werken... */
-            /* font-size: .7rem; */
-            /* padding: .2rem; */
         }
     }
 
     ul {
         display: flex;
         flex-direction: row;
+        li p{
+            margin-inline: 0;
+        }
     }
 
     /* animatie foldout relaties */
