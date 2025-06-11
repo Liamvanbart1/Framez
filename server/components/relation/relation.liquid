@@ -16,10 +16,10 @@
         <a href="/person/{{ uuid }}" class="person rel title">{{ displayText }}</a>
       {% elsif rel_type == "organisation" %}
         <a href="/organisation/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
-      {% elsif rel_type == "event" %}
+      {% elsif rel_type == "event" %} 
         <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
       {% else %}
-        <a href="/event/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
+        <a href="/event/{{ uuid }}" class="{{ rel_type }} rel title">{{ displayText }}</a>
       {% endif %}
 
     {% else %}
@@ -72,7 +72,7 @@
       </details>
     {% endif %}
 
-    {% if rel.node.year %}
+    {% if rel.node.year > 0 %}
       <div class="hapje">
         <time class="year rel" datetime="{{ rel.node.year }}-01-01">
           {{ rel.node.year }}

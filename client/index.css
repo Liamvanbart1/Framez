@@ -14,11 +14,13 @@
 @import '../server/components/detail-object/detail-object.css';
 @import '../server/components/rel-tag/rel-tag.css';
 @import '../server/components/relation/relation.css';
-
+@import '../server/components/legenda/legenda.css';
 
 @import '../server/components/detail-object/detail-object.css';
 @import '../server/components/relation/relation.css';
 @import '../server/components/rel-tag/rel-tag.css';
+@import '../server/components/footer/footer.css';
+
 body {
   color: var(--color-text);
   margin: 0 auto;
