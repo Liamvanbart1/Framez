@@ -179,8 +179,8 @@ footer {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 8px;
+  /* font-size: 16px; */
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
@@ -1205,7 +1205,10 @@ a:has(.tag){
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr;
     width: 100%;
-    margin: 0.5em;
+
+    section {
+      margin: 0.5em;
+    }
 
     .static {
       border-block: 5px solid var(--color-background);

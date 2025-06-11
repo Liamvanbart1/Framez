@@ -144,6 +144,11 @@ app.get("/year/:year", async (req, res) => {
 app.get("/event/:event", async (req, res) => {
   const uuid = req.params.event;
 
+  if (!uuid || uuid === "undefined") {
+    console.warn("Ongeldige UUID meegegeven:", uuid);
+    return res.status(400).send("Ongeldig event-ID.");
+  }
+
   try {
     const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
     const response = await fetch(url);

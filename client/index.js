@@ -52,16 +52,16 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
                 const title =
                   result.title || result.title_en || result.name || "No title";
                 return `
-                  <li>
-                    <a 
-                      href="#" 
-                      class="framez-search-results" 
-                      data-uuid="${result.uuid}" 
-                      data-type="${type}"
-                    >
-                      ${title}
-                    </a>
-                  </li>`;
+                      <li
+                          class="framez-search-results"
+                          data-uuid="${result.uuid}"
+                          data-type="${type}"
+                          style="cursor: pointer;"
+                        >
+                          <a class="framez-search-results" href="#">
+                            ${title}
+                          </a>
+                        </li>`;
               })
               .join("");
             resultsContainer.style.display = "block";
