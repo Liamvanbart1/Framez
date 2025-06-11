@@ -6,12 +6,13 @@
         <h1>{{ title }}</h1>
         <ul>
             {% for item in persons %}
-            {% if item.person %}
-            <li class="search-result"><a href="/person/{{ item.person.uuid }}">{{ item.person.name }}</a></li>
+            {% if item.person and item.person.uuid and item.person.name %}
+            <li class="search-result">
+                <a href="/person/{{ item.person.uuid }}">{{ item.person.name }}</a>
+            </li>
             {% endif %}
             {% endfor %}
         </ul>
     </div>
 </div>
-
 {% endblock %}

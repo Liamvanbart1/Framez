@@ -225,12 +225,12 @@ footer {
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   gap: 2rem;
-  height: calc(100dvh - 9rem);
+  height: calc(100dvh - 19.2rem);
 
   .home-left {
     display: grid;
     grid-template-columns: 1fr;
-    height: calc(100dvh - 16rem);
+    height: calc(100dvh - 19.2rem);
     padding: 0.5rem;
     background-color: var(--color-background-secondair);
     border-radius: 8px;
@@ -245,7 +245,7 @@ footer {
 
   .home-right {
     background-color: var(--color-background-secondair);
-    height: calc(100dvh - 9rem);
+    height: calc(100dvh - 19.2rem);
     display: grid;
     border-radius: 8px;
     padding: 0.5rem;

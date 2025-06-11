@@ -47,6 +47,7 @@ app.get("/persons", async (req, res) => {
       renderTemplate("server/views/persons.liquid", {
         title: "All Persons",
         persons: filtered,
+        baseUrl: "person",
       })
     );
   } catch (err) {
@@ -71,6 +72,7 @@ app.get("/organisations", async (req, res) => {
       renderTemplate("server/views/organisations.liquid", {
         title: "All Organisations",
         organisations: filtered,
+        baseUrl: "organisation",
       })
     );
   } catch (err) {
@@ -94,6 +96,7 @@ app.get("/events", async (req, res) => {
       renderTemplate("server/views/events.liquid", {
         title: "All Events",
         events: filtered,
+        baseUrl: "event",
       })
     );
   } catch (err) {
@@ -102,27 +105,21 @@ app.get("/events", async (req, res) => {
   }
 });
 
-app.get("/publications", async (req, res) => {
+app.get("/years", async (req, res) => {
   try {
-    const response = await fetch(
-      "https://archive.framerframed.nl/api/ff/publications"
-    );
-    const data = await response.json();
-
-    const filtered = data.filter(
-      (item) =>
-        item.publication && item.publication.title && item.publication.uuid
-    );
+    const yearUrl = `https://archive.framerframed.nl/api/get-years`;
+    const responseYear = await fetch(yearUrl);
+    const jsonYear = await responseYear.json();
 
     res.send(
-      renderTemplate("server/views/publications.liquid", {
-        title: "All Publications",
-        publications: filtered,
+      renderTemplate("server/views/years.liquid", {
+        title: "Choose a Year",
+        years: jsonYear.nodes,
       })
     );
   } catch (err) {
-    console.error("Fout bij ophalen Publications:", err);
-    res.status(500).send("Fout bij ophalen Publications.");
+    console.error("Fout bij ophalen jaren:", err);
+    res.status(500).send("Fout bij ophalen jaren.");
   }
 });
 
@@ -141,10 +138,11 @@ app.get("/year/:year", async (req, res) => {
 
   // laad de detailpagina voor de expos
   return res.send(
-    renderTemplate("server/views/years.liquid", {
+    renderTemplate("server/views/year.liquid", {
       title: "Events",
       event: json.events,
       year: year,
+      baseUrl: "event",
     })
   );
 });
