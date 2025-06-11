@@ -7,11 +7,13 @@
         <ul>
             {% for item in persons %}
             {% if item.person and item.person.uuid and item.person.name %}
-            <li class="search-result">
-                <a href="/person/{{ item.person.uuid }}">{{ item.person.name }}</a>
-            </li>
-            {% endif %}
-            {% endfor %}
+            {% render "server/components/item-list/item-list.liquid",
+            uuid: item.person.uuid,
+            title: item.person.name,
+            base: "person",
+            type: "Person"
+            %}
+            {% endif %} {% endfor %}
         </ul>
     </div>
 </div>

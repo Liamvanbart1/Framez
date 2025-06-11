@@ -3,17 +3,15 @@
 {% block content %}
 <div class="eventlist">
     <div>
-        {% comment %} wat als er geen engelse titel beschikbaar is? {% endcomment %}
-        {% comment %} wat als je meer paginas van evenementen wilt? {% endcomment %}
-        <h1 class="h1"> Events in {{year}}</h1>
+        <h1 class="h1">Events in {{ year }}</h1>
         <ul>
             {% for e in event %}
-            {% comment %} engels en nederlands render, nederlands heeft voorrang {% endcomment %}
-            {% if e.node.title_nl != ""%}
-            {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_nl, base: "event" %}
-            {% elsif e.node.en != ""%}
+            {% comment %} Prefer English title, fall back to Dutch {% endcomment %}
+            {% if e.node.title_en != "" %}
             {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_en, base: "event" %}
-            {%endif %}
+            {% elsif e.node.title_nl != "" %}
+            {% render 'server/components/event-list/event.liquid' e: e, title: e.node.title_nl, base: "event" %}
+            {% endif %}
             {% endfor %}
         </ul>
     </div>

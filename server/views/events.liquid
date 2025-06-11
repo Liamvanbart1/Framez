@@ -13,11 +13,12 @@
       {% assign title = e.event.title_nl %}
       {% endif %}
       {% if title != "" %}
-      <li class="search-result">
-        <a href="/event/{{ e.event.uuid }}">
-          {{ title }}
-        </a>
-      </li>
+      {% render "server/components/item-list/item-list.liquid",
+      uuid: e.event.uuid,
+      title: title,
+      base: "event",
+      type: e.event.type_en
+      %}
       {% endif %}
       {% endfor %}
     </ul>

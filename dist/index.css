@@ -1136,6 +1136,12 @@ a:has(.tag){
         margin-block: .2rem;
     }
 }
+.Person {
+  background-color: var(--color-person);
+}
+.Organisation {
+  background-color: var(--color-organisation);
+}
 .footer {
     background-color: var(--color-text);
     color: var(--color-background);
@@ -1203,7 +1209,7 @@ a:has(.tag){
 body {
   color: var(--color-text);
   margin: 0 auto;
-  interpolate-size:allow-keywords;
+  interpolate-size: allow-keywords;
 }
 main {
   padding: 1rem;
