@@ -403,25 +403,3 @@ app.get("/organisation/:uuid", async (req, res) => {
 const renderTemplate = (template, data) => {
   return engine.renderFileSync(template, data);
 };
-
-app.get("/search", async (req, res) => {
-  const baseUrl = "https://archive.framerframed.nl";
-  const query = req.query.q;
-
-  try {
-    const apiUrl = new URL("/api/ff/search", baseUrl);
-    apiUrl.searchParams.append("s", query); // Veilig en automatisch geëncodeerd
-
-    // new URL is minder foutgevoelig en zorgt ervoor dat de string correct wordt geparsed naar een geldige URL
-
-    const response = await fetch(apiUrl);
-    // console.log(response, "response");
-    const data = await response.json();
-    // console.log(data, "data");
-
-    res.json({ results: data });
-  } catch (err) {
-    console.error("Search failed:", err);
-    res.status(500).json({ error: "Search error" });
-  }
-});
