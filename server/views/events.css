@@ -1,0 +1,27 @@
+.eventlist {
+    color: var(--color-title);
+    display: flex;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    & > div {
+        max-width: 50em;
+
+        max-height: 85dvh;
+        overflow: scroll;
+
+        scrollbar-color: var(--color-title) var(--color-background);
+        scrollbar-width: thin;
+    }
+
+    h1 {
+        position: sticky;
+        top: -1px;
+        background-color: var(--color-background);
+        padding-bottom: .5rem;
+    }
+
+}

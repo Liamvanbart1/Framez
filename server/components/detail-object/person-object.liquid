@@ -1,0 +1,36 @@
+<section class="detail-object">
+  <div class="object-container">
+    <h1 class="title">{{ person.name }}</h1>
+      <ul>
+        {% for rel in relations %}
+          {% if rel.node.name %}
+            <li>
+              {% if rel.node.title_en != null and rel.node.title_en != ""  or if rel.node.title_nl != null and rel.node.title_nl != ""%}
+                {% assign text = rel.node.title_en | default: rel.node.title_nl %}
+              {% else %}
+                {% assign text = rel.node.name %}
+              {% endif %}
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% if person.bio_en != "" %}
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ person.bio_en }}
+          </div>
+        </div>
+      </section>
+    {% elsif person.bio_nl %}
+      <section class="object-content scroll-root">
+        <div class="scroll-viewport">
+          <div class="scroll-content">
+            {{ person.bio_nl }}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</section>

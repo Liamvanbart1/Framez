@@ -1,6 +1,25 @@
 {% layout "server/layouts/base.liquid" %}
+{% assign test = false %}
 
 {% block content %}
-<h1 class="h1">{{ item.name }}</h1>
-<img src="{{ item.image.src }}" alt="{{ item.image.alt }}" width="{{ item.image.width }}" height="{{ item.image.height }}" />
+<div class="detail-container">
+  {% render 'server/components/detail-object/detail-object.liquid', event: event, relations: relations, assets: assets %}
+  <div class="relaties-container">
+      {% if relations.size > 0 %}
+        <h2 class="test">Related items:</h2>
+          <section class="object-content scroll-root-relations">
+            <div class="scroll-viewport">
+              <div class="scroll-content">
+                <ul>
+                  {% for rel in relations %}
+                    {% render 'server/components/relation/relation.liquid', rel: rel %}
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </section>
+      {% endif %}
+  </div>
+</div>
+
 {% endblock %}

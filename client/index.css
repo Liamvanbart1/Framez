@@ -1,19 +1,32 @@
 /* global styles */
-@import 'reset.css';
+@import "reset.css";
 @import "typography.css";
+@import "colors.css";
 
 /*.layout and view styling */
-@import '../server/layouts/base.css';
-@import '../server/views/index.css';
+@import "../server/layouts/base.css";
+@import "../server/views/index.css";
+@import "../server/views/detail.css";
+@import "../server/views/events.css";
+@import "../server/views/years.css";
 
 /* component styling */
-@import '../server/components/card/card.css';
+@import "../server/components/event-list/event.css";
+@import "../server/components/detail-object/detail-object.css";
+@import "../server/components/rel-tag/rel-tag.css";
+@import "../server/components/relation/relation.css";
+@import "../server/components/legenda/legenda.css";
+@import "../server/components/item-list/item-list.css";
+
+@import "../server/components/detail-object/detail-object.css";
+@import "../server/components/relation/relation.css";
+@import "../server/components/rel-tag/rel-tag.css";
+@import "../server/components/footer/footer.css";
 
 body {
-  color: black;
-  max-width: 1440px;
+  color: var(--color-text);
   margin: 0 auto;
-  background-image: url('/images/background.jpg');
+  interpolate-size: allow-keywords;
 }
 
 main {

@@ -1,0 +1,50 @@
+<section class="detail-object">
+    <div class="object-container">
+        {% assign title = event.title_en | default: event.title_nl %}
+        {% if title == nil or title == "" %}
+        {% assign EventTitle = event.name %}
+        {% else %}
+        {% assign EventTitle = title %}
+        {% endif %}
+        <h1 class="title">{{ EventTitle }}</h1>
+        <ul>
+            {% for rel in relations %}
+            <li>
+                {% if rel.node.title_en != null and rel.node.title_en != "" or if rel.node.title_nl != null and rel.node.title_nl != ""%}
+                {% assign text = rel.node.title_en | default: rel.node.title_nl %}
+                {% else %}
+                {% assign text = rel.node.name %}
+                {% endif %}
+                {% render 'server/components/rel-tag/rel-tag.liquid', rel: text, class_name: rel.type %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% if assets.size > 0 %}
+        <img class="object-img" src="{{ assets[0].origin }}" alt="" />
+        {% endif %}
+        {% if event.content_en != "" %}
+            <section class="object-content scroll-root">
+                <div class="scroll-viewport">
+                    <div class="scroll-content">
+                        {{ event.content_en }}
+                    </div>
+                </div>
+            </section>
+        {% elsif event.content_nl %}
+            <section class="object-content scroll-root">
+                <div class="scroll-viewport">
+                    <div class="scroll-content">
+                        {{ event.content_nl }}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+        {% if event.year > 0 %}
+            <div class="time-content hapje">
+                <time class="year rel" datetime="{{ event.year }}-01-01">
+                    {{ event.year | split: "-" | last }}
+                </time>
+            </div>
+        {% endif %}
+    </div>
+</section>

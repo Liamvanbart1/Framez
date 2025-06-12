@@ -51,6 +51,23 @@ Het doel van dit project is om een flexibele en uitbreidbare basis te bieden voo
 
 ### Belangrijkste mappen en bestanden
 
+
+(Installeer alle packages)
+
+```bash
+npm install
+```
+
+Start de ontwikkelserver
+
+```bash
+npm run dev
+```
+
+De applicatie draait nu op:
+
+http://localhost:3000
+
 - **client/**  
   Bevat alle frontend-bestanden.  
   - `index.js`: Regelt zoekfunctionaliteit en UI-interactie.
@@ -63,6 +80,7 @@ Het doel van dit project is om een flexibele en uitbreidbare basis te bieden voo
   - `components/`: Herbruikbare Liquid componenten (zoals relation, event-list, footer).
   - `layouts/`: Layouts voor pagina's (`base.liquid`, `homepage.liquid`).
   - `views/`: Pagina-templates voor verschillende routes.
+
 
 - **public/**
   - `fonts/`: plaats voor font bestanden. (.otf of .ttf)  

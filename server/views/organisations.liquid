@@ -1,0 +1,22 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+
+<div class="eventlist">
+    <div>
+        <h1>{{ title }}</h1>
+        <ul>
+            {% for item in organisations %}
+            {% if item.organisation and item.organisation.uuid and item.organisation.name %}
+            {% render "server/components/item-list/item-list.liquid",
+            uuid: item.organisation.uuid,
+            title: item.organisation.name,
+            base: "organisation",
+            type: "Organisation"
+            %}
+            {% endif %} {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

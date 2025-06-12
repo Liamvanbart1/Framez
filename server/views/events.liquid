@@ -1,0 +1,27 @@
+{% layout "server/layouts/base.liquid" %}
+
+{% block content %}
+<div class="eventlist">
+  <div>
+    <h1 class="h1">All events</h1>
+    <ul>
+      {% for e in events %}
+      {% assign title = "" %}
+      {% if e.event.title_en != "" %}
+      {% assign title = e.event.title_en %}
+      {% elsif e.event.title_nl != "" %}
+      {% assign title = e.event.title_nl %}
+      {% endif %}
+      {% if title != "" %}
+      {% render "server/components/item-list/item-list.liquid",
+      uuid: e.event.uuid,
+      title: title,
+      base: "event",
+      type: e.event.type_en
+      %}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
