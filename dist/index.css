@@ -46,15 +46,15 @@ table {
 }
 @font-face {
   font-family: favorit;
-  src: url(/Favorit_Regular.otf);
+  src: url(../public/fonts/Favorit_Regular.otf);
 }
 @font-face {
   font-family: favorit-light;
-  src: url(/Favorit_Light.otf);
+  src: url(../public/fonts/Favorit_Light.otf);
 }
 @font-face {
   font-family: favorit-bold;
-  src: url(/Favorit_Bold.otf);
+  src: url(../public/fonts/Favorit_Bold.otf);
 }
 @font-face {
   font-family: favorit-italic;
@@ -163,6 +163,14 @@ body {
       align-self: center;
     }
   }
+
+  div {
+    display: flex;
+    flex-direction: row-reverse;
+
+    align-items: center;
+    margin-inline: 1rem;
+  }
 }
 main {
   height: calc(100vh - 19.3rem);
@@ -243,9 +251,10 @@ footer {
   margin-bottom: 0.5em;
 }
 .image-toggle-btn {
-  height: 3em;
-  background-color: #1f2937;
-  color: #fff;
+  min-height: fit-content;
+  height: 2.5rem;
+  background-color: rgb(199, 199, 199);
+  color: black;
   border: none;
   padding: 0.6em 1.2em;
   border-radius: 8px;
@@ -253,10 +262,10 @@ footer {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px var(--color-text);
 }
 .image-toggle-btn:hover {
-  background-color: #111827;
+  background-color: rgb(150, 150, 150);
   transform: translateY(-1px);
 }
 .image-toggle-btn:active {
@@ -266,6 +275,15 @@ footer {
 @media (max-width: 60rem) {
   main {
     height: auto;
+  }
+
+  .header div {
+    flex-direction: column;
+    justify-content: center;
+
+    form {
+      margin: auto;
+    }
   }
 }
 .home-container {
@@ -674,7 +692,6 @@ body.no-images img {
     }
 }
 .detail-object {
-    --color-background: black;
     height: calc(100dvh - 9rem);
     font-family: favorit-light, sans-serif;
 
@@ -1147,17 +1164,29 @@ a:has(.tag){
 
 
     background-color: rgb(199, 199, 199);
+    color: black;
 
     padding: .5rem;
     border-radius: 5px;
     margin-block: .2rem;
 
     z-index: 3;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     left: 2rem;
 
+    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 0 5px var(--color-text);
+
+    &:hover {
+        background-color: rgb(150, 150, 150);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
 }
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.601);
@@ -1166,12 +1195,13 @@ a:has(.tag){
 .legenda {
     background-color: transparent;
 
-    position: absolute;
+    position: fixed;
     position-anchor: --legenda-button;
     top: calc(anchor(bottom) - 18rem);
     left: anchor(left);
 
     p {
+        color: black;
         width: fit-content;
 
         padding: .5rem;

@@ -35,8 +35,12 @@
       <button id="image-toggle-btn" class="image-toggle-btn">Disable Images</button>
     </div>
   </header>
+
+
   <main>
     {% block content %}{% endblock %}
+
+    {% render 'server/components/legenda/legenda.liquid'%}
   </main>
 </body>
 
