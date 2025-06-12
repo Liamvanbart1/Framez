@@ -5,17 +5,29 @@
 
 
     background-color: rgb(199, 199, 199);
+    color: black;
 
     padding: .5rem;
     border-radius: 5px;
     margin-block: .2rem;
 
     z-index: 3;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     left: 2rem;
 
+    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 0 5px var(--color-text);
+
+    &:hover {
+        background-color: rgb(150, 150, 150);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
 }
 
 ::backdrop {
@@ -26,12 +38,13 @@
 .legenda {
     background-color: transparent;
 
-    position: absolute;
+    position: fixed;
     position-anchor: --legenda-button;
     top: calc(anchor(bottom) - 18rem);
     left: anchor(left);
 
     p {
+        color: black;
         width: fit-content;
 
         padding: .5rem;
