@@ -7,7 +7,6 @@
   .home-left {
     display: grid;
     grid-template-columns: 1fr;
-    height: 100%;
     padding: 0.5rem;
     background-color: var(--color-background-secondair);
     border-radius: 8px;
@@ -22,7 +21,6 @@
 
   .home-right {
     background-color: var(--color-background-secondair);
-    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
