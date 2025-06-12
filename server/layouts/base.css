@@ -162,35 +162,16 @@ footer {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* @media (max-width: 60rem) {
-  main {
-    height: auto;
-  }
-
-  .header div {
-    flex-direction: column;
-    justify-content: center;
-
-    form {
-      margin: auto;
-    }
-  }
-}
-
-.body-flex {
-  display: flex;
-  flex-direction: column;
-
-  main {
-    flex: 1;
-  }
-} */
 @media (max-width: 35rem) {
   .header {
     flex-direction: column;
     height: auto;
     padding: 1rem;
     gap: 1.25rem;
+  }
+
+  .framez-search-overlay {
+    top: 10rem;
   }
 
   .header .logo {
