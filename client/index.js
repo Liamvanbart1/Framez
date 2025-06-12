@@ -145,9 +145,9 @@ if (
 }
 
 const setupImageToggle = () => {
-  const toggleBtn = document.getElementById("image-toggle-btn");
+  const toggleCheckbox = document.getElementById("image-toggle");
 
-  if (!toggleBtn) return;
+  if (!toggleCheckbox) return;
 
   const toggleImages = (disabled) => {
     document.body.classList.toggle("no-images", disabled);
@@ -165,21 +165,21 @@ const setupImageToggle = () => {
         }
       }
     });
-
-    toggleBtn.textContent = disabled ? "Enable Images" : "Disable Images";
   };
 
+  // Laden uit localstorage
   const imagesDisabled = localStorage.getItem("disableImages") === "true";
+  toggleCheckbox.checked = !imagesDisabled; // checked = images aan
   toggleImages(imagesDisabled);
 
-  toggleBtn.addEventListener("click", () => {
-    const currentlyDisabled = document.body.classList.contains("no-images");
-    const newValue = !currentlyDisabled;
-
-    localStorage.setItem("disableImages", newValue);
-    toggleImages(newValue);
+  // Handle change event
+  toggleCheckbox.addEventListener("change", () => {
+    const disabled = !toggleCheckbox.checked; // if not checked images uit
+    localStorage.setItem("disableImages", disabled);
+    toggleImages(disabled);
   });
 };
+
 document.addEventListener("DOMContentLoaded", () => {
   setupImageToggle();
 });

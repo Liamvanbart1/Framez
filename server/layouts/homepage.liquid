@@ -14,7 +14,7 @@
     sizes="16x16" />
 </head>
 
-<body>
+<body class="body-flex">
   <header class="header">
     <a href="/">
       <svg class="logo" width="220" height="83.09" viewBox="0 0 247 93" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +26,7 @@
       </svg>
     </a>
     <div>
-      <button id="image-toggle-btn" class="image-toggle-btn">Disable Images</button>
+      {% render 'server/components/image-switch/image-switch.liquid'%}
     </div>
   </header>
   <main>
