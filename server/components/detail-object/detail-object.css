@@ -1,294 +1,285 @@
 .detail-object {
-    height: calc(100dvh - 9rem);
-    font-family: favorit-light, sans-serif;
+  height: calc(100dvh - 9rem);
+  font-family: favorit-light, sans-serif;
 
-    .object-container {
-        padding: .5rem;
-        background-color: var(--color-background-secondair);
+  .object-container {
+    padding: 0.5rem;
+    background-color: var(--color-background-secondair);
+    border-radius: 8px;
+    height: calc(100% - 1rem);
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: min-content min-content auto min-content;
+    grid-template-areas:
+      "title title"
+      "rels rels"
+      "img text"
+      "date date";
+
+    .title {
+      grid-area: title;
+      height: fit-content;
+
+      color: var(--color-title);
+      font-size: 2rem;
+    }
+
+    .time-content {
+      justify-self: end;
+      grid-area: date;
+
+      justify-self: end;
+
+      .rel {
+        color: black;
+        width: fit-content;
+        height: fit-content;
         border-radius: 8px;
-        height: calc(100% - 1rem);
+        padding: 8px;
+        padding-inline: 12px;
+        text-decoration: none;
+      }
+    }
 
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: 2fr 3fr;
-        grid-template-rows: min-content min-content auto min-content;
-        grid-template-areas:
-            "title title"
-            "rels rels"
-            "img text"
-            "date date";
+    ul {
+      grid-area: rels;
 
-        .title {
-            grid-area: title;
-            height: fit-content;
+      max-height: 7rem;
+      overflow-y: auto;
 
-            color: var(--color-title);
-            font-size: 2em;
+      scrollbar-color: var(--color-title) var(--color-background-secondair);
+      scrollbar-width: thin;
+
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      justify-content: left;
+    }
+
+    .object-content {
+      grid-area: text;
+      line-height: 1.2;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      iframe {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .scroll-root {
+      --space: 1lh;
+      --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
+      anchor-name: --scroll-root;
+      border-radius: 10px;
+      border: 1px solid var(--_theme);
+      padding-inline-end: var(--space);
+
+      > .scroll-viewport {
+        container: --scrollport / size scroll-state;
+        anchor-name: --scroll-viewport;
+        height: 100%;
+        overflow: hidden auto;
+        overscroll-behavior-y: contain;
+
+        @media (prefers-reduced-motion: no-preference) {
+          scroll-behavior: smooth;
         }
 
-        .time-content {
-            justify-self: end;
-            grid-area: date;
+        &:is(:focus-visible, :focus-within) {
+          outline-offset: -2px;
+          outline: none;
+        }
 
-            justify-self: end;
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
 
-            .rel {
-                color: black;
-                width: fit-content;
-                height: fit-content;
-                border-radius: 8px;
-                padding: 8px;
-                padding-inline: 12px;
-                text-decoration: none;
+        &::-webkit-scrollbar-track {
+          background: color-mix(in srgb, var(--_theme), #0000 80%);
+          border-radius: 1e3px;
+          background-clip: padding-box;
+          margin-block: 1lh;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: color-mix(in srgb, var(--_theme), #0000 25%);
+          border-radius: 1e3px;
+        }
+
+        &:is(:focus-visible, :focus-within)::-webkit-scrollbar-thumb {
+          background: var(--_theme);
+        }
+
+        @media (forced-colors: active) {
+          &::-webkit-scrollbar-thumb {
+            border: 2px solid currentcolor;
+          }
+        }
+
+        @media (hover) {
+          &::-webkit-scrollbar {
+            opacity: 0.5;
+          }
+
+          &::-webkit-scrollbar:hover {
+            opacity: 1;
+          }
+
+          &:hover::-webkit-scrollbar-thumb {
+            background: color-mix(in srgb, var(--_theme), #0000 10%);
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: var(--_theme);
+          }
+        }
+
+        @supports (-moz-appearance: none) {
+          scrollbar-width: thin;
+          scrollbar-color: var(--_theme) #0000;
+          transition: scrollbar-color 0.3s ease;
+
+          &:is(:focus-visible, :focus-within) {
+            scrollbar-color: LinkText #0000;
+          }
+
+          @media (hover) {
+            scrollbar-color: light-dark(#eee, #333) #0000;
+
+            &:hover {
+              scrollbar-color: var(--_theme) #0000;
             }
+          }
         }
 
-        ul {
-            grid-area: rels;
-
-            max-height: 7rem;
-            overflow-y: auto;
-
-            scrollbar-color: var(--color-title) var(--color-background-secondair);
-            scrollbar-width: thin;
-
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            justify-content: left;
+        > .scroll-content {
+          padding: var(--space);
         }
 
-
-        .object-content {
-            grid-area: text;
-            line-height: 1.2;
-
-            img{
-                width: 100%;
-                height: auto;
-            }
-
-            iframe {
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        .scroll-root {
-            --space: 1lh;
-            --_theme: light-dark(hsl(none none 40%), hsl(none none 80%));
-            anchor-name: --scroll-root;
-            border-radius: 10px;
+        /* todo: buttons needs not be present if on mobile */
+        @supports selector(::scroll-button(*)) {
+          &::scroll-button(*) {
+            position: fixed;
+            appearance: none;
+            background: none;
+            -webkit-tap-highlight-color: transparent;
             border: 1px solid var(--_theme);
-            padding-inline-end: var(--space);
+            border-radius: 50%;
+            aspect-ratio: 1;
+            inline-size: 36px;
 
-            >.scroll-viewport {
-                container: --scrollport / size scroll-state;
-                anchor-name: --scroll-viewport;
-                height: 100%;
-                overflow: hidden auto;
-                overscroll-behavior-y: contain;
+            transition: opacity 0.5s, scale 0.8s, background-color 0.2s;
+          }
 
-                @media (prefers-reduced-motion: no-preference) {
-                    scroll-behavior: smooth;
-                }
+          &::scroll-button(*):not(:disabled):is(:hover, :focus-visible) {
+            background: color-mix(in srgb, var(--_theme), #0000 90%);
+          }
 
-                &:is(:focus-visible, :focus-within) {
-                    outline-offset: -2px;
-                    outline: none;
-                }
+          &::scroll-button(*):not(:disabled):active {
+            scale: 80%;
+          }
 
-                &::-webkit-scrollbar {
-                    width: 10px;
-                }
+          &::scroll-button(*):disabled {
+            opacity: 25%;
+          }
 
-                &::-webkit-scrollbar-track {
-                    background: color-mix(in srgb, var(--_theme), #0000 80%);
-                    border-radius: 1e3px;
-                    background-clip: padding-box;
-                    margin-block: 1lh;
-                }
+          &::scroll-button(up) {
+            content: "▲" / "Scroll up";
 
-                &::-webkit-scrollbar-thumb {
-                    background: color-mix(in srgb, var(--_theme), #0000 25%);
-                    border-radius: 1e3px;
-                }
+            position-area: inline-start span-block-start;
+            position-anchor: --scroll-root;
+            anchor-name: --scroll-buttondown;
+            margin-inline-end: var(--space);
+            margin-block-end: calc(3 * var(--space));
+          }
 
-                &:is(:focus-visible, :focus-within)::-webkit-scrollbar-thumb {
-                    background: var(--_theme);
-                }
+          &::scroll-button(down) {
+            content: "▼" / "Scroll down";
 
-                @media (forced-colors: active) {
-                    &::-webkit-scrollbar-thumb {
-                        border: 2px solid currentcolor;
-                    }
-                }
-
-                @media (hover) {
-                    &::-webkit-scrollbar {
-                        opacity: .5;
-                    }
-
-                    &::-webkit-scrollbar:hover {
-                        opacity: 1;
-                    }
-
-                    &:hover::-webkit-scrollbar-thumb {
-                        background: color-mix(in srgb, var(--_theme), #0000 10%);
-                    }
-
-                    &::-webkit-scrollbar-thumb:hover {
-                        background: var(--_theme);
-                    }
-                }
-
-                @supports (-moz-appearance:none) {
-                    scrollbar-width: thin;
-                    scrollbar-color: var(--_theme) #0000;
-                    transition: scrollbar-color .3s ease;
-
-                    &:is(:focus-visible, :focus-within) {
-                        scrollbar-color: LinkText #0000;
-                    }
-
-                    @media (hover) {
-                        scrollbar-color:
-                            light-dark(#eee, #333) #0000;
-
-                        &:hover {
-                            scrollbar-color: var(--_theme) #0000;
-                        }
-                    }
-                }
-
-                >.scroll-content {
-                    padding: var(--space);
-                }
-
-                /* todo: buttons needs not be present if on mobile */
-                @supports selector(::scroll-button(*)) {
-                    &::scroll-button(*) {
-                        position: fixed;
-                        appearance: none;
-                        background: none;
-                        -webkit-tap-highlight-color: transparent;
-                        border: 1px solid var(--_theme);
-                        border-radius: 50%;
-                        aspect-ratio: 1;
-                        inline-size: 36px;
-
-                        transition:
-                            opacity .5s,
-                            scale .8s,
-                            background-color .2s;
-                    }
-
-                    &::scroll-button(*):not(:disabled):is(:hover, :focus-visible) {
-                        background: color-mix(in srgb, var(--_theme), #0000 90%);
-                    }
-
-                    &::scroll-button(*):not(:disabled):active {
-                        scale: 80%;
-                    }
-
-                    &::scroll-button(*):disabled {
-                        opacity: 25%;
-                    }
-
-                    &::scroll-button(up) {
-                        content: '▲' / 'Scroll up';
-
-                        position-area: inline-start span-block-start;
-                        position-anchor: --scroll-root;
-                        anchor-name: --scroll-buttondown;
-                        margin-inline-end: var(--space);
-                        margin-block-end: calc(3 * var(--space));
-                    }
-
-                    &::scroll-button(down) {
-                        content: '▼' / 'Scroll down';
-
-                        position-anchor: --scroll-buttondown;
-                        position-area: block-end;
-                        margin-block-start: calc(var(--space) / 2);
-                    }
-                }
-            }
+            position-anchor: --scroll-buttondown;
+            position-area: block-end;
+            margin-block-start: calc(var(--space) / 2);
+          }
         }
-
-        .object-img {
-            grid-area: img;
-            width: 100%;
-            height: auto;
-        }
-
-        
-
-
-        .tag {
-            color: black;
-        }
-
-        .hapje {
-            position: relative;
-            right: 0;
-            bottom: -.5rem;
-            background-color: var(--color-background);
-            outline: var(--color-background) .5rem solid;
-            border-radius: 0.5rem 0 0 0;
-            width: max-content;
-
-            display: flex;
-            justify-content: flex-end;
-
-            :before {
-                position: absolute;
-                content: "";
-                display: inline-block;
-                bottom: 0;
-                left: -1.5rem;
-                width: 1rem;
-                height: 1rem;
-                border-bottom-right-radius: 2rem;
-                box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
-                background: transparent;
-            }
-
-            :after {
-                position: absolute;
-                content: "";
-                display: inline-block;
-                top: -1.5rem;
-                right: -0.5rem;
-
-                width: 1rem;
-                height: 1rem;
-                border-bottom-right-radius: 2rem;
-                box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
-                background: transparent;
-            }
-        }
-
+      }
     }
 
-    .object-container:not(:has(.object-img)) {
-        grid-template-areas:
-            "title title"
-            "rels rels"
-            "text text"
-            "date date";
-
-        .object-content {
-            width: 60%;
-            margin: auto;
-        }
+    .object-img {
+      grid-area: img;
+      width: 100%;
+      height: auto;
     }
+
+    .tag {
+      color: black;
+    }
+
+    .hapje {
+      position: relative;
+      right: 0;
+      bottom: -0.5rem;
+      background-color: var(--color-background);
+      outline: var(--color-background) 0.5rem solid;
+      border-radius: 0.5rem 0 0 0;
+      width: max-content;
+
+      display: flex;
+      justify-content: flex-end;
+
+      :before {
+        position: absolute;
+        content: "";
+        display: inline-block;
+        bottom: 0;
+        left: -1.5rem;
+        width: 1rem;
+        height: 1rem;
+        border-bottom-right-radius: 2rem;
+        box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+        background: transparent;
+      }
+
+      :after {
+        position: absolute;
+        content: "";
+        display: inline-block;
+        top: -1.5rem;
+        right: -0.5rem;
+
+        width: 1rem;
+        height: 1rem;
+        border-bottom-right-radius: 2rem;
+        box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
+        background: transparent;
+      }
+    }
+  }
+
+  .object-container:not(:has(.object-img)) {
+    grid-template-areas:
+      "title title"
+      "rels rels"
+      "text text"
+      "date date";
+
+    .object-content {
+      width: 60%;
+      margin: auto;
+    }
+  }
 }
 
 @media (max-width: 60rem) {
-    .detail-object {
-        height: calc(70dvh - .5rem);
-    }
+  .detail-object {
+    height: calc(70dvh - 0.5rem);
+  }
 }

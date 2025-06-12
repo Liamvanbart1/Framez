@@ -1,76 +1,75 @@
 .search-result {
-    background-color: var(--color-background-secondair);
+  background-color: var(--color-background-secondair);
+  color: var(--color-text);
+
+  border-radius: 8px;
+
+  display: grid;
+  grid-template: [type] "type type" auto[type] [title] "title date" auto [date] / 1fr auto;
+
+  margin-block: 0.5rem;
+  height: fit-content;
+
+  a {
+    grid-area: title;
+    text-decoration: none;
+    margin-right: 0.5rem;
+    /* font-family: favorit-bold; */
+    font-size: 1.5rem;
     color: var(--color-text);
 
-    border-radius: 8px;
+    padding: 0.5rem;
+  }
 
-    display: grid;
-    grid-template: [type]"type type" auto[type] [title] "title date" auto [date] / 1fr auto;
+  div {
+    border-radius: 8px 8px 0 0;
 
-    margin-block: .5rem;
-    height: fit-content;
+    display: flex;
+    place-content: space-between;
+  }
 
-    a {
-        grid-area: title;
-        text-decoration: none;
-        margin-right: .5rem;
-        /* font-family: favorit-bold; */
-        font-size: 1.5em;
-        color: var(--color-text);
+  p,
+  time {
+    color: black;
+    font-weight: lighter;
 
-        padding: .5rem;
-    }
+    padding: 0.2rem;
+    padding-inline: 0.5rem;
+  }
 
-    div {
-        border-radius: 8px 8px 0 0;
+  /* is het verwarrend dat de kleuren switchen van betekenis? */
+  .Exhibition,
+  .Launch {
+    background-color: var(--color-publication);
+  }
 
-        display: flex;
-        place-content: space-between;
-    }
+  .Review,
+  .News,
+  .Report {
+    background-color: var(--color-person);
+  }
 
-    p,
-    time {
-        color: black;
-        font-weight: lighter;
+  .Debate,
+  .Talk,
+  .Article,
+  .Interview {
+    background-color: var(--color-collective);
+  }
 
-        padding: .2rem;
-        padding-inline: .5rem;
+  .Symposium,
+  .Program {
+    background-color: var(--color-organisation);
+  }
 
-    }
+  .Public,
+  .Educational {
+    background-color: var(--color-event);
+  }
 
-    /* is het verwarrend dat de kleuren switchen van betekenis? */
-    .Exhibition,
-    .Launch {
-        background-color: var(--color-publication);
-    }
-
-    .Review,
-    .News,
-    .Report {
-        background-color: var(--color-person);
-    }
-
-    .Debate,
-    .Talk,
-    .Article,
-    .Interview {
-        background-color: var(--color-collective);
-    }
-
-    .Symposium,
-    .Program {
-        background-color: var(--color-organisation);
-    }
-
-    .Public,
-    .Educational {
-        background-color: var(--color-event);
-    }
-
-    .Performance,
-    .Film,
-    .Video,
-    .Podcast {
-        background-color: var(--color-serie);
-    }
+  .Performance,
+  .Film,
+  .Video,
+  .Podcast {
+    background-color: var(--color-serie);
+  }
 }
