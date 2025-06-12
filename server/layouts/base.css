@@ -5,12 +5,11 @@ body {
 
   &:has(footer) {
     main {
-      min-height: calc(100vh - 19.3rem);
+      height: fit-content;
     }
 
     footer {
       padding: 0;
-      height: 10.2rem;
     }
   }
 }
