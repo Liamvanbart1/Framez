@@ -49,7 +49,7 @@ body {
 }
 
 main {
-  height: calc(100vh - 19.3rem);
+  height: fit-content;
 }
 
 footer {
@@ -191,6 +191,5 @@ footer {
 
   main {
     height: auto;
-    min-height: calc(100vh - (10.2rem + 1rem));
   }
 }
