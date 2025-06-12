@@ -186,6 +186,7 @@ footer {
   transition: border-color 0.2s ease;
 }
 .framez-search-overlay {
+  z-index: 1000;
   position: fixed;
   top: 7rem;
   left: 0;
@@ -208,6 +209,7 @@ footer {
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 .framez-search-overlay.visible {
+  z-index: 10;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
