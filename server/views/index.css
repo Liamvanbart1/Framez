@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   gap: 2rem;
-  min-height: calc(100vh - 22rem);
+  min-height: calc(100vh - 19.3rem);
 
   .search-icon {
     width: 1.5rem;
@@ -37,7 +37,7 @@
 
   .h2 {
     color: var(--color-title);
-    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    font-size: clamp(1rem, 0.6018rem + 2.1239vw, 4rem);
   }
 
   .type-list {
@@ -46,7 +46,7 @@
     gap: 1em;
     grid-area: types;
     row-gap: 1rem;
-    font-size: clamp(1.5rem, 1.5vw, 3rem);
+    font-size: clamp(1rem, 0.7345rem + 1.4159vw, 3rem);
 
     a {
       color: black;
@@ -83,18 +83,18 @@
 
   .home-title .highlight {
     font-weight: 900;
-    font-size: clamp(3rem, 10vw, 10rem);
+    font-size: clamp(2rem, 0.9381rem + 5.6637vw, 10rem);
     letter-spacing: -0.02em;
   }
 
   .home-title .light {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(1.2rem, 0.6956rem + 2.6903vw, 5rem);
     font-weight: 400;
     text-transform: lowercase;
   }
 
   .home-title .line2 {
-    font-size: clamp(2rem, 6vw, 5rem);
+    font-size: clamp(1.2rem, 0.6956rem + 2.6903vw, 5rem);
     font-weight: 500;
     letter-spacing: 0.03em;
     margin-top: 0.3rem;
@@ -198,5 +198,14 @@ body.no-images img {
 @media (max-width: 45rem) {
   .home-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
+
+    .home-left {
+      padding: 1rem;
+    }
+
+    .home-right {
+      padding: 1rem;
+    }
   }
 }

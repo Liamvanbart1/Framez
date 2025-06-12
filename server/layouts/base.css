@@ -5,12 +5,11 @@ body {
 
   &:has(footer) {
     main {
-      min-height: calc(100vh - 19.3rem);
+      height: fit-content;
     }
 
     footer {
       padding: 0;
-      height: 10.2rem;
     }
   }
 }
@@ -43,14 +42,17 @@ body {
   div {
     display: flex;
     flex-direction: row-reverse;
+  }
 
+  .div-search-toggle {
     align-items: center;
     margin-inline: 1rem;
+    gap: 1.25rem;
   }
 }
 
 main {
-  height: calc(100vh - 19.3rem);
+  height: fit-content;
 }
 
 footer {
@@ -60,7 +62,7 @@ footer {
 .framez-search-form {
   position: relative;
   max-width: 25em;
-  margin: 1em;
+  z-index: 5;
 }
 
 .framez-search-input {
@@ -103,6 +105,7 @@ footer {
 }
 
 .framez-search-results {
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -161,26 +164,35 @@ footer {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 60rem) {
-  main {
+@media (max-width: 35rem) {
+  .header {
+    align-items: center;
+    flex-direction: column;
     height: auto;
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .framez-search-overlay {
+    top: 10rem;
+  }
+
+  .header .logo {
+    margin: 0;
   }
 
   .header div {
     flex-direction: column;
-    justify-content: center;
-
-    form {
-      margin: auto;
-    }
+    gap: 1.25rem;
+    margin-inline: 0;
+    width: 100%;
   }
-}
 
-.body-flex {
-  display: flex;
-  flex-direction: column;
+  .header form {
+    width: 100%;
+  }
 
   main {
-    flex: 1;
+    height: auto;
   }
 }
