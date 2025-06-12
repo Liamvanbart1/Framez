@@ -38,7 +38,7 @@
 .legenda {
     background-color: transparent;
 
-    position: absolute;
+    position: fixed;
     position-anchor: --legenda-button;
     top: calc(anchor(bottom) - 18rem);
     left: anchor(left);
