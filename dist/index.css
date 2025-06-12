@@ -181,7 +181,7 @@ footer {
 .framez-search-form {
   position: relative;
   max-width: 25em;
-  margin: 1em;
+  z-index: 5;
 }
 .framez-search-input {
   width: 100%;
@@ -220,6 +220,7 @@ footer {
   transform: translateY(0);
 }
 .framez-search-results {
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -269,7 +270,7 @@ footer {
   transform: translateY(1px);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 60rem) {
+/* @media (max-width: 60rem) {
   main {
     height: auto;
   }
@@ -283,12 +284,42 @@ footer {
     }
   }
 }
+
 .body-flex {
   display: flex;
   flex-direction: column;
 
   main {
     flex: 1;
+  }
+} */
+@media (max-width: 35rem) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .header .logo {
+    margin: 0;
+  }
+
+  .header div {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-inline: 0;
+    width: 100%;
+  }
+
+  .header form {
+    width: 100%;
+  }
+
+  main {
+    height: auto;
+    min-height: calc(100vh - (10.2rem + 1rem));
   }
 }
 .home-container {
@@ -1245,6 +1276,60 @@ a:has(.tag){
 }
 .Organisation {
   background-color: var(--color-organisation);
+}
+.switch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  align-items: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, background-color 0.3s;
+}
+/* --- The "On" State Logic --- */
+/* Change track color when the hidden checkbox is checked */
+input:checked + .slider {
+  background-color: #34c759;
+}
+/* Move the knob and change its color when the checkbox is checked */
+input:checked + .slider::before {
+  transform: translateX(30px);
+  background-color: white;
+}
+.switch-label {
+  color: var(--color-title);
 }
 .footer {
   section:first-of-type {
