@@ -141,7 +141,7 @@ body {
 }
 .header {
   position: relative;
-  z-index: 1;
+  z-index: 5;
   background-color: var(--color-background);
   display: flex;
   justify-content: space-between;
@@ -186,7 +186,6 @@ footer {
   transition: border-color 0.2s ease;
 }
 .framez-search-overlay {
-  z-index: 1000;
   position: fixed;
   top: 7rem;
   left: 0;
@@ -199,8 +198,6 @@ footer {
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -209,7 +206,6 @@ footer {
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 .framez-search-overlay.visible {
-  z-index: 10;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -223,6 +219,7 @@ footer {
   color: var(--color-text);
 }
 .framez-search-results li {
+  position: relative;
   padding: 10px 14px;
   cursor: pointer;
   border-bottom: 1px solid #eee;
