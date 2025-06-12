@@ -4,25 +4,29 @@
 @import "colors.css";
 
 /*.layout and view styling */
-@import '../server/layouts/base.css';
-@import '../server/views/index.css';
-@import '../server/views/detail.css';
-@import '../server/views/events.css';
+@import "../server/layouts/base.css";
+@import "../server/views/index.css";
+@import "../server/views/detail.css";
+@import "../server/views/events.css";
+@import "../server/views/years.css";
 
 /* component styling */
-@import '../server/components/event-list/event.css';
-@import '../server/components/detail-object/detail-object.css';
-@import '../server/components/rel-tag/rel-tag.css';
-@import '../server/components/relation/relation.css';
+@import "../server/components/event-list/event.css";
+@import "../server/components/detail-object/detail-object.css";
+@import "../server/components/rel-tag/rel-tag.css";
+@import "../server/components/relation/relation.css";
+@import "../server/components/legenda/legenda.css";
+@import "../server/components/item-list/item-list.css";
 
+@import "../server/components/detail-object/detail-object.css";
+@import "../server/components/relation/relation.css";
+@import "../server/components/rel-tag/rel-tag.css";
+@import "../server/components/footer/footer.css";
 
-@import '../server/components/detail-object/detail-object.css';
-@import '../server/components/relation/relation.css';
-@import '../server/components/rel-tag/rel-tag.css';
 body {
   color: var(--color-text);
   margin: 0 auto;
-  interpolate-size:allow-keywords;
+  interpolate-size: allow-keywords;
 }
 
 main {

@@ -1,13 +1,13 @@
 .detail-object {
     --color-background: black;
-    height: calc(82dvh - .5rem);
+    height: calc(100dvh - 9rem);
     font-family: favorit-light, sans-serif;
 
     .object-container {
         padding: .5rem;
         background-color: var(--color-background-secondair);
         border-radius: 8px;
-        height: 100%;
+        height: calc(100% - 1rem);
 
         display: grid;
         gap: 1rem;
@@ -28,17 +28,12 @@
         }
 
         .time-content {
+            justify-self: end;
             grid-area: date;
 
+            justify-self: end;
 
             .rel {
-                color: black;
-                width: fit-content;
-                height: fit-content;
-                border-radius: 8px;
-                padding: 8px;
-                padding-inline: 12px;
-                text-decoration: none;
                 color: black;
                 width: fit-content;
                 height: fit-content;
@@ -51,7 +46,8 @@
 
         ul {
             grid-area: rels;
-            max-height: 3.8rem;
+
+            max-height: 7rem;
             overflow-y: auto;
 
             scrollbar-color: var(--color-title) var(--color-background-secondair);
@@ -62,11 +58,23 @@
             flex-direction: row;
             flex-wrap: wrap;
             gap: 0.2rem;
+            justify-content: left;
         }
 
 
         .object-content {
             grid-area: text;
+            line-height: 1.2;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+            }
         }
 
         .scroll-root {
@@ -211,16 +219,13 @@
             }
         }
 
-        img {
+        .object-img {
             grid-area: img;
             width: 100%;
             height: auto;
         }
 
-        iframe {
-            width: 100%;
-            height: auto;
-        }
+        
 
 
         .tag {
@@ -229,11 +234,11 @@
 
         .hapje {
             position: relative;
-            right: .5rem;
+            right: 0;
             bottom: -.5rem;
             background-color: var(--color-background);
             outline: var(--color-background) .5rem solid;
-            border-radius: 0 .5rem 0 0;
+            border-radius: 0.5rem 0 0 0;
             width: max-content;
 
             display: flex;
@@ -243,32 +248,43 @@
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: -1.5rem;
-                left: 0rem;
+                bottom: 0;
+                left: -1.5rem;
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
 
             :after {
                 position: absolute;
                 content: "";
                 display: inline-block;
-                top: 1rem;
-                right: -1.5rem;
+                top: -1.5rem;
+                right: -0.5rem;
 
                 width: 1rem;
                 height: 1rem;
                 border-bottom-right-radius: 2rem;
                 box-shadow: 0.313rem 0.313rem 0px 0.18rem var(--color-background);
                 background: transparent;
-                rotate: 90deg;
             }
         }
 
+    }
+
+    .object-container:not(:has(.object-img)) {
+        grid-template-areas:
+            "title title"
+            "rels rels"
+            "text text"
+            "date date";
+
+        .object-content {
+            width: 60%;
+            margin: auto;
+        }
     }
 }
 

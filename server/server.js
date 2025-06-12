@@ -19,23 +19,108 @@ app
 
 // stuur de info naar de index pagina
 app.get("/", async (req, res) => {
-  // haal de api op om mee te sturen
-  const yearUrl = `https://archive.framerframed.nl/api/get-years`;
-  const responseYear = await fetch(yearUrl);
-  const jsonYear = await responseYear.json();
-
   return res.send(
     renderTemplate("server/views/index.liquid", {
       title: "Home",
-      years: jsonYear.nodes,
     })
   );
+});
+
+// Routes voor de overzichtspagina's
+
+app.get("/persons", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/persons"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter((item) => item.person && item.person.uuid);
+
+    res.send(
+      renderTemplate("server/views/persons.liquid", {
+        title: "All Persons",
+        persons: filtered,
+        baseUrl: "person",
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen persons:", err);
+    res.status(500).send("Fout bij ophalen persons.");
+  }
+});
+
+app.get("/organisations", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/organisations"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter(
+      (item) =>
+        item.organisation && item.organisation.name && item.organisation.uuid
+    );
+
+    res.send(
+      renderTemplate("server/views/organisations.liquid", {
+        title: "All Organisations",
+        organisations: filtered,
+        baseUrl: "organisation",
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen Organisations:", err);
+    res.status(500).send("Fout bij ophalen Organisations.");
+  }
+});
+
+app.get("/events", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://archive.framerframed.nl/api/ff/events"
+    );
+    const data = await response.json();
+
+    const filtered = data.filter(
+      (item) => item.event && item.event.name && item.event.uuid
+    );
+
+    res.send(
+      renderTemplate("server/views/events.liquid", {
+        title: "All Events",
+        events: filtered,
+        baseUrl: "event",
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen Events:", err);
+    res.status(500).send("Fout bij ophalen Events.");
+  }
+});
+
+app.get("/years", async (req, res) => {
+  try {
+    const yearUrl = `https://archive.framerframed.nl/api/get-years`;
+    const responseYear = await fetch(yearUrl);
+    const jsonYear = await responseYear.json();
+
+    res.send(
+      renderTemplate("server/views/years.liquid", {
+        title: "Choose a Year",
+        years: jsonYear.nodes,
+      })
+    );
+  } catch (err) {
+    console.error("Fout bij ophalen jaren:", err);
+    res.status(500).send("Fout bij ophalen jaren.");
+  }
 });
 
 // als er op de knop gedrukt word van een jaar
 app.get("/year/:year", async (req, res) => {
   // het jaar word meegegeven
-  console.log(req.params.year);
+  // console.log(req.params.year);
   const year = req.params.year;
 
   // roep de api op
@@ -43,20 +128,26 @@ app.get("/year/:year", async (req, res) => {
   const response = await fetch(url);
   const json = await response.json();
 
-  console.log(json.events[0].node);
+  // console.log(json.events[0].node);
 
   // laad de detailpagina voor de expos
   return res.send(
-    renderTemplate("server/views/events.liquid", {
+    renderTemplate("server/views/year.liquid", {
       title: "Events",
       event: json.events,
       year: year,
+      baseUrl: "event",
     })
   );
 });
 
 app.get("/event/:event", async (req, res) => {
   const uuid = req.params.event;
+
+  if (!uuid || uuid === "undefined") {
+    console.warn("Ongeldige UUID meegegeven:", uuid);
+    return res.status(400).send("Ongeldig event-ID.");
+  }
 
   try {
     const url = `https://archive.framerframed.nl/api/node-by-id/${uuid}`;
@@ -319,7 +410,7 @@ const renderTemplate = (template, data) => {
 };
 
 app.get("/search", async (req, res) => {
-  const baseUrl = process.env.NIEUWE_BASE_URL;
+  const baseUrl = "https://archive.framerframed.nl";
   const query = req.query.q;
 
   try {
@@ -329,9 +420,9 @@ app.get("/search", async (req, res) => {
     // new URL is minder foutgevoelig en zorgt ervoor dat de string correct wordt geparsed naar een geldige URL
 
     const response = await fetch(apiUrl);
-    console.log(response, "response");
+    // console.log(response, "response");
     const data = await response.json();
-    console.log(data, "data");
+    // console.log(data, "data");
 
     res.json({ results: data });
   } catch (err) {

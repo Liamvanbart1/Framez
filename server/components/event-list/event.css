@@ -5,7 +5,7 @@
     border-radius: 8px;
 
     display: grid;
-    grid-template: [title] "title date" auto [date] [type]"type type" auto[type] / 1fr auto;
+    grid-template: [type]"type type" auto[type] [title] "title date" auto [date] / 1fr auto;
 
     margin-block: .5rem;
     height: fit-content;
@@ -21,56 +21,56 @@
         padding: .5rem;
     }
 
-    p {
-        background-color: lightgray;
-        grid-area: type;
+    div {
+        border-radius: 8px 8px 0 0;
+
+        display: flex;
+        place-content: space-between;
+    }
+
+    p,
+    time {
         color: black;
-        font-weight: bold;
+        font-weight: lighter;
 
         padding: .2rem;
         padding-inline: .5rem;
 
-        border-radius: 0 0 8px 8px;
-
-        text-align: end;
-
-        /* is het verwarrend dat de kleuren switchen van betekenis? */
-        &.Exhibition, 
-        &.Launch {
-            background-color: var(--color-publication);
-        }
-
-        &.Review,
-        &.News,
-        &.Report {
-            background-color: var(--color-person);
-        }
-
-        &.Debate,
-        &.Talk,
-        &.Article,
-        &.Interview {
-            background-color: var(--color-collective);
-        }
-
-        &.Symposium,
-        &.Program {
-            background-color: var(--color-organisation);
-        }
-
-        &.Public,
-        &.Educational {
-            background-color: var(--color-event);
-        }
-
-        &.Performance,
-        &.Film, &.Video &.Podcast {
-            background-color: var(--color-serie);
-        }
     }
 
-    time {
-        grid-area: date;
-        padding: .5rem;
+    /* is het verwarrend dat de kleuren switchen van betekenis? */
+    .Exhibition,
+    .Launch {
+        background-color: var(--color-publication);
+    }
+
+    .Review,
+    .News,
+    .Report {
+        background-color: var(--color-person);
+    }
+
+    .Debate,
+    .Talk,
+    .Article,
+    .Interview {
+        background-color: var(--color-collective);
+    }
+
+    .Symposium,
+    .Program {
+        background-color: var(--color-organisation);
+    }
+
+    .Public,
+    .Educational {
+        background-color: var(--color-event);
+    }
+
+    .Performance,
+    .Film,
+    .Video,
+    .Podcast {
+        background-color: var(--color-serie);
     }
 }

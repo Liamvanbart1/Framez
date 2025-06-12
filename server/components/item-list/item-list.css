@@ -1,0 +1,7 @@
+.Person {
+  background-color: var(--color-person);
+}
+
+.Organisation {
+  background-color: var(--color-organisation);
+}

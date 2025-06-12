@@ -27,7 +27,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
     if (query.length < 2) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
-      overlay?.classList.add("hidden");
+      overlay?.classList.remove("visible");
       return;
     }
 
@@ -37,7 +37,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
         const data = await res.json();
 
         if (data.results && data.results.length > 0) {
-          // Filter results to include only allowed types and ensure uuid exists
+          // Filter alleen types met uuid en die in de lijst
           const filtered = data.results.filter(
             (result) =>
               result.uuid &&
@@ -52,34 +52,34 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
                 const title =
                   result.title || result.title_en || result.name || "No title";
                 return `
-                  <li>
-                    <a 
-                      href="#" 
-                      class="search-result block p-2 hover:bg-gray-100" 
-                      data-uuid="${result.uuid}" 
-                      data-type="${type}"
-                    >
+                  <li
+                    class="framez-search-results"
+                    data-uuid="${result.uuid}"
+                    data-type="${type}"
+                    style="cursor: pointer;"
+                  >
+                    <a class="framez-search-results" href="#">
                       ${title}
                     </a>
                   </li>`;
               })
               .join("");
             resultsContainer.style.display = "block";
-            overlay?.classList.remove("hidden");
+            overlay?.classList.add("visible");
           } else {
             resultsContainer.innerHTML = "<li>No results found</li>";
             resultsContainer.style.display = "block";
-            overlay?.classList.remove("hidden");
+            overlay?.classList.add("visible");
           }
         } else {
           resultsContainer.innerHTML = "<li>No results found</li>";
           resultsContainer.style.display = "block";
-          overlay?.classList.remove("hidden");
+          overlay?.classList.add("visible");
         }
       } catch (err) {
         resultsContainer.innerHTML = "<li>Error loading search</li>";
         resultsContainer.style.display = "block";
-        overlay?.classList.remove("hidden");
+        overlay?.classList.add("visible");
         console.error(err);
       }
     }, 300);
@@ -93,12 +93,12 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
     ) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
-      overlay?.classList.add("hidden");
+      overlay?.classList.remove("visible");
     }
   });
 
   resultsContainer?.addEventListener("click", (e) => {
-    const el = e.target.closest(".search-result");
+    const el = e.target.closest("li[data-uuid][data-type]");
     if (!el) return;
 
     e.preventDefault();
@@ -126,10 +126,60 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
   });
 }
 
-// Setup search instances
-setupSearch(
-  "#framez-search-input",
-  "#framez-search-results",
-  "#framez-search-overlay"
-); // header
-setupSearch("#search", ".search-results"); // homepage
+if (
+  document.querySelector("#framez-search-input") &&
+  document.querySelector("#framez-search-results")
+) {
+  setupSearch(
+    "#framez-search-input",
+    "#framez-search-results",
+    "#framez-search-overlay"
+  );
+}
+
+if (
+  document.querySelector("#search") &&
+  document.querySelector(".search-results")
+) {
+  setupSearch("#search", ".search-results");
+}
+
+const setupImageToggle = () => {
+  const toggleBtn = document.getElementById("image-toggle-btn");
+
+  if (!toggleBtn) return;
+
+  const toggleImages = (disabled) => {
+    document.body.classList.toggle("no-images", disabled);
+
+    document.querySelectorAll("img").forEach((img) => {
+      if (disabled) {
+        if (!img.dataset.src) {
+          img.dataset.src = img.src;
+          img.src = "";
+        }
+      } else {
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+        }
+      }
+    });
+
+    toggleBtn.textContent = disabled ? "Enable Images" : "Disable Images";
+  };
+
+  const imagesDisabled = localStorage.getItem("disableImages") === "true";
+  toggleImages(imagesDisabled);
+
+  toggleBtn.addEventListener("click", () => {
+    const currentlyDisabled = document.body.classList.contains("no-images");
+    const newValue = !currentlyDisabled;
+
+    localStorage.setItem("disableImages", newValue);
+    toggleImages(newValue);
+  });
+};
+document.addEventListener("DOMContentLoaded", () => {
+  setupImageToggle();
+});

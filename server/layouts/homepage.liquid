@@ -26,18 +26,16 @@
       </svg>
     </a>
     <div>
-      <form id="framez-search-form" class="framez-search-form" onsubmit="return false;">
-        <input type="text" id="framez-search-input" class="framez-search-input" placeholder="Search..." />
-        <div id="framez-search-overlay" class="framez-search-overlay">
-          <div id="framez-search-results" class="framez-search-results"></div>
-        </div>
-      </form>
       <button id="image-toggle-btn" class="image-toggle-btn">Disable Images</button>
     </div>
   </header>
   <main>
     {% block content %}{% endblock %}
   </main>
+
+  <footer>
+    {% render 'server/components/footer/footer.liquid'%}
+  </footer>
 </body>
 
 </html>

@@ -2,18 +2,47 @@ body {
   background: var(--color-background);
   height: 100vh;
   color-scheme: light dark;
+
+  &:has(footer) {
+    main {
+      min-height: calc(100vh - 19.3rem);
+    }
+
+    footer {
+      padding: 0;
+      height: 10.2rem;
+    }
+  }
 }
 
 .header {
   position: relative;
   z-index: 1;
-  background-color: white;
+  background-color: var(--color-background);
   display: flex;
   justify-content: space-between;
+  height: 7rem;
+
+  a:hover {
+    outline: none;
+    box-shadow: none;
+  }
+
+  svg {
+    fill: var(--color-title);
+  }
+
+  form {
+    display: flex;
+
+    input {
+      align-self: center;
+    }
+  }
 }
 
 main {
-  height: 83dvh;
+  height: calc(100vh - 19.3rem);
 }
 
 footer {
@@ -30,36 +59,51 @@ footer {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
 
-.framez-search-input:focus {
-  border-color: #007bff;
-}
-
 .framez-search-overlay {
-  position: absolute;
-  top: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 7rem;
   left: 0;
   right: 0;
-  margin-top: 4px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  width: 100vw;
+  margin: 0;
+  background: var(--color-background-secondair);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.framez-search-overlay.visible {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .framez-search-results {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  color: var(--color-text);
 }
 
 .framez-search-results li {
@@ -73,7 +117,7 @@ footer {
 }
 
 .framez-search-results li:hover {
-  background-color: #f5f5f5;
+  background: var(--color-background);
 }
 
 /* Hidden class if needed */
@@ -85,6 +129,30 @@ footer {
   margin-top: 0.8em;
   margin-left: 2em;
   margin-bottom: 0.5em;
+}
+
+.image-toggle-btn {
+  height: 3em;
+  background-color: #1f2937;
+  color: #fff;
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.image-toggle-btn:hover {
+  background-color: #111827;
+  transform: translateY(-1px);
+}
+
+.image-toggle-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 60rem) {

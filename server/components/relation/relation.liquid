@@ -2,9 +2,9 @@
   <section class="relation">
     {% assign title = rel.node.title_en | default: rel.node.title_nl %}
     {% if title == nil or title == "" %}
-      {% assign displayText = rel.node.name %}
+    {% assign displayText = rel.node.name %}
     {% else %}
-      {% assign displayText = title %}
+    {% assign displayText = title %}
     {% endif %}
 
 
@@ -12,72 +12,72 @@
     {% assign uuid = rel.node.uuid %}
 
     {% if displayText and uuid %}
-      {% if rel_type == "person" %}
-        <a href="/person/{{ uuid }}" class="person rel title">{{ displayText }}</a>
-      {% elsif rel_type == "organisation" %}
-        <a href="/organisation/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
-      {% elsif rel_type == "event" %}
-        <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
-      {% else %}
-        <a href="/event/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
-      {% endif %}
+    {% if rel_type == "person" %}
+    <a href="/person/{{ uuid }}" class="person rel title">{{ displayText }}</a>
+    {% elsif rel_type == "organisation" %}
+    <a href="/organisation/{{ uuid }}" class="organisation rel title">{{ displayText }}</a>
+    {% elsif rel_type == "event" %}
+    <a href="/event/{{ uuid }}" class="event rel title">{{ displayText }}</a>
+    {% else %}
+    <a href="/event/{{ uuid }}" class="{{ rel_type }} rel title">{{ displayText }}</a>
+    {% endif %}
 
     {% else %}
-      <p class="rel title">{{ displayText }}</p>
+    <p class="rel title">{{ displayText }}</p>
     {% endif %}
 
     {% assign type = rel.node.type | default: rel.node.type_en | default: rel.node.type_nl | downcase %}
     {% assign text = "" %}
 
     {% if type == "person" %}
-      {% assign text = rel.node.bio_en | default: rel.node.bio_nl %}
+    {% assign text = rel.node.bio_en | default: rel.node.bio_nl %}
     {% elsif type == "organisation" or type == "collective" %}
-      {% assign text = rel.node.about_en | default: rel.node.about_nl %}
+    {% assign text = rel.node.about_en | default: rel.node.about_nl %}
     {% else %}
-      {% assign text = rel.node.content_en | default: rel.node.content_nl %}
+    {% assign text = rel.node.content_en | default: rel.node.content_nl %}
     {% endif %}
 
     {%- unless text -%}
-      {%- assign text = rel.node.content_en | default: rel.node.content_nl -%}
+    {%- assign text = rel.node.content_en | default: rel.node.content_nl -%}
     {%- endunless -%}
 
     {% if text %}
-      <p>{{ text | strip_html | truncate: 300 }}</p>
+    <p>{{ text | strip_html | truncate: 300 }}</p>
     {% endif %}
 
 
-  {% if rel.rels and rel.rels.size > 0 %}
-      <details class="skiplink rel">
-        {% if rel.rels.size == 1 %}
-          <summary>relatie van {{ displayText }} </summary>
+    {% if rel.rels and rel.rels.size > 0 %}
+    <details class="skiplink rel">
+      {% if rel.rels.size == 1 %}
+      <summary>Related item for {{ displayText }} </summary>
+      {% else %}
+      <summary>{{ rel.rels.size }} related items for {{ displayText }} </summary>
+      {% endif %}
+      <ul class="relation-relation">
+        {% for subrel in rel.rels %}
+        {% assign relNode = subrel.node | default: subrel.object %}
+        {% assign title = relNode.title_en | default: relNode.title_nl %}
+        {% if title == nil or title == "" %}
+        {% assign displayText = relNode.name %}
         {% else %}
-          <summary>{{ rel.rels.size }} relaties van {{ displayText }} </summary>
+        {% assign displayText = title %}
         {% endif %}
-        <ul class="relation-relation">
-          {% for subrel in rel.rels %}
-            {% assign relNode = subrel.node | default: subrel.object %}
-            {% assign title = relNode.title_en | default: relNode.title_nl %}
-            {% if title == nil or title == "" %}
-              {% assign displayText = relNode.name %}
-            {% else %}
-              {% assign displayText = title %}
-            {% endif %}
-            {% if displayText %}
-              <li>
-                {% render 'server/components/rel-tag/rel-tag.liquid', rel: displayText, class_name: subrel.type | downcase %}
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </details>
+        {% if displayText %}
+        <li>
+          {% render 'server/components/rel-tag/rel-tag.liquid', rel: displayText, class_name: subrel.type | downcase %}
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </details>
     {% endif %}
 
-    {% if rel.node.year %}
-      <div class="hapje">
-        <time class="year rel" datetime="{{ rel.node.year }}-01-01">
-          {{ rel.node.year }}
-        </time>
-      </div>
+    {% if rel.node.year > 0 %}
+    <div class="hapje">
+      <time class="year rel" datetime="{{ rel.node.year }}-01-01">
+        {{ rel.node.year }}
+      </time>
+    </div>
     {% endif %}
   </section>
 </li>

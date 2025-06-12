@@ -1,0 +1,12 @@
+<li class="search-result">
+    <div class="{{ type }}">
+        <p>{{ type }}</p>
+    </div>
+
+    {% if date %}
+    <time datetime="{{ date }}">{{ date }}</time>
+    {% endif %}
+    <a href="/{{ base }}/{{ uuid }}">
+        {{ title }}
+    </a>
+</li>
