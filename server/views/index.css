@@ -13,7 +13,7 @@
   .home-left {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0.5rem;
+    padding: 1.5rem;
     background-color: var(--color-background-secondair);
     border-radius: 8px;
     display: grid;
@@ -22,6 +22,7 @@
       "search";
     row-gap: 1rem;
     place-items: center;
+    align-content: center;
   }
 
   .home-right {
@@ -70,6 +71,7 @@
     color: var(--color-title);
     text-transform: uppercase;
     line-height: 1.2;
+    grid-area: title;
   }
 
   .home-title .line1 {
@@ -98,14 +100,29 @@
   }
 
   .search-container {
+    grid-area: search;
+    position: relative;
     width: 100%;
     padding: 10px 14px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
     font-size: 1rem;
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.2s ease;
+  }
+
+  .search-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: var(--color-background-secondair);
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .search-input-wrapper {
@@ -117,7 +134,7 @@
 
   .search-input-wrapper input {
     flex: 1;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     border: none;
     outline: none;
     background: transparent;
@@ -126,7 +143,7 @@
   .search-input-wrapper button {
     background: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     cursor: pointer;
   }
 
