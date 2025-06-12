@@ -274,6 +274,7 @@ footer {
   .search-icon {
     width: 1.5rem;
     height: 1.5rem;
+    fill: var(--color-text);
   }
 
   .home-left {
