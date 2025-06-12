@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   gap: 2rem;
-  min-height: calc(100vh - 18rem);
+  min-height: calc(100vh - 19.3rem);
 
   .search-icon {
     width: 1.5rem;
@@ -200,11 +200,11 @@ body.no-images img {
     grid-template-columns: 1fr;
     gap: 1rem;
 
-    .home-left{
+    .home-left {
       padding: 1rem;
     }
 
-    .home-right{
+    .home-right {
       padding: 1rem;
     }
   }
