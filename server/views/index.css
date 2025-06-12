@@ -39,6 +39,7 @@
     gap: 1em;
     grid-area: types;
     row-gap: 1rem;
+    font-size: 2rem;
   }
 
   .home-title {
@@ -65,7 +66,6 @@
     font-size: 2rem;
     font-weight: 400;
     text-transform: lowercase;
-    color: #f3f0ea;
   }
 
   .home-title .line2 {
@@ -80,7 +80,7 @@
     padding: 10px 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.2s ease;

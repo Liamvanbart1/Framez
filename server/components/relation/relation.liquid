@@ -49,9 +49,9 @@
     {% if rel.rels and rel.rels.size > 0 %}
     <details class="skiplink rel">
       {% if rel.rels.size == 1 %}
-      <summary>Related item for {{ displayText }} </summary>
+      <summary>Related item</summary>
       {% else %}
-      <summary>{{ rel.rels.size }} related items for {{ displayText }} </summary>
+      <summary>{{ rel.rels.size }} related items</summary>
       {% endif %}
       <ul class="relation-relation">
         {% for subrel in rel.rels %}
