@@ -51,7 +51,10 @@
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr;
     width: 100%;
-    margin: 0.5em;
+
+    section {
+      margin: 0.5em;
+    }
 
     .static {
       border-block: 5px solid var(--color-background);

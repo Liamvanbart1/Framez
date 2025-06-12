@@ -5,7 +5,7 @@ body {
 
   &:has(footer) {
     main {
-      height: calc(100vh - 19.3rem);
+      min-height: calc(100vh - 19.3rem);
     }
 
     footer {
@@ -59,36 +59,51 @@ footer {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
 
-.framez-search-input:focus {
-  border-color: #007bff;
-}
-
 .framez-search-overlay {
-  position: absolute;
-  top: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 7rem;
   left: 0;
   right: 0;
-  margin-top: 4px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  width: 100vw;
+  margin: 0;
+  background: var(--color-background-secondair);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.framez-search-overlay.visible {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .framez-search-results {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  color: var(--color-text);
 }
 
 .framez-search-results li {
@@ -102,7 +117,7 @@ footer {
 }
 
 .framez-search-results li:hover {
-  background-color: #f5f5f5;
+  background: var(--color-background);
 }
 
 /* Hidden class if needed */
