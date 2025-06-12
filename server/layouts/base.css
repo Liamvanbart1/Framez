@@ -140,8 +140,8 @@ footer {
 }
 
 .image-toggle-btn {
-  min-height: 2.5em;
-  height: fit-content;
+  min-height: fit-content;
+  height: 2.5rem;
   background-color: rgb(199, 199, 199);
   color: black;
   border: none;
@@ -167,5 +167,14 @@ footer {
 @media (max-width: 60rem) {
   main {
     height: auto;
+  }
+
+  .header div {
+    flex-direction: column;
+    justify-content: center;
+
+    form {
+      margin: auto;
+    }
   }
 }

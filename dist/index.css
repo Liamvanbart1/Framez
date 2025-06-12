@@ -170,16 +170,6 @@ body {
 
     align-items: center;
     margin-inline: 1rem;
-
-    /* button {
-      background-color: rgb(199, 199, 199);
-
-      padding: .5rem;
-      border-radius: 5px;
-      margin-block: .2rem;
-      box-shadow: 0 0 5px var(--color-text);
-      color: black;
-    } */
   }
 }
 main {
@@ -261,8 +251,8 @@ footer {
   margin-bottom: 0.5em;
 }
 .image-toggle-btn {
-  min-height: 2.5em;
-  height: fit-content;
+  min-height: fit-content;
+  height: 2.5rem;
   background-color: rgb(199, 199, 199);
   color: black;
   border: none;
@@ -272,7 +262,6 @@ footer {
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 5px var(--color-text);
 }
 .image-toggle-btn:hover {
@@ -286,6 +275,15 @@ footer {
 @media (max-width: 60rem) {
   main {
     height: auto;
+  }
+
+  .header div {
+    flex-direction: column;
+    justify-content: center;
+
+    form {
+      margin: auto;
+    }
   }
 }
 .home-container {
@@ -1166,17 +1164,29 @@ a:has(.tag){
 
 
     background-color: rgb(199, 199, 199);
+    color: black;
 
     padding: .5rem;
     border-radius: 5px;
     margin-block: .2rem;
 
     z-index: 3;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     left: 2rem;
 
+    transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 0 5px var(--color-text);
+
+    &:hover {
+        background-color: rgb(150, 150, 150);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
 }
 ::backdrop {
     background-color: rgba(0, 0, 0, 0.601);
@@ -1191,6 +1201,7 @@ a:has(.tag){
     left: anchor(left);
 
     p {
+        color: black;
         width: fit-content;
 
         padding: .5rem;
