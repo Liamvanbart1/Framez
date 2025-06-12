@@ -42,9 +42,12 @@ body {
   div {
     display: flex;
     flex-direction: row-reverse;
+  }
 
+  .div-search-toggle {
     align-items: center;
     margin-inline: 1rem;
+    gap: 1.25rem;
   }
 }
 
@@ -163,6 +166,7 @@ footer {
 
 @media (max-width: 35rem) {
   .header {
+    align-items: center;
     flex-direction: column;
     height: auto;
     padding: 1rem;
@@ -179,7 +183,6 @@ footer {
 
   .header div {
     flex-direction: column;
-    align-items: center;
     gap: 1.25rem;
     margin-inline: 0;
     width: 100%;
