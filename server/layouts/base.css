@@ -60,7 +60,7 @@ footer {
   padding: 10px 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  /* font-size: 16px; */
+  font-size: 16px;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
@@ -76,11 +76,24 @@ footer {
   background: var(--color-background-secondair);
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  border-radius: 0;
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.framez-search-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .framez-search-results {

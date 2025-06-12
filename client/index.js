@@ -27,7 +27,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
     if (query.length < 2) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
-      overlay?.classList.add("hidden");
+      overlay?.classList.remove("visible");
       return;
     }
 
@@ -52,34 +52,34 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
                 const title =
                   result.title || result.title_en || result.name || "No title";
                 return `
-                      <li
-                          class="framez-search-results"
-                          data-uuid="${result.uuid}"
-                          data-type="${type}"
-                          style="cursor: pointer;"
-                        >
-                          <a class="framez-search-results" href="#">
-                            ${title}
-                          </a>
-                        </li>`;
+                  <li
+                    class="framez-search-results"
+                    data-uuid="${result.uuid}"
+                    data-type="${type}"
+                    style="cursor: pointer;"
+                  >
+                    <a class="framez-search-results" href="#">
+                      ${title}
+                    </a>
+                  </li>`;
               })
               .join("");
             resultsContainer.style.display = "block";
-            overlay?.classList.remove("hidden");
+            overlay?.classList.add("visible");
           } else {
             resultsContainer.innerHTML = "<li>No results found</li>";
             resultsContainer.style.display = "block";
-            overlay?.classList.remove("hidden");
+            overlay?.classList.add("visible");
           }
         } else {
           resultsContainer.innerHTML = "<li>No results found</li>";
           resultsContainer.style.display = "block";
-          overlay?.classList.remove("hidden");
+          overlay?.classList.add("visible");
         }
       } catch (err) {
         resultsContainer.innerHTML = "<li>Error loading search</li>";
         resultsContainer.style.display = "block";
-        overlay?.classList.remove("hidden");
+        overlay?.classList.add("visible");
         console.error(err);
       }
     }, 300);
@@ -93,7 +93,7 @@ function setupSearch(inputSelector, resultsSelector, overlaySelector = null) {
     ) {
       resultsContainer.innerHTML = "";
       resultsContainer.style.display = "none";
-      overlay?.classList.add("hidden");
+      overlay?.classList.remove("visible");
     }
   });
 

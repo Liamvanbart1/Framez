@@ -180,7 +180,7 @@ footer {
   padding: 10px 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  /* font-size: 16px; */
+  font-size: 16px;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
@@ -195,11 +195,23 @@ footer {
   background: var(--color-background-secondair);
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
-  border-radius: 0;
   max-height: 300px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.framez-search-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 .framez-search-results {
   list-style: none;
@@ -334,12 +346,14 @@ footer {
   }
 
   .search-container {
-    background: rgba(250, 240, 230, 0.9);
-    border-radius: 12px;
-    padding: 1rem;
-    max-width: 800px;
     width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
   }
 
   .search-input-wrapper {
@@ -365,17 +379,33 @@ footer {
   }
 
   .search-results {
-    height: 10em;
-    overflow: scroll;
     list-style: none;
-    padding: 0.5rem 0 0 0;
     margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: var(--color-text);
+    max-height: 300px;
+    overflow-y: scroll;
   }
 
   .search-results li {
-    font-size: 1.5rem;
-    padding: 0.3rem 0;
-    border-bottom: 1px solid transparent;
+    width: 100%;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+  }
+
+  .search-results li:hover {
+    background: var(--color-background);
+  }
+
+  .search-results li a:hover {
+    outline: none;
+  }
+
+  .search-results li:last-child {
+    border-bottom: none;
   }
 
   li {
